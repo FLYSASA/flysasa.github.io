@@ -79,25 +79,17 @@
 
 
 
-<meta name="description" content="1.text-align: center 的作用是什么，作用在什么元素上？ 能让什么元素居中？ text-align CSS属性定义行内内容（例如文字）如何相对它的块父元素对齐，text-align并不控制块元素自己的对齐，只控制它的行内内容的对齐，作用是将 inline-level 元素水平居中显示 此属性只能写在块级元素上，但对块级元素本身没有影响 可以让元素内文本以及 display 为 i">
+<meta name="description" content="1.CSS和JS在网页中的放置顺序是怎样的？ css是使用link标签将样式进行引入并放置在header标签内。 js是使用script标签进行引入，放置位置一般在body底部&amp;lt;/body&amp;gt;闭合标签之前。这是因为页面渲染时，js放在页面顶部，会阻塞后面内容的呈现以及其后组件下载，会造成白屏等问题。2.解释白屏和FOUC1.白屏 如果把样式放在底部，对于IE浏览器，在某些场景下(新窗口打">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS常见样式2">
-<meta property="og:url" content="http://yoursite.com/2017/11/02/CSS常见样式2/index.html">
+<meta property="og:title" content="JS 相关概念">
+<meta property="og:url" content="http://yoursite.com/2017/12/01/JS 相关概念/index.html">
 <meta property="og:site_name" content="FLYSASA">
-<meta property="og:description" content="1.text-align: center 的作用是什么，作用在什么元素上？ 能让什么元素居中？ text-align CSS属性定义行内内容（例如文字）如何相对它的块父元素对齐，text-align并不控制块元素自己的对齐，只控制它的行内内容的对齐，作用是将 inline-level 元素水平居中显示 此属性只能写在块级元素上，但对块级元素本身没有影响 可以让元素内文本以及 display 为 i">
+<meta property="og:description" content="1.CSS和JS在网页中的放置顺序是怎样的？ css是使用link标签将样式进行引入并放置在header标签内。 js是使用script标签进行引入，放置位置一般在body底部&amp;lt;/body&amp;gt;闭合标签之前。这是因为页面渲染时，js放在页面顶部，会阻塞后面内容的呈现以及其后组件下载，会造成白屏等问题。2.解释白屏和FOUC1.白屏 如果把样式放在底部，对于IE浏览器，在某些场景下(新窗口打">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-2c37f4c5f86fb08d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-b75fb7ac978de817.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-64cf1630804364d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-d545f0a6f04c785c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-19433227880294d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-bb6eee98d4744953.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-b06f25bf6bf8f27e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-04-23T08:26:21.050Z">
+<meta property="og:updated_time" content="2018-04-23T08:30:55.110Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS常见样式2">
-<meta name="twitter:description" content="1.text-align: center 的作用是什么，作用在什么元素上？ 能让什么元素居中？ text-align CSS属性定义行内内容（例如文字）如何相对它的块父元素对齐，text-align并不控制块元素自己的对齐，只控制它的行内内容的对齐，作用是将 inline-level 元素水平居中显示 此属性只能写在块级元素上，但对块级元素本身没有影响 可以让元素内文本以及 display 为 i">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7280908-2c37f4c5f86fb08d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="JS 相关概念">
+<meta name="twitter:description" content="1.CSS和JS在网页中的放置顺序是怎样的？ css是使用link标签将样式进行引入并放置在header标签内。 js是使用script标签进行引入，放置位置一般在body底部&amp;lt;/body&amp;gt;闭合标签之前。这是因为页面渲染时，js放在页面顶部，会阻塞后面内容的呈现以及其后组件下载，会造成白屏等问题。2.解释白屏和FOUC1.白屏 如果把样式放在底部，对于IE浏览器，在某些场景下(新窗口打">
 
 
 
@@ -127,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/02/CSS常见样式2/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/01/JS 相关概念/"/>
 
 
 
 
 
-  <title>CSS常见样式2 | FLYSASA</title>
+  <title>JS 相关概念 | FLYSASA</title>
   
 
 
@@ -260,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/CSS常见样式2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/JS 相关概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nie">
@@ -277,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS常见样式2</h1>
+          <h1 class="post-title" itemprop="name headline">JS 相关概念</h1>
         
 
         <div class="post-meta">
@@ -289,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T22:07:55+08:00">
-                2017-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T14:25:35+08:00">
+                2017-12-01
               </time>
             
 
@@ -312,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -349,28 +341,40 @@
       
 
       
-        <h1 id="1-text-align-center-的作用是什么，作用在什么元素上？-能让什么元素居中？"><a href="#1-text-align-center-的作用是什么，作用在什么元素上？-能让什么元素居中？" class="headerlink" title="1.text-align: center 的作用是什么，作用在什么元素上？ 能让什么元素居中？"></a>1.<code>text-align: center</code> 的作用是什么，作用在什么元素上？ 能让什么元素居中？</h1><ul>
-<li>text-align CSS属性定义行内内容（例如文字）如何相对它的块父元素对齐，text-align并不控制块元素自己的对齐，只控制它的行内内容的对齐，作用是将 inline-level 元素水平居中显示</li>
-<li>此属性只能写在块级元素上，但对块级元素本身没有影响</li>
-<li>可以让元素内文本以及 display 为 inline 和 inline-block 的子元素在元素内水平居中。<h1 id="2-IE-盒模型和W3C盒模型有什么区别"><a href="#2-IE-盒模型和W3C盒模型有什么区别" class="headerlink" title="2.IE 盒模型和W3C盒模型有什么区别?"></a>2.IE 盒模型和W3C盒模型有什么区别?</h1>IE盒模型的宽度和高度是border+padding+content的值<br><img src="http://upload-images.jianshu.io/upload_images/7280908-2c37f4c5f86fb08d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+        <h1 id="1-CSS和JS在网页中的放置顺序是怎样的？"><a href="#1-CSS和JS在网页中的放置顺序是怎样的？" class="headerlink" title="1.CSS和JS在网页中的放置顺序是怎样的？"></a>1.CSS和JS在网页中的放置顺序是怎样的？</h1><ul>
+<li>css是使用link标签将样式进行引入并放置在header标签内。</li>
+<li>js是使用script标签进行引入，放置位置一般在<code>body</code>底部<code>&lt;/body&gt;</code>闭合标签之前。这是因为页面渲染时，js放在页面顶部，会阻塞后面内容的呈现以及其后组件下载，会造成白屏等问题。<h1 id="2-解释白屏和FOUC"><a href="#2-解释白屏和FOUC" class="headerlink" title="2.解释白屏和FOUC"></a>2.解释白屏和FOUC</h1>1.白屏</li>
+<li>如果把样式放在底部，对于IE浏览器，在某些场景下(新窗口打开,刷新等)页面会出现白屏，而不是内容逐步展现。</li>
+<li>如果使用 @import 标签,即使 CSS 放入 link, 并且放在头部，也可能出现白屏。</li>
+<li>对于图片和CSS，在加载时会并发加载(如一个域名下同时加载两个文件)。但在加载 JavaScript 时，会禁用并发,并且阻止其他内容的下载。 所以把 JavaScript 放入页面顶部也会导致白屏现象。<blockquote>
+<p>白屏不是bug，而是浏览器渲染机制造成的，即浏览器在渲染的时候请求时间过长导致的.</p>
+</blockquote>
+</li>
 </ul>
-<p>W3C盒模型的宽度和高度指的就是content的值<br><img src="http://upload-images.jianshu.io/upload_images/7280908-b75fb7ac978de817.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h1 id="3-box-sizing-border-box-的作用是什么？"><a href="#3-box-sizing-border-box-的作用是什么？" class="headerlink" title="3.*{ box-sizing: border-box;}的作用是什么？"></a>3.<code>*{ box-sizing: border-box;}</code>的作用是什么？</h1><p>box-sizing是CSS3新样式，box-sizing: border-box表示使用的是IE盒模型</p>
-<h1 id="4-line-height-2和line-height-200-有什么区别"><a href="#4-line-height-2和line-height-200-有什么区别" class="headerlink" title="4.line-height: 2和line-height: 200%有什么区别?"></a>4.<code>line-height: 2</code>和<code>line-height: 200%</code>有什么区别?</h1><p>line-height: 2：行高等于内容高度的2倍<br>line-height: 200%：是相对高度，行高等于父元素高度的200%</p>
-<h1 id="5-inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐"><a href="#5-inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐" class="headerlink" title="5.inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐?"></a>5.inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐?</h1><ul>
-<li>inline-block既呈现inline特性（不占据一整行，宽度由内容宽度决定），又呈现block特性（可设置宽高，内外边距）</li>
-<li>缝隙<br>产生缝隙原因：元素之间有空白字符，比如回车、换行等，被浏览器当成一个字符，从而产生缝隙。<br><img src="http://upload-images.jianshu.io/upload_images/7280908-64cf1630804364d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>消除缝隙方法：<br>1.去除元素之间的空白字符<br><img src="http://upload-images.jianshu.io/upload_images/7280908-d545f0a6f04c785c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2.将目标元素的父元素中设置： <code>font-size: 0</code>;之后再子元素中把字体设置回去。原理：把空白字符的宽高设置为0，从而消除缝隙。</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-19433227880294d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>2.<a href="https://link.jianshu.com/?t=https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank" rel="noopener">FOUC</a>(Flash of Unstyled Content) 无样式内容闪烁</p>
 <ul>
-<li>顶端对齐：使用 <code>vertical-align: top;</code><br>高度不一样的inline-block元素，默认元素字符底部基线对齐<br><img src="http://upload-images.jianshu.io/upload_images/7280908-bb6eee98d4744953.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用 <code>vertical-align: top;</code><br><img src="http://upload-images.jianshu.io/upload_images/7280908-b06f25bf6bf8f27e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>如果把样式放在底部，对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等)，会出现 FOUC 现象(逐步加载无样式的内容，等CSS加载后页面突然展现样式)。对于 Firefox 会一直表现出 FOUC 。FireFox每加载一次dom树就会重绘一次网页样式,一直到所有内容完成为止。</li>
+<li>如果有多个样式表， 放在HTML的不同位置，这时有的浏览器可能会在所有样式都加载完后再进行样式的渲染， 此时也可能会出现FOUC。<br>为了避免FOUC发生一般我们用link标签把css放在顶部header内.</li>
 </ul>
-<h1 id="6-CSS-sprite-是什么"><a href="#6-CSS-sprite-是什么" class="headerlink" title="6.CSS sprite 是什么?"></a>6.CSS sprite 是什么?</h1><p>俗称“雪碧图”<br>指将不同的图片、图标合并到一张图上，使用CSS sprite可以减少页面的网络请求，提高网页加载性能。</p>
-<h1 id="7-让一个元素“看不见”有几种方式？有什么区别？"><a href="#7-让一个元素“看不见”有几种方式？有什么区别？" class="headerlink" title="7.让一个元素“看不见”有几种方式？有什么区别？"></a>7.让一个元素“看不见”有几种方式？有什么区别？</h1><ul>
-<li>display: none; 元素消失，不占用位置</li>
-<li>opacity: 0; 透明度为0，但是占用位置</li>
-<li>visibility: hidden  和opacity: 0;类似，占用位置</li>
-<li>background-color： rgba(0,0,0,0.2)设置背景色透明度<br>background:rgba(Red,Green,Bule,透明度);</li>
+<h1 id="3-sync和defer的作用是什么？有什么区别？"><a href="#3-sync和defer的作用是什么？有什么区别？" class="headerlink" title="3.sync和defer的作用是什么？有什么区别？"></a>3.sync和defer的作用是什么？有什么区别？</h1><ul>
+<li>作用<br>没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</li>
+</ul>
+<ol>
+<li><code>async</code>使加载和渲染后续文档元素的过程与 script.js 的加载与执行并行进行（异步）<br><code>&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><code>defer</code>加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。<br><code>&lt;script defer src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></li>
+</ol>
+<ul>
+<li>区别<br>defer:脚本延迟到文档解析和显示后执行，有顺序<br>async:不保证顺序<h1 id="4-简述网页的渲染机制"><a href="#4-简述网页的渲染机制" class="headerlink" title="4.简述网页的渲染机制"></a>4.简述网页的渲染机制</h1></li>
+<li>解析 HTML 标签, 构建 DOM 树</li>
+<li>解析 CSS 标签, 构建 CSSOM 树</li>
+<li>把 DOM 和 CSSOM 组合成 渲染树 (render tree)</li>
+<li>在渲染树的基础上进行布局, 计算每个节点的几何结构</li>
+<li>把每个节点绘制到屏幕上 (painting)<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
+</ul>
+<ul>
+<li>高性能网站建设指南, Steve Sounders</li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en" target="_blank" rel="noopener">Render-tree construction, layout, and paint</a></li>
+<li><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="noopener">How browsers work</a></li>
 </ul>
 
       
@@ -396,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/02/CSS常见属性/" rel="next" title="CSS常见属性">
-                <i class="fa fa-chevron-left"></i> CSS常见属性
+              <a href="/2017/11/23/CSS 综合/" rel="next" title="CSS 综合">
+                <i class="fa fa-chevron-left"></i> CSS 综合
               </a>
             
           </div>
@@ -406,8 +410,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/09/浏览器兼容/" rel="prev" title="浏览器兼容">
-                浏览器兼容 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/06/搭建成功/" rel="prev" title="Fair to be late, but never absent">
+                Fair to be late, but never absent <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -545,7 +549,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-text-align-center-的作用是什么，作用在什么元素上？-能让什么元素居中？"><span class="nav-number">1.</span> <span class="nav-text">1.text-align: center 的作用是什么，作用在什么元素上？ 能让什么元素居中？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-IE-盒模型和W3C盒模型有什么区别"><span class="nav-number">2.</span> <span class="nav-text">2.IE 盒模型和W3C盒模型有什么区别?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-box-sizing-border-box-的作用是什么？"><span class="nav-number">3.</span> <span class="nav-text">3.*{ box-sizing: border-box;}的作用是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-line-height-2和line-height-200-有什么区别"><span class="nav-number">4.</span> <span class="nav-text">4.line-height: 2和line-height: 200%有什么区别?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐"><span class="nav-number">5.</span> <span class="nav-text">5.inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-CSS-sprite-是什么"><span class="nav-number">6.</span> <span class="nav-text">6.CSS sprite 是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-让一个元素“看不见”有几种方式？有什么区别？"><span class="nav-number">7.</span> <span class="nav-text">7.让一个元素“看不见”有几种方式？有什么区别？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-CSS和JS在网页中的放置顺序是怎样的？"><span class="nav-number">1.</span> <span class="nav-text">1.CSS和JS在网页中的放置顺序是怎样的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解释白屏和FOUC"><span class="nav-number">2.</span> <span class="nav-text">2.解释白屏和FOUC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-sync和defer的作用是什么？有什么区别？"><span class="nav-number">3.</span> <span class="nav-text">3.sync和defer的作用是什么？有什么区别？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-简述网页的渲染机制"><span class="nav-number">4.</span> <span class="nav-text">4.简述网页的渲染机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>

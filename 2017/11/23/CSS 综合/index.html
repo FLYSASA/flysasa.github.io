@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.说一说你平时写代码遵守的编码规范 语义化·语义化标签优先·基于功能命名、基于内容命名、基于表现命名·简略、明了、无后患  html命名规范： 所有命名都使用英文小写  推荐：&amp;lt;div class=&amp;quot;main&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; 不推荐： &amp;lt;div class=&amp;quot;Main&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;  命名用引号包裹  推荐">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 综合">
+<meta property="og:url" content="http://yoursite.com/2017/11/23/CSS 综合/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="1.说一说你平时写代码遵守的编码规范 语义化·语义化标签优先·基于功能命名、基于内容命名、基于表现命名·简略、明了、无后患  html命名规范： 所有命名都使用英文小写  推荐：&amp;lt;div class=&amp;quot;main&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; 不推荐： &amp;lt;div class=&amp;quot;Main&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;  命名用引号包裹  推荐">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-23T08:29:20.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 综合">
+<meta name="twitter:description" content="1.说一说你平时写代码遵守的编码规范 语义化·语义化标签优先·基于功能命名、基于内容命名、基于表现命名·简略、明了、无后患  html命名规范： 所有命名都使用英文小写  推荐：&amp;lt;div class=&amp;quot;main&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; 不推荐： &amp;lt;div class=&amp;quot;Main&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;  命名用引号包裹  推荐">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/23/CSS 综合/"/>
+
+
+
+
+
+  <title>CSS 综合 | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/CSS 综合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS 综合</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T12:54:33+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-说一说你平时写代码遵守的编码规范"><a href="#1-说一说你平时写代码遵守的编码规范" class="headerlink" title="1.说一说你平时写代码遵守的编码规范"></a>1.说一说你平时写代码遵守的编码规范</h1><ul>
+<li>语义化<br>·语义化标签优先<br>·基于功能命名、基于内容命名、基于表现命名<br>·简略、明了、无后患</li>
+</ul>
+<h3 id="html命名规范："><a href="#html命名规范：" class="headerlink" title="html命名规范："></a>html命名规范：</h3><ol>
+<li>所有命名都使用英文小写</li>
+</ol>
+<p>推荐：<code>&lt;div class=&quot;main&quot;&gt;&lt;/div&gt;</code></p>
+<p>不推荐： <code>&lt;div class=&quot;Main&quot;&gt;&lt;/div&gt;</code></p>
+<ol>
+<li>命名用引号包裹</li>
+</ol>
+<p>推荐：<code>&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</code></p>
+<p>不推荐： <code>&lt;div id=header&gt;&lt;/div&gt;</code></p>
+<ol>
+<li>用中横线连接</li>
+</ol>
+<p>推荐：<code>&lt;div class=&quot;mod-modal&quot;&gt;&lt;/div&gt;</code></p>
+<p>不推荐： <code>&lt;div class=&quot;modModal&quot;&gt;&lt;/div&gt;</code></p>
+<ol>
+<li>命名体现功能，不涉及表现样式(颜色、字体、边框、背景等)</li>
+</ol>
+<p>推荐：<code>&lt;div class=&quot;text-lesser&quot;&gt;&lt;/div&gt;</code></p>
+<p>不推荐： <code>&lt;div class=&quot;light-grey&quot;&gt;&lt;/div&gt;</code></p>
+<ul>
+<li><p>常见的命名1：<br>.wrap或.wrapper – 用于外侧包裹<br>.container或 .ct – 包裹容器<br>.header – 用于头部<br>.body – 页面 body<br>.footer – 页面尾部<br>.aside、.sidebar – 用于侧边栏<br>.content – 和header footer 对应，用于主要内容<br>.navigation – 导航元素<br>.pagination – 分页</p>
+</li>
+<li><p>常见命名2:<br>.tabs &gt; .tab – tab 切换<br>.breadcrumbs – 导航列表、面包屑<br>.dropdown – 下拉菜单<br>.article – 文章<br>.main – 用于主体<br>.thumbnail – 头像，小图像<br>.media – 媒体资源<br>.panel – 面板<br>.tooltip – 鼠标放置上去的提示<br>.popup – 鼠标点击弹出的提示</p>
+</li>
+</ul>
+<ul>
+<li><p>常见命名3<br>.button、.btn – 按钮<br>.ad – 广告<br>.subnav – 二级导航<br>.menu – 菜单<br>.tag – 标签<br>.message或者.notice – 提示消息<br>.summary – 摘要<br>.logo – logo<br>.search – 搜索框<br>.login – 登录</p>
+</li>
+<li><p>常见命名4<br>.register – 注册<br>.username – 用户名<br>.password – 密码<br>.banner – 广告条<br>.copyright – 版权<br>.modal或者 .dialog – 弹窗</p>
+</li>
+</ul>
+<p>*常见命名5<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">var 名字 = &#123;</span><br><span class="line"> 状态类: [</span><br><span class="line"> &apos;inverse&apos;,</span><br><span class="line">    &apos;toggled&apos;,</span><br><span class="line">    &apos;switched&apos;,</span><br><span class="line">    &apos;original&apos;,</span><br><span class="line">    &apos;initial&apos;,</span><br><span class="line">    &apos;identified&apos;,</span><br><span class="line">    &apos;disabled&apos;,</span><br><span class="line">    &apos;loading&apos;,</span><br><span class="line">    &apos;pending&apos;,</span><br><span class="line">    &apos;syncing&apos;,</span><br><span class="line">    &apos;default&apos;</span><br><span class="line">  ],</span><br><span class="line"> 修饰类: [</span><br><span class="line">    &apos;dark&apos;,</span><br><span class="line">    &apos;light&apos;,</span><br><span class="line">    &apos;shaded&apos;,</span><br><span class="line">    &apos;flat&apos;,</span><br><span class="line">    &apos;ghost&apos;,</span><br><span class="line">    &apos;maroon&apos;,</span><br><span class="line">    &apos;pale&apos;,</span><br><span class="line">    &apos;intense&apos;,</span><br><span class="line">    &apos;twisted&apos;,</span><br><span class="line">    &apos;narrow&apos;,</span><br><span class="line">    &apos;wide&apos;,</span><br><span class="line">    &apos;smooth&apos;,</span><br><span class="line">    &apos;separate&apos;,</span><br><span class="line">    &apos;clean&apos;,</span><br><span class="line">    &apos;sharp&apos;,</span><br><span class="line">    &apos;aligned&apos;</span><br><span class="line">  ],</span><br><span class="line">  元素类: [</span><br><span class="line">    &apos;pagination&apos;,</span><br><span class="line">    &apos;modal&apos;,</span><br><span class="line">    &apos;popup&apos;,</span><br><span class="line">    &apos;article&apos;,</span><br><span class="line">    &apos;story&apos;,</span><br><span class="line">    &apos;flash&apos;,</span><br><span class="line">    &apos;status&apos;,</span><br><span class="line">    &apos;state&apos;,</span><br><span class="line">    &apos;media&apos;,</span><br><span class="line">    &apos;block&apos;,</span><br><span class="line">    &apos;card&apos;,</span><br><span class="line">    &apos;teaser&apos;,</span><br><span class="line">    &apos;badge&apos;,</span><br><span class="line">    &apos;label&apos;,</span><br><span class="line">    &apos;sheet&apos;,</span><br><span class="line">    &apos;poster&apos;,</span><br><span class="line">    &apos;notice&apos;,</span><br><span class="line">    &apos;record&apos;,</span><br><span class="line">    &apos;entry&apos;,</span><br><span class="line">    &apos;item&apos;,</span><br><span class="line">    &apos;figure&apos;,</span><br><span class="line">    &apos;square&apos;,</span><br><span class="line">    &apos;module&apos;,</span><br><span class="line">    &apos;bar&apos;,</span><br><span class="line">    &apos;button&apos;,</span><br><span class="line">    &apos;action&apos;,</span><br><span class="line">    &apos;knob&apos;</span><br><span class="line">  ],</span><br><span class="line">  布局类: [</span><br><span class="line">    &apos;navigation&apos;,</span><br><span class="line">    &apos;wrapper&apos;,</span><br><span class="line">    &apos;inner&apos;,</span><br><span class="line">    &apos;header&apos;,</span><br><span class="line">    &apos;footer&apos;,</span><br><span class="line">    &apos;aside&apos;,</span><br><span class="line">    &apos;section&apos;,</span><br><span class="line">    &apos;divider&apos;,</span><br><span class="line">    &apos;content&apos;,</span><br><span class="line">    &apos;container&apos;,</span><br><span class="line">    &apos;panel&apos;,</span><br><span class="line">    &apos;pane&apos;,</span><br><span class="line">    &apos;construct&apos;,</span><br><span class="line">    &apos;composition&apos;,</span><br><span class="line">    &apos;spacing&apos;,</span><br><span class="line">    &apos;frame&apos;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="css命名规范"><a href="#css命名规范" class="headerlink" title="css命名规范"></a>css命名规范</h3><ul>
+<li>书写规范<br>1.tab 用两个空格表示<br>2.css的 :后加个空格， {前加个空格<br>3.每条声明后都加上分号<br>4.换行，而不是放到一行<br>5.颜色用小写，用缩写, #fff<br>6.小数不用写前缀, 0.5s -&gt; .5s；0不用加单位<br>7.尽量缩写， margin: 5px 10px 5px 10px -&gt; margin: 5px 10px</li>
+</ul>
+<p>范例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">/* Not recommended */</span><br><span class="line">.test &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  height: 100px</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">.test &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  height: 100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended */</span><br><span class="line">h3 &#123;</span><br><span class="line">  font-weight:bold;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">h3 &#123;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended: missing space */</span><br><span class="line">#video&#123;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Not recommended: unnecessary line break */</span><br><span class="line">#video</span><br><span class="line">&#123;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">#video &#123;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended */</span><br><span class="line">a:focus, a:active &#123;</span><br><span class="line">  position: relative; top: 1px;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">h1,</span><br><span class="line">h2,</span><br><span class="line">h3 &#123;</span><br><span class="line">  font-weight: normal;</span><br><span class="line">  line-height: 1.2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Always put a blank line (two line breaks) between rules. */</span><br><span class="line">html &#123;</span><br><span class="line">  background: #fff;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body &#123;</span><br><span class="line">  margin: auto;</span><br><span class="line">  width: 50%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended */</span><br><span class="line">@import url(&quot;//www.google.com/css/maia.css&quot;);</span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">  font-family: &quot;open sans&quot;, arial, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">@import url(//www.google.com/css/maia.css);</span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">  font-family: &apos;open sans&apos;, arial, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://google.github.io/styleguide/htmlcssguide.xml" target="_blank" rel="noopener">google html css编码规范</a></li>
+<li><a href="http://codeguide.bootcss.com/" target="_blank" rel="noopener">bootstrap 编码规范</a></li>
+<li><a href="https://seesparkbox.com/foundry/naming_css_stuff_is_really_hard" target="_blank" rel="noopener">命名这货真难</a></li>
+</ul>
+<h1 id="2-垂直居中有几种实现方式，给出代码范例"><a href="#2-垂直居中有几种实现方式，给出代码范例" class="headerlink" title="2.垂直居中有几种实现方式，给出代码范例"></a>2.垂直居中有几种实现方式，给出代码范例</h1><p><a href="http://js.jirengu.com/kuqix/1/edit" target="_blank" rel="noopener">方法一.上下padding相等，高度随内容变化</a></p>
+<p><a href="http://js.jirengu.com/liver/1/edit" target="_blank" rel="noopener">方法二.绝对定位实现居中</a></p>
+<p><a href="http://js.jirengu.com/boqaz/1/edit" target="_blank" rel="noopener">方法三.vertical-align实现居中</a><br>注意vertical-align: middle;必须作用于表格，行内元素才生效</p>
+<p><a href="http://js.jirengu.com/rixuh/1/edit" target="_blank" rel="noopener">方法四.table-cell实现居中 表格法</a></p>
+<h1 id="3-实现如下效果，每种效果都只使用一个html-标签来实现"><a href="#3-实现如下效果，每种效果都只使用一个html-标签来实现" class="headerlink" title="3.实现如下效果，每种效果都只使用一个html 标签来实现"></a>3.实现如下效果，每种效果都只使用一个html 标签来实现</h1><p>代码：<a href="http://js.jirengu.com/qufog/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/qufog/1/edit</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/浮动定位BFC边距合并/" rel="next" title="浮动定位BFC边距合并">
+                <i class="fa fa-chevron-left"></i> 浮动定位BFC边距合并
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/01/JS 相关概念/" rel="prev" title="JS 相关概念">
+                JS 相关概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-说一说你平时写代码遵守的编码规范"><span class="nav-number">1.</span> <span class="nav-text">1.说一说你平时写代码遵守的编码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html命名规范："><span class="nav-number">1.0.1.</span> <span class="nav-text">html命名规范：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css命名规范"><span class="nav-number">1.0.2.</span> <span class="nav-text">css命名规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.1.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-垂直居中有几种实现方式，给出代码范例"><span class="nav-number">2.</span> <span class="nav-text">2.垂直居中有几种实现方式，给出代码范例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-实现如下效果，每种效果都只使用一个html-标签来实现"><span class="nav-number">3.</span> <span class="nav-text">3.实现如下效果，每种效果都只使用一个html 标签来实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
