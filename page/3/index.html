@@ -252,6 +252,382 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/02/2 数据类型运算符流程控制语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/02/2 数据类型运算符流程控制语句/" itemprop="url">2 数据类型运算符流程控制语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-02T19:54:25+08:00">
+                2017-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么"><a href="#1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么" class="headerlink" title="1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?"></a>1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?</h1><ul>
+<li><p>JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。<br>1.数值（number）： 整数和小数（如1和1.34）<br>2.字符串（string）： 字符组成的文本（如“hello world”）<br>3.布尔值（boolean）：true（真）和false（假）两个特定值<br>4.undefined: 表示“未定义”或不存在，即此处目前没有任何值<br>5.null: 表示空缺，此处应有一个值，但目前为空<br>6.对象（object）：各中值组成的集合</p>
+</li>
+<li><p>属于原始类型（primitive type）的有： 数值，字符串，布尔值</p>
+</li>
+<li>属于复杂类型（complex type）的有： 对象</li>
+<li>特殊值：undefined和null</li>
+<li>原始类型与复杂类型的区别：<br>原始类型是最基本的数据类型，不能再细分了。<br>复杂类型的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。</li>
+</ul>
+<h1 id="2-typeof和instanceof的作用和区别"><a href="#2-typeof和instanceof的作用和区别" class="headerlink" title="2.typeof和instanceof的作用和区别?"></a>2.typeof和instanceof的作用和区别?</h1><p>JavaScript有三种方法，可以确定一个值到底是什么类型。</p>
+<ul>
+<li>typeof运算符</li>
+<li>instanceof运算符</li>
+<li>Object.prototype.toString方法</li>
+</ul>
+<p>对于<code>typeof</code>:<br>1.数值、字符串、布尔值分别返回 number、string、boolean。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 // &quot;number&quot;</span><br><span class="line">typeof &apos;123&apos; // &quot;string&quot;</span><br><span class="line">typeof false // &quot;boolean&quot;</span><br></pre></td></tr></table></figure></p>
+<p>2.函数返回function。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;&#125;</span><br><span class="line">typeof f</span><br><span class="line">// &quot;function&quot;</span><br></pre></td></tr></table></figure></p>
+<p>3.undefined返回undefined。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof undefined</span><br><span class="line">// &quot;undefined&quot;</span><br></pre></td></tr></table></figure></p>
+<p>利用这一点，typeof可以用来检查一个没有声明的变量，而不报错。应用在实际编程中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 错误的写法</span><br><span class="line">if (v) &#123; &#125;  // ReferenceError: v is not defined</span><br><span class="line"></span><br><span class="line">// 正确的写法</span><br><span class="line">if (typeof v === &quot;undefined&quot;) &#123; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.除此以外，其他情况都返回object。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof window // &quot;object&quot;</span><br><span class="line">typeof &#123;&#125; // &quot;object&quot;</span><br><span class="line">typeof [] // &quot;object&quot;</span><br><span class="line">typeof null // &quot;object&quot;</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>instanceof</code><br>区分数组和对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;;</span><br><span class="line">var a = [];</span><br><span class="line">o instanceof Array // false</span><br><span class="line">a instanceof Array // true</span><br></pre></td></tr></table></figure></p>
+<p>两者区别：<br><code>typeof</code>运算符:运算符可以返回一个字符串，用以说明原数据的类型。<br><code>instanceof</code>运算符:运算符可以判断一个变量是否是某个对象（类）的实例，返回值是布尔类型的。</p>
+<h1 id="3-如何判断一个变量是否是数字、字符串、布尔、函数"><a href="#3-如何判断一个变量是否是数字、字符串、布尔、函数" class="headerlink" title="3.如何判断一个变量是否是数字、字符串、布尔、函数"></a>3.如何判断一个变量是否是数字、字符串、布尔、函数</h1><p>见上例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 === &apos;number&apos; 判断是否是数字</span><br><span class="line">typeof &apos;123&apos; === &apos;string&apos; 判断是否为字符串</span><br><span class="line">typeof true ===&apos;boolean&apos; 判断是否为布尔</span><br><span class="line">function f() &#123;&#125;</span><br><span class="line">typeof f ===&apos;function&apos; 判断是否为函数</span><br></pre></td></tr></table></figure></p>
+<h1 id="4-NaN是什么-有什么特别之处"><a href="#4-NaN是什么-有什么特别之处" class="headerlink" title="4.NaN是什么? 有什么特别之处?"></a>4.NaN是什么? 有什么特别之处?</h1><p>NaN含义是Not a Number，表示非数字，NaN和任何值都不相等，包括自己。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NaN == NaN; //false</span><br><span class="line">parseInt(&apos;abc&apos;); //NaN</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>特别之处：<br>1.任何NaN的值进行操作都会返回一个NaN,<br>2.NaN与任何值都不相等包括其本身,即NaN === NaN也是false.</p>
+</blockquote>
+<h1 id="5-如何把非数值转化为数值"><a href="#5-如何把非数值转化为数值" class="headerlink" title="5.如何把非数值转化为数值?"></a>5.如何把非数值转化为数值?</h1><h6 id="有三个函数可以把非数值转换为数值"><a href="#有三个函数可以把非数值转换为数值" class="headerlink" title="有三个函数可以把非数值转换为数值"></a>有三个函数可以把非数值转换为数值</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Number()</span><br><span class="line">2. parseInt()</span><br><span class="line">3. parseFloat()</span><br></pre></td></tr></table></figure>
+<p>第一个函数，即转型函数<code>Number()</code>可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值。这3个函数对于同样的输入会有返回不同的结果。</p>
+<h5 id="Number-函数的转换规则如下："><a href="#Number-函数的转换规则如下：" class="headerlink" title="Number()函数的转换规则如下："></a>Number()函数的转换规则如下：</h5><ul>
+<li>如果是Boolean值，true和false将分别被转换为1和0；</li>
+<li>如果是数字值，只是简单的传入和返回；</li>
+<li>如果是null值，返回0；</li>
+<li>如果是undefinde，返回NaN；</li>
+<li>如果是字符串，遵循下列规则：<br>1.如果字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即“1”会变成1，“123”会变成123，而“011”会变成11（注意：前导的零被忽略了）；<br>2.如果字符串中包含有效的浮点格式，如“1.1”,则将其转换为对应的浮点数值（同样，也会忽略前导零）；<br>3.如果字符串中包含有效的十六进制格式，例如“0xf”，则将其转换为相同大小的十进制整数值；<br>4.如果字符串是空的（不包含任何字符），则将其转换为0；<br>5.如果字符串中包含除上述格式之外的字符，则将其转换为NaN.<br>如果是对象，则调用对象的valueOf()方法，然后依照前面的规则转换返回的值。如果转换的结果是NaN，则调用对象的toString()方法，然后再次依照前面的规则转换返回的字符串值。<h5 id="parseInt-函数的转换规则如下："><a href="#parseInt-函数的转换规则如下：" class="headerlink" title="parseInt()函数的转换规则如下："></a>parseInt()函数的转换规则如下：</h5></li>
+<li>忽略字符串前面的空白字符，找到第一个非空白字符</li>
+<li>如果第一个字符不是-或者数字返回NaN</li>
+<li>如果第一个字符是数字字符，会继续解析第二个字符，直到解析完所-有后续字符或者遇到了一个非数字字符。例如“1234blue”会被转换为1234，因为“blue”会被完全忽略。</li>
+<li>0开头会当做八进制，0x开头会当做十六进制，但是可以指定第二个参数指定基数<h5 id="parseFloat-与parseInt-函数类似，有两点区别"><a href="#parseFloat-与parseInt-函数类似，有两点区别" class="headerlink" title="parseFloat() 与parseInt()函数类似，有两点区别"></a>parseFloat() 与parseInt()函数类似，有两点区别</h5></li>
+<li>parseInt()在解析”22.34.5”时会将其转换为22，因为小数点并不是有效的数字字符；而parseFloat()可以将转换为22.34，因为parseFloat()在解析时遇到一个无效的浮点数字字符为止，而上述字符砖中第一小数点是有效的；</li>
+<li>parseInt()与parseFloat()的第二个区别在于它始终都会忽略前导的零。</li>
+</ul>
+<p>例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;blue&apos;); //NaN 非空字符串转换为NaN</span><br><span class="line">parseInt(&apos;-23ABS&apos;); // -23</span><br><span class="line">parseInt(&apos;0xf1&apos;); // 241</span><br><span class="line">parseInt(&apos;101&apos;, 2); // 5，后面的2代表101是二进制数</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>==与===有什么区别<br>===是严格意义上的相等，只需注意NaN和NaN不等就行了。而使用==的时候，javascript会帮我们做类型转换，造成一些匪夷所思的结果，那么使用==的时候在一下情况下会做相应的类型转换<br>如果两个值类型相同，则执行严格相等的运算<br>如果两个值的类型不同<br>1.如果一个是null，一个是undefined，那么相等<br>2.如果一个是数字，一个是字符串，先将字符串转为数字，然后比较<br>3.如果一个值是true/false则将其转为1/0比较<br>4.如果一个值是对象，一个是数字或字符串，则尝试使用valueOf和toString转换后比较<br>5.其它就不相等了</li>
+</ol>
+<h1 id="6-与-有什么区别"><a href="#6-与-有什么区别" class="headerlink" title="6.==与===有什么区别"></a>6.==与===有什么区别</h1><p>我们可以使用==或===判断两个值的相等性，其中区别在于：===是严格意义的相等，只需注意NaN和NaN不等就行了。而使用==的时候，javascript会帮我们做类型转换，如：</p>
+<ul>
+<li>如果两个值类型相同，则执行严格相等的运算</li>
+<li>如果两个值的类型不同<br>1.如果一个是null，一个是undefined，那么相等<br>2.如果一个是数字，一个是字符串，先将字符串转为数字，然后比较<br>3.如果一个值是true/false则将其转为1/0比较<br>4.如果一个值是对象，一个是数字或字符串，则尝试使用valueOf和toString转换后比较<br>5.其它就不相等了</li>
+</ul>
+<h1 id="7-break与continue有什么区别"><a href="#7-break与continue有什么区别" class="headerlink" title="7.break与continue有什么区别"></a>7.break与continue有什么区别</h1><p>这两个关键字多用在循环语句中<br><code>break</code> 用于强制退出循环体，执行循环后面的语句<br><code>continue</code> 用于退出本次循环，执行下次循环</p>
+<h1 id="8-void-0-和-undefined在使用场景上有什么区别"><a href="#8-void-0-和-undefined在使用场景上有什么区别" class="headerlink" title="8.void 0 和 undefined在使用场景上有什么区别"></a>8.void 0 和 undefined在使用场景上有什么区别</h1><p>void运算符的作用是执行一个表达式，然后返回undefined。但是某些情境下undefined是可以被赋值的，比如在函数中，这样的话就不能用undefined来进行判断了。所以用void 0返回undefined来进行判断。既减少了在原形链上查找 window.undefined 的时间，也避免了误用被修改过的 undefined。</p>
+<h1 id="9-以下代码的输出结果是-为什么"><a href="#9-以下代码的输出结果是-为什么" class="headerlink" title="9.以下代码的输出结果是?为什么?"></a>9.以下代码的输出结果是?为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(1+1);    // 输出结果为2，在两个操作数都是数字的时候，会做加法运算</span><br><span class="line">console.log(&quot;2&quot;+&quot;4&quot;);  // 输出结果为&quot;24&quot;，两个参数都是字符串，所以字符串做字符串拼接</span><br><span class="line">console.log(2+&quot;4&quot;); // 输出结果为&quot;24&quot;,对于两个参数，其中有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 </span><br><span class="line">console.log(+&quot;4&quot;);// 输出结果为&quot;4&quot;，在只有一个字符串参数的时候会尝试将其转换为数字</span><br></pre></td></tr></table></figure>
+<h1 id="10-以下代码的输出结果是"><a href="#10-以下代码的输出结果是" class="headerlink" title="10.以下代码的输出结果是?"></a>10.以下代码的输出结果是?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;  </span><br><span class="line">a+++a;  //输出结果为3，由于++运算符比+运算符优先级更高，所以计算顺序为a++ +a, a++结果为1，此时a的值加1等于2，所以原式=1+2=3。</span><br><span class="line">typeof a+2; // 输出结果为&quot;number2&quot;,由于typeof运算符高于+运算符，所以计算顺序为typeofa +2,typeofa输出字符串number,字符串与数字相加，数字转换为字符串做字符串拼接，得到结果&quot;number2&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="11-以下代码的输出结果是-为什么"><a href="#11-以下代码的输出结果是-为什么" class="headerlink" title="11.以下代码的输出结果是? 为什么?"></a>11.以下代码的输出结果是? 为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 3;</span><br><span class="line">console.log( a+++b );//输出结果为4，因为++运算符优先级高于+,所以a+++b=(a++)+b=1+3=4。</span><br></pre></td></tr></table></figure>
+<h1 id="12-遍历数组，把数组里的打印数组每一项的平方"><a href="#12-遍历数组，把数组里的打印数组每一项的平方" class="headerlink" title="12.遍历数组，把数组里的打印数组每一项的平方"></a>12.遍历数组，把数组里的打印数组每一项的平方</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,4,5]</span><br><span class="line">for(i=0,i&lt;arr.length;i++)&#123;</span><br><span class="line">console.log(arr[i]*arr[i])</span><br><span class="line">&#125;//输出结果为9,16,25</span><br></pre></td></tr></table></figure>
+<h1 id="13-遍历-JSON-打印里面的值"><a href="#13-遍历-JSON-打印里面的值" class="headerlink" title="13.遍历 JSON, 打印里面的值"></a>13.遍历 JSON, 打印里面的值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line"> name: &apos;hunger&apos;, </span><br><span class="line"> sex: &apos;male&apos;, </span><br><span class="line"> age: 28 </span><br><span class="line">&#125;</span><br><span class="line">for(var key in obj)&#123;</span><br><span class="line">console.log(obj[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="14-以下代码输出结果是-为什么"><a href="#14-以下代码输出结果是-为什么" class="headerlink" title="14.以下代码输出结果是? 为什么 ?"></a>14.以下代码输出结果是? 为什么 ?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var a = 1, b = 2, c = 3;</span><br><span class="line">var val = typeof a + b || c &gt;0</span><br><span class="line">console.log(val) //输出结果为&quot;number2&quot;,因为typeof运算符优先级高于其他运算符，所以优先运算typeof a，得到结果&quot;number&quot;,然后运算+b,</span><br><span class="line">所以||运算符左边结果为&quot;number2&quot;，对于运算符逻辑||或，当第一个为true时，发生短路，直接略过第二个运算，并返回第一个运算结果。</span><br><span class="line">所以输出&quot;number2&quot;。</span><br><span class="line"></span><br><span class="line">var d = 5;</span><br><span class="line">var data = d ==5 &amp;&amp; console.log(&apos;bb&apos;)</span><br><span class="line">console.log(data)//运算结果为undefined，因为==运算符优先级大于其他运算符，所以d==5优先运算得出结果为true,继续运算且&amp;&amp;运算符</span><br><span class="line">右边的console.logo(&apos;bb&apos;)，结果为undefined（bb没有声明）,式子变为var data =true &amp;&amp; undefined,故最终输出结果为undefined。</span><br><span class="line"></span><br><span class="line">var data2 = d = 0 || console.log(&apos;haha&apos;)</span><br><span class="line">console.log(data2)//输出结果为undefined,由于=运算符的优先级低于其他运算符，所以优先运算0||console.logo(&apos;haha&apos;),</span><br><span class="line">由于0返回布尔值为false,所以需继续运算||或运算符后面的console.log(&apos;haha&apos;),运算结果为undefined(由于没有声明&apos;haha&apos;),</span><br><span class="line">最终式子变为var data2=d=undefined,所以输出结果为undefined。</span><br><span class="line"> </span><br><span class="line">var x = !!&quot;Hello&quot; + (!&quot;world&quot;, !!&quot;from here!!&quot;);</span><br><span class="line">console.log(x)//输出结果为2，因为非空字符串的结果为true,所以可得</span><br><span class="line">!!&quot;Hello&quot;结果为true,</span><br><span class="line">!&quot;world&quot;结果为false,</span><br><span class="line">!!&quot;from here!!&quot;结果为true,</span><br><span class="line">括号里面的优先计算，逗号会忽略第一个操作数，返回第二个操作数，所以括号里的结果为true。</span><br><span class="line">式子变为var x=true+true=1+1=2,所以最终输出结果为2。</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/1 JS 相关概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/01/1 JS 相关概念/" itemprop="url">1 JS 相关概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T14:25:35+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-CSS和JS在网页中的放置顺序是怎样的？"><a href="#1-CSS和JS在网页中的放置顺序是怎样的？" class="headerlink" title="1.CSS和JS在网页中的放置顺序是怎样的？"></a>1.CSS和JS在网页中的放置顺序是怎样的？</h1><ul>
+<li>css是使用link标签将样式进行引入并放置在header标签内。</li>
+<li>js是使用script标签进行引入，放置位置一般在<code>body</code>底部<code>&lt;/body&gt;</code>闭合标签之前。这是因为页面渲染时，js放在页面顶部，会阻塞后面内容的呈现以及其后组件下载，会造成白屏等问题。<h1 id="2-解释白屏和FOUC"><a href="#2-解释白屏和FOUC" class="headerlink" title="2.解释白屏和FOUC"></a>2.解释白屏和FOUC</h1>1.白屏</li>
+<li>如果把样式放在底部，对于IE浏览器，在某些场景下(新窗口打开,刷新等)页面会出现白屏，而不是内容逐步展现。</li>
+<li>如果使用 @import 标签,即使 CSS 放入 link, 并且放在头部，也可能出现白屏。</li>
+<li>对于图片和CSS，在加载时会并发加载(如一个域名下同时加载两个文件)。但在加载 JavaScript 时，会禁用并发,并且阻止其他内容的下载。 所以把 JavaScript 放入页面顶部也会导致白屏现象。<blockquote>
+<p>白屏不是bug，而是浏览器渲染机制造成的，即浏览器在渲染的时候请求时间过长导致的.</p>
+</blockquote>
+</li>
+</ul>
+<p>2.<a href="https://link.jianshu.com/?t=https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank" rel="noopener">FOUC</a>(Flash of Unstyled Content) 无样式内容闪烁</p>
+<ul>
+<li>如果把样式放在底部，对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等)，会出现 FOUC 现象(逐步加载无样式的内容，等CSS加载后页面突然展现样式)。对于 Firefox 会一直表现出 FOUC 。FireFox每加载一次dom树就会重绘一次网页样式,一直到所有内容完成为止。</li>
+<li>如果有多个样式表， 放在HTML的不同位置，这时有的浏览器可能会在所有样式都加载完后再进行样式的渲染， 此时也可能会出现FOUC。<br>为了避免FOUC发生一般我们用link标签把css放在顶部header内.</li>
+</ul>
+<h1 id="3-sync和defer的作用是什么？有什么区别？"><a href="#3-sync和defer的作用是什么？有什么区别？" class="headerlink" title="3.sync和defer的作用是什么？有什么区别？"></a>3.sync和defer的作用是什么？有什么区别？</h1><ul>
+<li>作用<br>没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</li>
+</ul>
+<ol>
+<li><code>async</code>使加载和渲染后续文档元素的过程与 script.js 的加载与执行并行进行（异步）<br><code>&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><code>defer</code>加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。<br><code>&lt;script defer src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></li>
+</ol>
+<ul>
+<li>区别<br>defer:脚本延迟到文档解析和显示后执行，有顺序<br>async:不保证顺序<h1 id="4-简述网页的渲染机制"><a href="#4-简述网页的渲染机制" class="headerlink" title="4.简述网页的渲染机制"></a>4.简述网页的渲染机制</h1></li>
+<li>解析 HTML 标签, 构建 DOM 树</li>
+<li>解析 CSS 标签, 构建 CSSOM 树</li>
+<li>把 DOM 和 CSSOM 组合成 渲染树 (render tree)</li>
+<li>在渲染树的基础上进行布局, 计算每个节点的几何结构</li>
+<li>把每个节点绘制到屏幕上 (painting)<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
+</ul>
+<ul>
+<li>高性能网站建设指南, Steve Sounders</li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en" target="_blank" rel="noopener">Render-tree construction, layout, and paint</a></li>
+<li><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="noopener">How browsers work</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/CSS 综合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2337,513 +2713,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/16/浅析form表单/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/16/浅析form表单/" itemprop="url">浅析form表单</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-16T21:27:22+08:00">
-                2017-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-form表单有什么作用？有哪些常用的input-标签，分别有什么作用？"><a href="#1-form表单有什么作用？有哪些常用的input-标签，分别有什么作用？" class="headerlink" title="1.form表单有什么作用？有哪些常用的input 标签，分别有什么作用？"></a>1.form表单有什么作用？有哪些常用的input 标签，分别有什么作用？</h1><blockquote>
-<p>表单在网页中主要负责数据采集功能。一个表单有三个基本组成部分： 表单标签：这里面包含了处理表单数据所用CGI程序的URL以及数据提交到服务器的方法。 <a href="https://baike.baidu.com/item/%E8%A1%A8%E5%8D%95%E5%9F%9F" target="_blank" rel="noopener">表单域</a>：包含了<a href="https://baike.baidu.com/item/%E6%96%87%E6%9C%AC%E6%A1%86" target="_blank" rel="noopener">文本框</a>、密码框、<a href="https://baike.baidu.com/item/%E9%9A%90%E8%97%8F%E5%9F%9F" target="_blank" rel="noopener">隐藏域</a>、<a href="https://baike.baidu.com/item/%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86" target="_blank" rel="noopener">多行文本框</a>、<a href="https://baike.baidu.com/item/%E5%A4%8D%E9%80%89%E6%A1%86" target="_blank" rel="noopener">复选框</a>、<a href="https://baike.baidu.com/item/%E5%8D%95%E9%80%89%E6%A1%86" target="_blank" rel="noopener">单选框</a>、下拉选择框和文件上传框等。 表单按钮：包括提交按钮、复位按钮和一般按钮；用于将<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81" target="_blank" rel="noopener">数据传送</a>到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作。</p>
-</blockquote>
-<p>功能：</p>
-<blockquote>
-<p>用于申明表单，定义采集数据的范围，也就是<form>和</form>里面包含的数据将被提交到服务器或者电子邮件里。</p>
-</blockquote>
-<h3 id="常用的input标签"><a href="#常用的input标签" class="headerlink" title="常用的input标签"></a>常用的input标签</h3><table>
-<thead>
-<tr>
-<th>标签</th>
-<th>描述 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>button</td>
-<td>定义可点击按钮（多数情况下，用于通过 JavaScript 启动脚本）。  </td>
-</tr>
-<tr>
-<td>checkbox</td>
-<td>定义复选框。</td>
-</tr>
-<tr>
-<td>file</td>
-<td>定义输入字段和 “浏览”按钮，供文件上传。  </td>
-</tr>
-<tr>
-<td>hidden</td>
-<td>定义隐藏的输入字段。</td>
-</tr>
-<tr>
-<td>image</td>
-<td>定义图像形式的提交按钮。</td>
-</tr>
-<tr>
-<td>password</td>
-<td>定义密码字段。该字段中的字符被掩码。圆点表示。</td>
-</tr>
-<tr>
-<td>radio</td>
-<td>定义单选按钮。</td>
-</tr>
-<tr>
-<td>reset</td>
-<td>定义重置按钮。重置按钮会清除表单中的所有数据。</td>
-</tr>
-<tr>
-<td>submit</td>
-<td>定义提交按钮。提交按钮会把表单数据发送到服务器。</td>
-</tr>
-<tr>
-<td>text</td>
-<td>定义单行的输入字段，用户可在其中输入文本。默认宽度为 20 个字符。</td>
-</tr>
-</tbody>
-</table>
-<p>[参考]（<a href="http://www.w3school.com.cn/tags/att_input_type.asp）" target="_blank" rel="noopener">http://www.w3school.com.cn/tags/att_input_type.asp）</a></p>
-<h1 id="2、post-和-get-方式的区别？"><a href="#2、post-和-get-方式的区别？" class="headerlink" title="2、post 和 get 方式的区别？"></a>2、post 和 get 方式的区别？</h1><p>区别：</p>
-<blockquote>
-<p> 1.get是从服务器上获取数据，post是向服务器传送数据。但是不绝对，get也可以传送数据。<br> 2.get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。<strong>(get将表单中数据的按照variable=value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&amp;”连接)</strong>；<br>post是将表单中的数据放在form的数据体中，按照变量和值相对应的方式，传递到action所指向URL.<br>3.对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。<br>4.get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB。<br>5.get安全性非常低，post安全性较高。<br>6.HTTP 定义了与服务器交互的不同方法，最基本的方法是 GET 和 POST。事实上 GET 适用于多数请求，而保留 POST 仅用于更新站点。根据 HTTP 规范，GET 用于信息获取，而且应该是 安全的和幂等的。所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。幂等的意味着对同一 URL 的多个请求应该返回同样的结果。完整的定义并不像看起来那样严格。从根本上讲，其目标是当用户打开一个链接时，她可以确信从自身的角度来看没有改变资源。 比如，新闻站点的头版不断更新。虽然第二次请求会返回不同的一批新闻，该操作仍然被认为是安全的和幂等的，因为它总是返回当前的新闻。反之亦然。POST 请求就不那么轻松了。POST 表示可能改变服务器上的资源的请求。仍然以新闻站点为例，读者对文章的注解应该通过 POST 请求实现，因为在注解提交之后站点已经不同了<br>7.在FORM提交的时候，如果不指定Method，则默认为GET请求，Form中提交的数据将会附加在url之后，以?分开与url分开。字母数字字符原 样发送，但空格转换为“+“号，其它符号转换为%XX,其中XX为该符号以16进制表示的ASCII（或ISO Latin-1）值。GET请求请提交的数据放置在HTTP请求协议头中，而POST提交的数据则放在实体数据中；GET方式提交的数据最多只能有1024字节，而POST则没有此限制。</p>
-</blockquote>
-<h1 id="3-在input里，name-有什么作用？"><a href="#3-在input里，name-有什么作用？" class="headerlink" title="3.在input里，name 有什么作用？"></a>3.在input里，name 有什么作用？</h1><blockquote>
-<p>name属性规定了<strong>input</strong>元素的名称，用于后续提交表单数据，等于某类数据的索引.例如,上传表单时,如果姓名这一栏input没有”name”,那么即使填好姓名,上传后,后台程序无法理解这个内容是属于数据,而”name”定义了这个数据的索引.</p>
-</blockquote>
-<h1 id="4-radio-如何-分组"><a href="#4-radio-如何-分组" class="headerlink" title="4.radio 如何 分组?"></a>4.radio 如何 分组?</h1><blockquote>
-<p>每一个的name属性都取同一个名字，即为同一组，同一组的radio，只能单选。</p>
-</blockquote>
-<h1 id="5-placeholder-属性有什么作用"><a href="#5-placeholder-属性有什么作用" class="headerlink" title="5.placeholder 属性有什么作用?"></a>5.placeholder 属性有什么作用?</h1><blockquote>
-<p>placeholder的参数可以作为输入的提示（提示用户输入内容和格式），与value不同，placeholder并不是input中真的内容，在输入时placeholder会消失而不是代替。</p>
-</blockquote>
-<h1 id="6-type-hidden隐藏域有什么作用-举例说明"><a href="#6-type-hidden隐藏域有什么作用-举例说明" class="headerlink" title="6.type=hidden隐藏域有什么作用? 举例说明"></a>6.type=hidden隐藏域有什么作用? 举例说明</h1><blockquote>
-<p>隐藏不想让用户看到的信息，但是这些信息对于Web应用又是非常必要的。<br>暂存信息：后端在构造web页面的过程中，通过hidden隐藏域在页面中添加了相关数据信息(用户对网页进行操作时可能会用到这些数据信息)<br>信息安全：后端在构造web页面的过程中，可以通过hidden隐藏域在页面中添加相关的验证信息，当form表单被提交后，服务器会收到该验证信息，通过一定的算法校验该验证信息，可以有效防止非法请求对数据库的增删改查，提高了web应用的安全性。</p>
-</blockquote>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><blockquote>
-<p>1.可以用来存储记录用户身份的信息，当表单提交时以确定用户身份。这种方式相较于cookie而言更简单，而且不会有浏览器不支持和用户禁用cookie的烦恼。<br>2.有些时候一个form里有多个提交按钮，怎样使程序能够分清楚到底用户是按那一个按钮提交上来的呢？我们就可以写一个隐藏域，然后在每一个按钮处加上<code>onclick=&quot;document.form.command.value=&quot;xx&quot;</code>然后我们接到数据后先检查command的值就会知道用户是按的那个按钮提交上来的。<br>3.有时候一个网页中有多个form，我们知道多个form是不能同时提交的，但有时这些form确实相互作用，我们就可以在form中添加隐藏域来使它们联系起来。<br>4.javascript不支持全局变量，但有时我们必须用全局变量，我们就可以把值先存在隐藏域里，它的值就不会丢失了。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/01/HTML知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/01/HTML知识点/" itemprop="url">HTML知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-01T22:58:14+08:00">
-                2017-09-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-HTML、XML、XHTML-有什么区别？"><a href="#1-HTML、XML、XHTML-有什么区别？" class="headerlink" title="1.HTML、XML、XHTML 有什么区别？"></a>1.HTML、XML、XHTML 有什么区别？</h1><p>HTML:超文本标记语言（Hyper Text Markup Language），是语法较为松散，不严格的web语言。</p>
-<p>XML :可扩展标记语言（The Extensible Markup Language）,主要用于储存数据和结构</p>
-<p>XHTML:可扩展超文本标记语言（Extensible Hyper Text Markup Language）,基于XML,作用于HTML类似，但语法更严格。</p>
-<h4 id="主要不同："><a href="#主要不同：" class="headerlink" title="主要不同："></a>主要不同：</h4><p>-XHTML 元素必须被正确地嵌套<br>-XHTML 元素必须被关闭<br>-XHTML 标签名必须用小写字母<br>-XHTML 文档必须拥有根元素</p>
-<h1 id="2-怎样理解HTML语义化？"><a href="#2-怎样理解HTML语义化？" class="headerlink" title="2.怎样理解HTML语义化？"></a>2.怎样理解HTML语义化？</h1><p>选择适合的标签，使用合理的结构，便于开发者阅读，同时让浏览器的机器和爬虫很好的解析。</p>
-<h3 id="语义化好处："><a href="#语义化好处：" class="headerlink" title="语义化好处："></a>语义化好处：</h3><p>1.清晰的页面结构：去掉或样式丢失的时候，也能让页面呈现清晰的结构，增强页面的可读性。</p>
-<p>2.支持更多的设备：屏幕阅读器（如果访客有视障）会完全根据你的标记来“读”你的网页。 如果你使用的含语义的标记，屏幕阅读器会根据你的标签来判断网页的内容，而不是一个字母一个字母的拼写出来。</p>
-<p>3.有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息，搜索引擎的爬虫也依赖于标记来确定上下文和各个关键字的权重。</p>
-<p>4.便于团队开发和维护：在团队中大家都遵循同一个标准，可以减少很多差异化的东西，方便开发和维护，提高开发效率，甚至实现模块化开发。</p>
-<h1 id="3-怎样理解内容与样式分离原则？"><a href="#3-怎样理解内容与样式分离原则？" class="headerlink" title="3.怎样理解内容与样式分离原则？"></a>3.怎样理解内容与样式分离原则？</h1><p><strong>HTML:内容结构</strong><br><strong>CSS:样式</strong><br><strong>JavaScript:行为</strong><br>1.写 HTML 的时候先不管样式, 重点放在HTML的结构和语义化上，让 HTML 能体现页面结构或者内容。之后再去写样式。<br>2.写 JS 的时候，尽量不要用 JS 去直接操作样式，而是通过给元素添加删除class来控制样式变化<br>3.HTML 内不允许出现属性样式，尽量不要出现行内样式</p>
-<h4 id="内容与样式分离好处："><a href="#内容与样式分离好处：" class="headerlink" title="内容与样式分离好处："></a>内容与样式分离好处：</h4><p>方便开发人员查找并修改样式，减少网页的代码，文档更清晰易读、易维护</p>
-<h1 id="4-有哪些常见的meta标签"><a href="#4-有哪些常见的meta标签" class="headerlink" title="4.有哪些常见的meta标签?"></a>4.有哪些常见的meta标签?</h1><table>
-<thead>
-<tr>
-<th>标签</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;meta charset=&quot;utf-8&quot;&gt;</code></td>
-<td>声明文档使用的字符编码</td>
-</tr>
-<tr>
-<td><code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;/&gt;</code></td>
-<td>声明文档兼容模式，指示IE以目前可用的最高模式显示内容</td>
-</tr>
-<tr>
-<td><code>&lt;meta name=&quot;keywords&quot; content=&quot;your tags&quot;&gt;</code></td>
-<td>定义针对搜索引擎的关键词</td>
-</tr>
-<tr>
-<td><code>&lt;meta name=&quot;author&quot; content=&quot;你的姓名&quot;&gt;</code></td>
-<td>定义网页作者</td>
-</tr>
-<tr>
-<td><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1.0,maximum-scale=1.0&quot;/&gt;</code></td>
-<td>自适应屏幕大小，在移动端展示更合理</td>
-</tr>
-<tr>
-<td><code>&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</code></td>
-<td>禁用缓存</td>
-</tr>
-<tr>
-<td><code>&lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;</code></td>
-<td>搜索引擎索引方式</td>
-</tr>
-</tbody>
-</table>
-<h1 id="5-文档声明的作用-严格模式和混杂模式指什么-lt-doctype-html-gt-的作用"><a href="#5-文档声明的作用-严格模式和混杂模式指什么-lt-doctype-html-gt-的作用" class="headerlink" title="5.文档声明的作用?严格模式和混杂模式指什么?&lt;!doctype html&gt; 的作用?"></a>5.文档声明的作用?严格模式和混杂模式指什么?&lt;!doctype html&gt; 的作用?</h1><p><strong>DOCTYPE</strong> 是document type(文档类型)的简写，文档声明是用于告诉浏览器用什么文档类型来解析页面。<br><strong>严格模式</strong>  现在也称为标准模式，在该模式下，浏览器会严格按照 HTML 和 CSS 标准来解析、渲染你的文档。<br><strong>混杂模式</strong> 指文档开头不明确申明，页面以一种比较宽松的向后兼容的方式显示，模拟老式浏览器的行为以防止老站点无法工作。<br><code>&lt;!doctype html&gt;</code> 的作用是让浏览器进入标准模式，使用最新的 HTML5标准来解析渲染页面。</p>
-<h1 id="6-浏览器乱码的原因是什么？如何解决？"><a href="#6-浏览器乱码的原因是什么？如何解决？" class="headerlink" title="6.浏览器乱码的原因是什么？如何解决？"></a>6.浏览器乱码的原因是什么？如何解决？</h1><h3 id="乱码产生的根本原因"><a href="#乱码产生的根本原因" class="headerlink" title="乱码产生的根本原因"></a>乱码产生的根本原因</h3><p>1.保存的编码格式和浏览器解析时的解码格式不匹配导致<br>2.乱码一般是英文以外的字符才会出现</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>1.设置<meta charset="">标签声明文档使用的字符编码<br>2.设置正确的字符编码<br>3.设置浏览器显示正确的编码</p>
-<h1 id="7、常见的浏览器有哪些？什么内核？"><a href="#7、常见的浏览器有哪些？什么内核？" class="headerlink" title="7、常见的浏览器有哪些？什么内核？"></a>7、常见的浏览器有哪些？什么内核？</h1><p>chrome、Safari、360极速浏览器以及搜狗浏览器高速模式使用WebKit内核<br>IE、猎豹、360、搜狗、傲游、世界之窗、Avant、腾讯TT使用Trident内核，又称为IE内核。<br>Firefox、Netscape6至9使用Gecko内核。<br>Chrome（28及往后版本）、Opera（15及往后版本）和Yandex浏览器中使用Blink内核。</p>
-<h1 id="8-列出常见的标签，并简单介绍这些标签用在什么场景？"><a href="#8-列出常见的标签，并简单介绍这些标签用在什么场景？" class="headerlink" title="8.列出常见的标签，并简单介绍这些标签用在什么场景？"></a>8.列出常见的标签，并简单介绍这些标签用在什么场景？</h1><table>
-<thead>
-<tr>
-<th>标 签</th>
-<th>使用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;html&gt;...&lt;/html&gt;</code></td>
-<td>定义了文档的开始点和结束点</td>
-</tr>
-<tr>
-<td><code>&lt;head&gt;..&lt;/head&gt;</code></td>
-<td>定义文档的头部，其中的元素可以引用脚本、指示浏览器在哪里找到样式表、提供元信息等等</td>
-</tr>
-<tr>
-<td><code>&lt;title&gt;..&lt;/title&gt;</code></td>
-<td>定义文档标题</td>
-</tr>
-<tr>
-<td><code>&lt;meta&gt;..&lt;/meta&gt;</code></td>
-<td>提供有关页面的元信息</td>
-</tr>
-<tr>
-<td><code>&lt;body&gt;..&lt;/body&gt;</code></td>
-<td>定义文档的主体，包含文档的所有内容</td>
-</tr>
-<tr>
-<td><code>&lt;a&gt;..&lt;/a&gt;</code></td>
-<td>定义超链接</td>
-</tr>
-<tr>
-<td><code>&lt;img&gt;</code></td>
-<td>图片</td>
-</tr>
-<tr>
-<td><code>&lt;h1&gt;-&lt;h6&gt;</code></td>
-<td>定义标题</td>
-</tr>
-<tr>
-<td><code>&lt;p&gt;..&lt;/p&gt;</code></td>
-<td>段落</td>
-</tr>
-<tr>
-<td><code>&lt;ul&gt;..&lt;/ul&gt;</code></td>
-<td>定义无序列表</td>
-</tr>
-<tr>
-<td><code>&lt;ol&gt;..&lt;/ol&gt;</code></td>
-<td>定义有序列表</td>
-</tr>
-<tr>
-<td><code>&lt;li&gt;..&lt;/li&gt;</code></td>
-<td>定义列表项目</td>
-</tr>
-<tr>
-<td><code>&lt;div&gt;..&lt;/div&gt;</code></td>
-<td>定义文档中的分区或节</td>
-</tr>
-<tr>
-<td><code>&lt;em&gt;..&lt;/em&gt;</code></td>
-<td>强调</td>
-</tr>
-<tr>
-<td><code>&lt;strong&gt;..&lt;/strong&gt;</code></td>
-<td>语气更强的强调</td>
-</tr>
-<tr>
-<td><code>&lt;span&gt;..&lt;/span&gt;</code></td>
-<td>定义文档中的一小节</td>
-</tr>
-<tr>
-<td><code>&lt;br /&gt;</code></td>
-<td>换行</td>
-</tr>
-<tr>
-<td><code>&lt;table&gt;..&lt;/table&gt;</code></td>
-<td>定义表格</td>
-</tr>
-<tr>
-<td><code>&lt;tr&gt;..&lt;/tr&gt;</code></td>
-<td>定义表格中的行</td>
-</tr>
-<tr>
-<td><code>&lt;hr /&gt;</code></td>
-<td>创建一条水平线</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2893,7 +2767,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
