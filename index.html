@@ -397,6 +397,370 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/14/10 闭包_定时器_BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/14/10 闭包_定时器_BOM/" itemprop="url">10 闭包_定时器_BOM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T21:44:52+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题目1-下面的代码输出多少？修改代码让-fnArr-i-输出i。使用-两种以上的方法"><a href="#题目1-下面的代码输出多少？修改代码让-fnArr-i-输出i。使用-两种以上的方法" class="headerlink" title="题目1: 下面的代码输出多少？修改代码让 fnArr[i]()输出i。使用 两种以上的方法"></a>题目1: 下面的代码输出多少？修改代码让 <code>fnArr[i]()</code>输出<code>i</code>。使用 两种以上的方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">        fnArr[i] =  <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	    <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log( fnArr[<span class="number">3</span>]() ); <span class="comment">//打印出10 </span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">因为当i自增到10,才跳出for循环,然后开始执行fnArr[3](),匿名函数function()&#123;return i;&#125; 此时才被调用,</span></span><br><span class="line"><span class="comment">调用的时候i=10,所以返回10.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>解决办法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    fnArr[i] = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;    <span class="comment">//这个括号里的i是自有变量,与外部for里的i毫无关联,只受传入的参数影响</span></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//返回一个函数function()&#123;&#125;</span></span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)(i);  <span class="comment">//这个i为外部传入的参数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()) <span class="comment">//打印结果为3.  </span></span><br><span class="line"><span class="comment">//注意这里fnArr[3]()能调用,说明fnArr[i]是个函数,所以上面需要需要返回一个函数function()&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法2:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">       fnArr[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> i;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()) <span class="comment">//打印结果为3.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法3:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;    <span class="comment">//let 语句声明一个块级作用域的本地变量</span></span><br><span class="line">  fnArr[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()); <span class="comment">//打印结果为3</span></span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h4><ul>
+<li>可以用立即表达式的方式在内部再声明一个内部自有变量,形成新的作用域阻隔变量提升,来解决因为变量提升所产生的问题</li>
+</ul>
+<h2 id="题目2：-封装一个汽车对象，可以通过如下方式获取汽车状态"><a href="#题目2：-封装一个汽车对象，可以通过如下方式获取汽车状态" class="headerlink" title="题目2： 封装一个汽车对象，可以通过如下方式获取汽车状态"></a>题目2： 封装一个汽车对象，可以通过如下方式获取汽车状态</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Car = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> speed = <span class="number">0</span>;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">setSpeed</span>(<span class="params">s</span>)</span>&#123;</span><br><span class="line">       speed = s</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">/* 补充*/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getSpeed</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> speed;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">accelerate</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      speed += <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">decelerate</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(speed &gt;= <span class="number">10</span>)&#123;</span><br><span class="line">           speed -= <span class="number">10</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'减速幅度大于当前最低速度,无法减速'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(speed &gt; <span class="number">0</span>)&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'running'</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'stop'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">      setSpeed: setSpeed,</span><br><span class="line">     <span class="comment">/*补充*/</span></span><br><span class="line">     getSpeed: getSpeed,</span><br><span class="line">     accelerate: accelerate,</span><br><span class="line">     decelerate: decelerate,</span><br><span class="line">     getStatus: getStatus</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">Car.setSpeed(<span class="number">30</span>);</span><br><span class="line">Car.getSpeed(); <span class="comment">//30</span></span><br><span class="line">Car.accelerate();</span><br><span class="line">Car.getSpeed(); <span class="comment">//40;</span></span><br><span class="line">Car.decelerate();</span><br><span class="line">Car.decelerate();</span><br><span class="line">Car.getSpeed(); <span class="comment">//20</span></span><br><span class="line">Car.getStatus(); <span class="comment">// 'running';</span></span><br><span class="line">Car.decelerate(); </span><br><span class="line">Car.decelerate();</span><br><span class="line">Car.getStatus();  <span class="comment">//'stop';</span></span><br><span class="line"><span class="comment">//Car.speed;  //error</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-f3f7662d3b20e7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="测试"></p>
+<h3 id="题目3：下面这段代码输出结果是-为什么"><a href="#题目3：下面这段代码输出结果是-为什么" class="headerlink" title="题目3：下面这段代码输出结果是? 为什么?"></a>题目3：下面这段代码输出结果是? 为什么?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line"><span class="built_in">console</span>.log(a); </span><br><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>解题思路:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明前置</span></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);     <span class="comment">//打印出2,但是由于setTimeout运行机制,需等到所有代码执行完,才会执行</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">//打印出1,因为上面a被赋值为1</span></span><br><span class="line">a = <span class="number">3</span>;   </span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">//打印出3,因为上面a被赋值为3</span></span><br></pre></td></tr></table></figure></p>
+<p>因为定时器的运行机制:<strong>将指定的代码移出本次执行，等到下一轮 Event Loop 时，再检查是否到了指定时间。如果到了，就执行对应的代码；如果不到，就等到再下一轮 Event Loop 时重新判断时间</strong></p>
+<p>所以最终打印顺序及结果是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="题目4：下面这段代码输出结果是-为什么"><a href="#题目4：下面这段代码输出结果是-为什么" class="headerlink" title="题目4：下面这段代码输出结果是? 为什么?"></a>题目4：下面这段代码输出结果是? 为什么?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//由于setTimeout运行机制,要等到所有代码执行完,才会被执行,所以这里也永远不被执行</span></span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span>(flag)&#123;&#125;    <span class="comment">/*while循环的特性,只要指定条件是true,循环就可以一直执行代码.因为flag为true,while无限循环,不会执行之后的代码*/</span></span><br><span class="line"><span class="built_in">console</span>.log(flag); <span class="comment">//不被执行</span></span><br></pre></td></tr></table></figure>
+<p>代码没有任何输出</p>
+<h3 id="题目5：-下面这段代码输出？如何输出delayer-0-delayer-1…（使用闭包来实现）"><a href="#题目5：-下面这段代码输出？如何输出delayer-0-delayer-1…（使用闭包来实现）" class="headerlink" title="题目5： 下面这段代码输出？如何输出delayer: 0, delayer:1…（使用闭包来实现）"></a>题目5： 下面这段代码输出？如何输出delayer: 0, delayer:1…（使用闭包来实现）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i );</span><br><span class="line">	&#125;, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整理以上代码:声明提前,setTimeout代码执行置后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">//因为定时器执行机制, 所以此行优先执行,先输出0 1 2 3 4</span></span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i );  <span class="comment">//执行完所有代码后开始执行,i已经自增到5,因为只有一个全局变量i,此时i的值为5,所以输出5次 delayer:5</span></span><br><span class="line">	&#125;, <span class="number">0</span>);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>解题思路:可以在函数内部再声明一个内部变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">     (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;     <span class="comment">//这个i是函数自有变量 ,与外部变量i不是同一个变量,不受for循环里的i值影响,只受传入的参数i影响</span></span><br><span class="line">     setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i ); <span class="comment">// 这里的i也是自有内部变量,当所有代码执行完后,开始执行,传入参数依次是0 1 2 3 4</span></span><br><span class="line">	&#125;, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;)(i); <span class="comment">//i为传入参数 传入参数依次是 0 1 2 3 4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以最终输出结果是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">delayer:0</span><br><span class="line">delayer:1</span><br><span class="line">delayer:2</span><br><span class="line">delayer:3</span><br><span class="line">delayer:4</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="题目6：-如何获取元素的真实宽高"><a href="#题目6：-如何获取元素的真实宽高" class="headerlink" title="题目6： 如何获取元素的真实宽高"></a>题目6： 如何获取元素的真实宽高</h3><p>主流浏览器通过<code>window.getComputedStyle</code>来获取真实style，低版本IE通过<code>element.currentStyle</code>来获取真实style<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  .box&#123;</span><br><span class="line">      border: 3px solid red;</span><br><span class="line">      height: 300px;</span><br><span class="line">      width: 500px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"> </span><br><span class="line">&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">     var box = document.querySelector(&apos;.box&apos;)    //获取元素节点</span><br><span class="line"></span><br><span class="line">     //获取元素的真实style</span><br><span class="line">     function trueStyle(element,pseudoElt)&#123;</span><br><span class="line">         return element.currentStyle ? element.currentStyle : window.getComputedStyle(element,pseudoElt);</span><br><span class="line">     &#125;</span><br><span class="line">     var tureWidth = trueStyle(box).width;</span><br><span class="line">     var trueHeight = trueStyle(box).height;</span><br></pre></td></tr></table></figure></p>
+<h3 id="题目7：-URL-如何编码解码？为什么要编码？"><a href="#题目7：-URL-如何编码解码？为什么要编码？" class="headerlink" title="题目7： URL 如何编码解码？为什么要编码？"></a>题目7： URL 如何编码解码？为什么要编码？</h3><ul>
+<li><p>编码方式:<br><code>encodeURI()</code><br><code>encodeURIComponent()</code><br>区别:<br><code>encodeURI</code>方法不会对下列字符编码 <code>ASCII字母、数字、~!@#$&amp;*()=:/,;?+&#39;</code><br><code>encodeURIComponent</code>方法不会对下列字符编码 <code>ASCII字母、数字、~!*()&#39;</code><br>所以<code>encodeURIComponen</code>t比<code>encodeURI</code>编码的范围更大。</p>
+</li>
+<li><p>解码方式:<br><code>decodeURI()</code><br><code>decodeURIComponent()</code></p>
+</li>
+<li><p>编码原因:</p>
+<blockquote>
+<p>对于Url来说，之所以要进行编码，是因为Url中有些字符会引起歧义。<br>比如说“name1=value1”,其中value1的值是“va&amp;lu=e1”字符串，那么实际在传输过程中就会变成这样“name1=va&amp;lu=e1”。我们的本意是就只有一个键值对，但是服务端会解析成两个键值对，这样就产生了歧义。<br>又如，Url的编码格式采用的是ASCII码，而不是Unicode，这也就是说你不能在Url中包含任何非ASCII字符，例如中文。否则如果客户端浏览器和服务端浏览器支持的字符集不同的情况下，中文可能会造成问题。<br>URL编码的原则就是使用安全的字符（没有特殊用途或者特殊意义的可打印字符）去表示那些不安全的字符.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[参考]https://www.cnblogs.com/jerrysion/p/5522673.html</span><br><span class="line">-------------------</span><br><span class="line"></span><br><span class="line">### 题目8补全如下函数，判断用户的浏览器类型</span><br><span class="line">```javascript</span><br><span class="line">function isAndroid() &#123;</span><br><span class="line">    return /android/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br><span class="line">function isIphone()&#123;</span><br><span class="line">    return /iphone/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br><span class="line">function isIpad() &#123;</span><br><span class="line">    return /ipad/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br><span class="line">function isIOS() &#123;</span><br><span class="line">    return /iphone|ipad/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/9 事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/10/9 事件/" itemprop="url">9 事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T22:02:33+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1：-DOM0-事件和DOM2级在事件监听使用方式上有什么区别？"><a href="#1：-DOM0-事件和DOM2级在事件监听使用方式上有什么区别？" class="headerlink" title="1： DOM0 事件和DOM2级在事件监听使用方式上有什么区别？"></a>1： DOM0 事件和DOM2级在事件监听使用方式上有什么区别？</h1><ul>
+<li>DOM0级事件处理程序：<br>通过JavaScript指定事件处理程序，将一个函数赋值给一个元素的事件处理程序属性。</li>
+</ul>
+<p>每个元素都有自己的事件处理程序属性，这些属性名称通常为小写，如onclick等，将这些属性的值设置为一个函数，就可以指定事件处理程序，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;btnClick&quot; type=&quot;button&quot; value=&quot;Click Here&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var btnClick = document.getElementById(&apos;btnClick&apos;);</span><br><span class="line">    btnClick.onclick = function showMessage() &#123;</span><br><span class="line">        alert(this.id); </span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>DOM0级方法指定的事件处理程序被认为是元素的方法，事件处理程序在元素的作用域下运行，this指向当前元素，在事件处理程序中可通过this访问元素的任何属性和方法，以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。<br>可将事件处理程序属性赋值为null来删除通过DOM0级方法指定的事件处理程序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = null; //删除事件处理程序</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>DOM2级事件处理程序：<br>DOM2级事件定义了两个方法用于处理指定和删除事件处理程序的操作：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addEventListener()</span><br><span class="line">removeEventListener()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>所有的DOM节点都包含这两个方法，并且它们都接受3个参数：事件名<br>、事件处理函数、布尔值，布尔值如果是true表示在捕获阶段调用事件处理程序，false则是在事件冒泡阶段处理。<br>上面的例子可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;btnClick&quot; type=&quot;button&quot; value=&quot;Click Here&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var btnClick = document.getElementById(&apos;btnClick&apos;);</span><br><span class="line">    btnClick.addEventListener(&apos;click&apos;, function() &#123;</span><br><span class="line">        alert(this.id);</span><br><span class="line">    &#125;, false);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面的事件会在冒泡阶段被触发，这里添加的事件处理程序也是在其依附的元素的作用域中运行，使用DOM2级方法添加事件处理程序的好处是可以添加多个事件处理程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;btnClick&quot; type=&quot;button&quot; value=&quot;Click Here&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var btnClick = document.getElementById(&apos;btnClick&apos;);</span><br><span class="line"></span><br><span class="line">    btnClick.addEventListener(&apos;click&apos;, function() &#123;</span><br><span class="line">        alert(this.id);</span><br><span class="line">    &#125;, false);</span><br><span class="line"></span><br><span class="line">    btnClick.addEventListener(&apos;click&apos;, function() &#123;</span><br><span class="line">        alert(&apos;Hello!&apos;);</span><br><span class="line">    &#125;, false);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这两个事件处理程序会按照添加它们的顺序触发。</p>
+<p>通过addEventListener()添加的事件处理程序只能通过removeEventListener()移除，移除时参数与添加的时候相同，这就意味着刚才我们添加的匿名函数无法移除，因为匿名函数虽然方法体一样，但是句柄却不相同，所以正确的做法是将作为参数的的函数赋值给一个变量，这样添加和删除事件处理程序时大家引用的就是同一个函数了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;btnClick&quot; type=&quot;button&quot; value=&quot;Click Here&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var btnClick = document.getElementById(&apos;btnClick&apos;);</span><br><span class="line"></span><br><span class="line">    var handler=function() &#123;</span><br><span class="line">        alert(this.id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    btnClick.addEventListener(&apos;click&apos;, handler, false);</span><br><span class="line">    btnClick.removeEventListener(&apos;click&apos;, handler, false);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>将事件处理程序添加到事件流的冒泡阶段可以最大限度地兼容各种浏览器。IE9、Firefox、Chrome、Safari、Opera都支持DOM2级事件处理程序。</p>
+<ul>
+<li>区别：<ul>
+<li>DOM0级同一个事件处理程序只能对应一个处理函数，定义多次则新方法会覆盖老方法。DOM2级可同时添加多个事件处理程序且会按添加他们的顺序先后执行。</li>
+<li>DOM0级简单且具有跨浏览器优势，DOM2级不具备跨浏览器优势。</li>
+</ul>
+</li>
+</ul>
+<h1 id="2：-attachEvent与addEventListener的区别？"><a href="#2：-attachEvent与addEventListener的区别？" class="headerlink" title="2： attachEvent与addEventListener的区别？"></a>2： attachEvent与addEventListener的区别？</h1><ol>
+<li>参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能发生在冒泡阶段，addEventListener第三个参数可以决定添加的事件处理程序是在捕获阶段还是冒泡阶段处理（我们一般为了浏览器兼容性都设置为冒泡阶段）</li>
+<li>第一个参数意义不同，addEventListener第一个参数是事件类型（比如click，load），而attachEvent第一个参数指明的是事件处理函数名称（onclick，onload）</li>
+<li>事件处理程序的作用域不相同，addEventListener的作用域是元素本身，this是指的触发元素，attachEvent事件处理程序会在全局变量内运行，this是window，所以刚才例子才会返回undefined，而不是元素id</li>
+<li>为一个事件添加多个事件处理程序时，执行顺序不同，addEventListener添加会按照添加顺序执行，而attachEvent添加多个事件处理程序时顺序无规律(添加的方法少的时候大多是按添加顺序的反顺序执行的，但是添加的多了就无规律了)，所以添加多个的时候，不依赖执行顺序的还好，若是依赖于函数执行顺序，最好自己处理，不要指望浏览器<h1 id="3：-解释IE事件冒泡和DOM2事件传播机制？"><a href="#3：-解释IE事件冒泡和DOM2事件传播机制？" class="headerlink" title="3： 解释IE事件冒泡和DOM2事件传播机制？"></a>3： 解释IE事件冒泡和DOM2事件传播机制？</h1></li>
+</ol>
+<ul>
+<li><strong>IE的事件流叫做事件冒泡（event bubbling）</strong>，即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。<br>示例:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Event Bubbling Example&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;myDiv&quot;&gt;Click Me&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当点击div区域，click事件首先在元素上发生，而这个元素就是我们单击的元素。然后click事件沿DOM树向上传播，在每一级节点上都会发生直至传播到document对象。<br><img src="http://upload-images.jianshu.io/upload_images/7280908-4bda03a19962fd74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件冒泡模型"></p>
+<p>所有现代浏览器都支持事件冒泡，但IE5.5及更早版本中的事件冒泡会跳过<code>&lt;html&gt;</code>元素，从<code>&lt;body&gt;</code>直接到document，IE9、Firefox、Chrome、Safari则将事件一直冒泡到window对象。</p>
+<ul>
+<li><strong>DOM2级事件传播机制</strong>规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。首先发生的是事件捕获，为截获事件提供了机会。然后是实际的目标接收到事件。最后一个阶段是冒泡阶段，可以在这个阶段对事件做出响应。以前面简单的HTML页面为例，单击<div>元素会按照下图所示顺序触发事件。</div></li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-aa25fa5bd8132d85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DOM事件流"></p>
+<p>以上面代码为例，捕获阶段事件从ducument到<html>再到<body>后就停止了，下一阶段是“处于目标”阶段，事件在<div>上发生并在事件处理中被视为冒泡阶段的一部分，接着冒泡阶段发生，事件又传播回文档。</div></body></html></p>
+<p>IE9、Opera、Firefox、Chrome、Safari都支持DOM事件流，IE8及更早版本不支持事件流，只支持事件冒泡。<br>即使DOM2级事件规范明确要求捕获阶段不会涉及事件目标，但IE9,Firefox,Chrome,Safari和Opera9.5及更高版本都会在事件捕获阶段触发事件对象上的事件，结果就是有两个机会在目标对象上操作事件。</p>
+<h1 id="4：如何阻止事件冒泡？-如何阻止默认事件？"><a href="#4：如何阻止事件冒泡？-如何阻止默认事件？" class="headerlink" title="4：如何阻止事件冒泡？ 如何阻止默认事件？"></a>4：如何阻止事件冒泡？ 如何阻止默认事件？</h1><ul>
+<li>阻止事件冒泡使用<code>event.stopPropagation()</code><br>方法阻止事件在DOM中继续传播，防止再触发定义在别的节点上的监听函数，但是不包括在当前节点上新定义的事件监听函数</li>
+<li>阻止默认事件使用<code>event.preventDefault()</code><br>方法不会阻止事件的进一步传播,只要在事件的传播过程中（捕获阶段、目标阶段、冒泡阶段皆可），使用了preventDefault方法，该事件的默认方法就不会执行</li>
+</ul>
+<h1 id="5：有如下代码，要求当点击每一个元素li时控制台展示该元素的文本内容。不考虑兼容"><a href="#5：有如下代码，要求当点击每一个元素li时控制台展示该元素的文本内容。不考虑兼容" class="headerlink" title="5：有如下代码，要求当点击每一个元素li时控制台展示该元素的文本内容。不考虑兼容"></a>5：有如下代码，要求当点击每一个元素li时控制台展示该元素的文本内容。不考虑兼容</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;ct&quot;&gt;</span><br><span class="line">    &lt;li&gt;这里是&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;饥人谷&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;前端6班&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var ct = document.querySelector(&quot;.ct&quot;)</span><br><span class="line">    ct.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">        var target = e.target</span><br><span class="line">        if(target.tagName.toLowerCase()===&apos;li&apos;)&#123;</span><br><span class="line">            console.log(target.innerText)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="6：-补全代码，要求："><a href="#6：-补全代码，要求：" class="headerlink" title="6： 补全代码，要求："></a>6： 补全代码，要求：</h1><p>当点击按钮开头添加时在<li>这里是</li>元素前添加一个新元素，内容为用户输入的非空字符串；当点击结尾添加时在最后一个 li 元素后添加用户输入的非空字符串.<br>当点击每一个元素li时控制台展示该元素的文本内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;ct&quot;&gt;</span><br><span class="line">    &lt;li&gt;这里是&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;饥人谷&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;前端6班&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;input id=&quot;ipt-add-content&quot; placeholder=&quot;添加内容&quot;/&gt;</span><br><span class="line">&lt;button id=&quot;btn-add-start&quot;&gt;开头添加&lt;/button&gt;</span><br><span class="line">&lt;button id=&quot;btn-add-end&quot;&gt;结尾添加&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ct = document.querySelector(&apos;.ct&apos;)</span><br><span class="line">    var ipt = document.querySelector(&apos;#ipt-add-content&apos;)</span><br><span class="line">    var startBtn = document.querySelector(&apos;#btn-add-start&apos;)</span><br><span class="line">    var endBtn = document.querySelector(&apos;#btn-add-end&apos;)</span><br><span class="line"></span><br><span class="line">    ct.addEventListener(&apos;click&apos;,function(e)&#123;</span><br><span class="line">        if(e.target.tagName.toLowerCase() === &apos;li&apos;)</span><br><span class="line">            console.log(e.target.innerText);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    startBtn.addEventListener(&apos;click&apos;,function()&#123;</span><br><span class="line">        var newLi = document.createElement(&apos;li&apos;)</span><br><span class="line">        newLi.innerText = ipt.value;</span><br><span class="line">        if(newLi.innerText.match(/\S/))</span><br><span class="line">        ct.insertBefore(newLi,ct.firstChild);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    endBtn.addEventListener(&apos;click&apos;,function()&#123;</span><br><span class="line">        var newLi = document.createElement(&apos;li&apos;)</span><br><span class="line">        newLi.innerText = ipt.value;</span><br><span class="line">        if(newLi.innerText.match(/\S/))</span><br><span class="line">        ct.appendChild(newLi);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="7：-补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。"><a href="#7：-补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。" class="headerlink" title="7： 补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。"></a>7： 补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;ul class=&quot;ct&quot;&gt;</span><br><span class="line">    &lt;li data-img=&quot;https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060237827,3671274443&amp;fm=11&amp;gp=0.jpg&quot;&gt;鼠标放置查看图片1&lt;/li&gt;</span><br><span class="line">    &lt;li data-img=&quot;https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3046951468,909997987&amp;fm=27&amp;gp=0.jpg&quot;&gt;鼠标放置查看图片2&lt;/li&gt;</span><br><span class="line">    &lt;li data-img=&quot;https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2672761046,1103793992&amp;fm=27&amp;gp=0.jpg&quot;&gt;鼠标放置查看图片3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;div class=&quot;img-preview&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ct = document.querySelector(&apos;.ct&apos;)</span><br><span class="line">    var imgPre = document.querySelector(&apos;.img-preview&apos;)</span><br><span class="line">    ct.addEventListener(&apos;mouseover&apos;,function(e)&#123;</span><br><span class="line">        if(e.target.tagName.toLowerCase() === &apos;li&apos;)</span><br><span class="line">            var imgSrc = e.target.getAttribute(&apos;data-img&apos;)</span><br><span class="line">            var img = document.createElement(&apos;img&apos;)</span><br><span class="line">            img.setAttribute(&apos;src&apos;,imgSrc)</span><br><span class="line">            imgPre.appendChild(img)</span><br><span class="line">    &#125;)</span><br><span class="line">    ct.addEventListener(&apos;mouseout&apos;,function(e)&#123;</span><br><span class="line">        imgPre.innerHTML = &apos;&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="http://js.jirengu.com/wimenapazo/1/edit" target="_blank" rel="noopener">DEMO演示</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/08/8 DOM操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1755,378 +2119,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/1 JS 相关概念/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/01/1 JS 相关概念/" itemprop="url">1 JS 相关概念</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T14:25:35+08:00">
-                2017-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-CSS和JS在网页中的放置顺序是怎样的？"><a href="#1-CSS和JS在网页中的放置顺序是怎样的？" class="headerlink" title="1.CSS和JS在网页中的放置顺序是怎样的？"></a>1.CSS和JS在网页中的放置顺序是怎样的？</h1><ul>
-<li>css是使用link标签将样式进行引入并放置在header标签内。</li>
-<li>js是使用script标签进行引入，放置位置一般在<code>body</code>底部<code>&lt;/body&gt;</code>闭合标签之前。这是因为页面渲染时，js放在页面顶部，会阻塞后面内容的呈现以及其后组件下载，会造成白屏等问题。<h1 id="2-解释白屏和FOUC"><a href="#2-解释白屏和FOUC" class="headerlink" title="2.解释白屏和FOUC"></a>2.解释白屏和FOUC</h1>1.白屏</li>
-<li>如果把样式放在底部，对于IE浏览器，在某些场景下(新窗口打开,刷新等)页面会出现白屏，而不是内容逐步展现。</li>
-<li>如果使用 @import 标签,即使 CSS 放入 link, 并且放在头部，也可能出现白屏。</li>
-<li>对于图片和CSS，在加载时会并发加载(如一个域名下同时加载两个文件)。但在加载 JavaScript 时，会禁用并发,并且阻止其他内容的下载。 所以把 JavaScript 放入页面顶部也会导致白屏现象。<blockquote>
-<p>白屏不是bug，而是浏览器渲染机制造成的，即浏览器在渲染的时候请求时间过长导致的.</p>
-</blockquote>
-</li>
-</ul>
-<p>2.<a href="https://link.jianshu.com/?t=https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank" rel="noopener">FOUC</a>(Flash of Unstyled Content) 无样式内容闪烁</p>
-<ul>
-<li>如果把样式放在底部，对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等)，会出现 FOUC 现象(逐步加载无样式的内容，等CSS加载后页面突然展现样式)。对于 Firefox 会一直表现出 FOUC 。FireFox每加载一次dom树就会重绘一次网页样式,一直到所有内容完成为止。</li>
-<li>如果有多个样式表， 放在HTML的不同位置，这时有的浏览器可能会在所有样式都加载完后再进行样式的渲染， 此时也可能会出现FOUC。<br>为了避免FOUC发生一般我们用link标签把css放在顶部header内.</li>
-</ul>
-<h1 id="3-sync和defer的作用是什么？有什么区别？"><a href="#3-sync和defer的作用是什么？有什么区别？" class="headerlink" title="3.sync和defer的作用是什么？有什么区别？"></a>3.sync和defer的作用是什么？有什么区别？</h1><ul>
-<li>作用<br>没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</li>
-</ul>
-<ol>
-<li><code>async</code>使加载和渲染后续文档元素的过程与 script.js 的加载与执行并行进行（异步）<br><code>&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></li>
-<li><code>defer</code>加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。<br><code>&lt;script defer src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></li>
-</ol>
-<ul>
-<li>区别<br>defer:脚本延迟到文档解析和显示后执行，有顺序<br>async:不保证顺序<h1 id="4-简述网页的渲染机制"><a href="#4-简述网页的渲染机制" class="headerlink" title="4.简述网页的渲染机制"></a>4.简述网页的渲染机制</h1></li>
-<li>解析 HTML 标签, 构建 DOM 树</li>
-<li>解析 CSS 标签, 构建 CSSOM 树</li>
-<li>把 DOM 和 CSSOM 组合成 渲染树 (render tree)</li>
-<li>在渲染树的基础上进行布局, 计算每个节点的几何结构</li>
-<li>把每个节点绘制到屏幕上 (painting)<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
-</ul>
-<ul>
-<li>高性能网站建设指南, Steve Sounders</li>
-<li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en" target="_blank" rel="noopener">Render-tree construction, layout, and paint</a></li>
-<li><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm" target="_blank" rel="noopener">How browsers work</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/CSS 综合/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/23/CSS 综合/" itemprop="url">CSS 综合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T12:54:33+08:00">
-                2017-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-说一说你平时写代码遵守的编码规范"><a href="#1-说一说你平时写代码遵守的编码规范" class="headerlink" title="1.说一说你平时写代码遵守的编码规范"></a>1.说一说你平时写代码遵守的编码规范</h1><ul>
-<li>语义化<br>·语义化标签优先<br>·基于功能命名、基于内容命名、基于表现命名<br>·简略、明了、无后患</li>
-</ul>
-<h3 id="html命名规范："><a href="#html命名规范：" class="headerlink" title="html命名规范："></a>html命名规范：</h3><ol>
-<li>所有命名都使用英文小写</li>
-</ol>
-<p>推荐：<code>&lt;div class=&quot;main&quot;&gt;&lt;/div&gt;</code></p>
-<p>不推荐： <code>&lt;div class=&quot;Main&quot;&gt;&lt;/div&gt;</code></p>
-<ol>
-<li>命名用引号包裹</li>
-</ol>
-<p>推荐：<code>&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</code></p>
-<p>不推荐： <code>&lt;div id=header&gt;&lt;/div&gt;</code></p>
-<ol>
-<li>用中横线连接</li>
-</ol>
-<p>推荐：<code>&lt;div class=&quot;mod-modal&quot;&gt;&lt;/div&gt;</code></p>
-<p>不推荐： <code>&lt;div class=&quot;modModal&quot;&gt;&lt;/div&gt;</code></p>
-<ol>
-<li>命名体现功能，不涉及表现样式(颜色、字体、边框、背景等)</li>
-</ol>
-<p>推荐：<code>&lt;div class=&quot;text-lesser&quot;&gt;&lt;/div&gt;</code></p>
-<p>不推荐： <code>&lt;div class=&quot;light-grey&quot;&gt;&lt;/div&gt;</code></p>
-<ul>
-<li><p>常见的命名1：<br>.wrap或.wrapper – 用于外侧包裹<br>.container或 .ct – 包裹容器<br>.header – 用于头部<br>.body – 页面 body<br>.footer – 页面尾部<br>.aside、.sidebar – 用于侧边栏<br>.content – 和header footer 对应，用于主要内容<br>.navigation – 导航元素<br>.pagination – 分页</p>
-</li>
-<li><p>常见命名2:<br>.tabs &gt; .tab – tab 切换<br>.breadcrumbs – 导航列表、面包屑<br>.dropdown – 下拉菜单<br>.article – 文章<br>.main – 用于主体<br>.thumbnail – 头像，小图像<br>.media – 媒体资源<br>.panel – 面板<br>.tooltip – 鼠标放置上去的提示<br>.popup – 鼠标点击弹出的提示</p>
-</li>
-</ul>
-<ul>
-<li><p>常见命名3<br>.button、.btn – 按钮<br>.ad – 广告<br>.subnav – 二级导航<br>.menu – 菜单<br>.tag – 标签<br>.message或者.notice – 提示消息<br>.summary – 摘要<br>.logo – logo<br>.search – 搜索框<br>.login – 登录</p>
-</li>
-<li><p>常见命名4<br>.register – 注册<br>.username – 用户名<br>.password – 密码<br>.banner – 广告条<br>.copyright – 版权<br>.modal或者 .dialog – 弹窗</p>
-</li>
-</ul>
-<p>*常见命名5<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">var 名字 = &#123;</span><br><span class="line"> 状态类: [</span><br><span class="line"> &apos;inverse&apos;,</span><br><span class="line">    &apos;toggled&apos;,</span><br><span class="line">    &apos;switched&apos;,</span><br><span class="line">    &apos;original&apos;,</span><br><span class="line">    &apos;initial&apos;,</span><br><span class="line">    &apos;identified&apos;,</span><br><span class="line">    &apos;disabled&apos;,</span><br><span class="line">    &apos;loading&apos;,</span><br><span class="line">    &apos;pending&apos;,</span><br><span class="line">    &apos;syncing&apos;,</span><br><span class="line">    &apos;default&apos;</span><br><span class="line">  ],</span><br><span class="line"> 修饰类: [</span><br><span class="line">    &apos;dark&apos;,</span><br><span class="line">    &apos;light&apos;,</span><br><span class="line">    &apos;shaded&apos;,</span><br><span class="line">    &apos;flat&apos;,</span><br><span class="line">    &apos;ghost&apos;,</span><br><span class="line">    &apos;maroon&apos;,</span><br><span class="line">    &apos;pale&apos;,</span><br><span class="line">    &apos;intense&apos;,</span><br><span class="line">    &apos;twisted&apos;,</span><br><span class="line">    &apos;narrow&apos;,</span><br><span class="line">    &apos;wide&apos;,</span><br><span class="line">    &apos;smooth&apos;,</span><br><span class="line">    &apos;separate&apos;,</span><br><span class="line">    &apos;clean&apos;,</span><br><span class="line">    &apos;sharp&apos;,</span><br><span class="line">    &apos;aligned&apos;</span><br><span class="line">  ],</span><br><span class="line">  元素类: [</span><br><span class="line">    &apos;pagination&apos;,</span><br><span class="line">    &apos;modal&apos;,</span><br><span class="line">    &apos;popup&apos;,</span><br><span class="line">    &apos;article&apos;,</span><br><span class="line">    &apos;story&apos;,</span><br><span class="line">    &apos;flash&apos;,</span><br><span class="line">    &apos;status&apos;,</span><br><span class="line">    &apos;state&apos;,</span><br><span class="line">    &apos;media&apos;,</span><br><span class="line">    &apos;block&apos;,</span><br><span class="line">    &apos;card&apos;,</span><br><span class="line">    &apos;teaser&apos;,</span><br><span class="line">    &apos;badge&apos;,</span><br><span class="line">    &apos;label&apos;,</span><br><span class="line">    &apos;sheet&apos;,</span><br><span class="line">    &apos;poster&apos;,</span><br><span class="line">    &apos;notice&apos;,</span><br><span class="line">    &apos;record&apos;,</span><br><span class="line">    &apos;entry&apos;,</span><br><span class="line">    &apos;item&apos;,</span><br><span class="line">    &apos;figure&apos;,</span><br><span class="line">    &apos;square&apos;,</span><br><span class="line">    &apos;module&apos;,</span><br><span class="line">    &apos;bar&apos;,</span><br><span class="line">    &apos;button&apos;,</span><br><span class="line">    &apos;action&apos;,</span><br><span class="line">    &apos;knob&apos;</span><br><span class="line">  ],</span><br><span class="line">  布局类: [</span><br><span class="line">    &apos;navigation&apos;,</span><br><span class="line">    &apos;wrapper&apos;,</span><br><span class="line">    &apos;inner&apos;,</span><br><span class="line">    &apos;header&apos;,</span><br><span class="line">    &apos;footer&apos;,</span><br><span class="line">    &apos;aside&apos;,</span><br><span class="line">    &apos;section&apos;,</span><br><span class="line">    &apos;divider&apos;,</span><br><span class="line">    &apos;content&apos;,</span><br><span class="line">    &apos;container&apos;,</span><br><span class="line">    &apos;panel&apos;,</span><br><span class="line">    &apos;pane&apos;,</span><br><span class="line">    &apos;construct&apos;,</span><br><span class="line">    &apos;composition&apos;,</span><br><span class="line">    &apos;spacing&apos;,</span><br><span class="line">    &apos;frame&apos;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="css命名规范"><a href="#css命名规范" class="headerlink" title="css命名规范"></a>css命名规范</h3><ul>
-<li>书写规范<br>1.tab 用两个空格表示<br>2.css的 :后加个空格， {前加个空格<br>3.每条声明后都加上分号<br>4.换行，而不是放到一行<br>5.颜色用小写，用缩写, #fff<br>6.小数不用写前缀, 0.5s -&gt; .5s；0不用加单位<br>7.尽量缩写， margin: 5px 10px 5px 10px -&gt; margin: 5px 10px</li>
-</ul>
-<p>范例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">/* Not recommended */</span><br><span class="line">.test &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  height: 100px</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">.test &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  height: 100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended */</span><br><span class="line">h3 &#123;</span><br><span class="line">  font-weight:bold;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">h3 &#123;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended: missing space */</span><br><span class="line">#video&#123;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Not recommended: unnecessary line break */</span><br><span class="line">#video</span><br><span class="line">&#123;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">#video &#123;</span><br><span class="line">  margin-top: 1em;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended */</span><br><span class="line">a:focus, a:active &#123;</span><br><span class="line">  position: relative; top: 1px;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">h1,</span><br><span class="line">h2,</span><br><span class="line">h3 &#123;</span><br><span class="line">  font-weight: normal;</span><br><span class="line">  line-height: 1.2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Always put a blank line (two line breaks) between rules. */</span><br><span class="line">html &#123;</span><br><span class="line">  background: #fff;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body &#123;</span><br><span class="line">  margin: auto;</span><br><span class="line">  width: 50%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Not recommended */</span><br><span class="line">@import url(&quot;//www.google.com/css/maia.css&quot;);</span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">  font-family: &quot;open sans&quot;, arial, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line">/* Recommended */</span><br><span class="line">@import url(//www.google.com/css/maia.css);</span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">  font-family: &apos;open sans&apos;, arial, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://google.github.io/styleguide/htmlcssguide.xml" target="_blank" rel="noopener">google html css编码规范</a></li>
-<li><a href="http://codeguide.bootcss.com/" target="_blank" rel="noopener">bootstrap 编码规范</a></li>
-<li><a href="https://seesparkbox.com/foundry/naming_css_stuff_is_really_hard" target="_blank" rel="noopener">命名这货真难</a></li>
-</ul>
-<h1 id="2-垂直居中有几种实现方式，给出代码范例"><a href="#2-垂直居中有几种实现方式，给出代码范例" class="headerlink" title="2.垂直居中有几种实现方式，给出代码范例"></a>2.垂直居中有几种实现方式，给出代码范例</h1><p><a href="http://js.jirengu.com/kuqix/1/edit" target="_blank" rel="noopener">方法一.上下padding相等，高度随内容变化</a></p>
-<p><a href="http://js.jirengu.com/liver/1/edit" target="_blank" rel="noopener">方法二.绝对定位实现居中</a></p>
-<p><a href="http://js.jirengu.com/boqaz/1/edit" target="_blank" rel="noopener">方法三.vertical-align实现居中</a><br>注意vertical-align: middle;必须作用于表格，行内元素才生效</p>
-<p><a href="http://js.jirengu.com/rixuh/1/edit" target="_blank" rel="noopener">方法四.table-cell实现居中 表格法</a></p>
-<h1 id="3-实现如下效果，每种效果都只使用一个html-标签来实现"><a href="#3-实现如下效果，每种效果都只使用一个html-标签来实现" class="headerlink" title="3.实现如下效果，每种效果都只使用一个html 标签来实现"></a>3.实现如下效果，每种效果都只使用一个html 标签来实现</h1><p>代码：<a href="http://js.jirengu.com/qufog/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/qufog/1/edit</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2176,7 +2173,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

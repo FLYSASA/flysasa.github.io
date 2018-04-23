@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目1: 下面的代码输出多少？修改代码让 fnArr[i]()输出i。使用 两种以上的方法1234567891011var fnArr = [];    for (var i = 0; i &amp;lt; 10; i ++) &amp;#123;        fnArr[i] =  function()&amp;#123;    	    return i;        &amp;#125;;    &amp;#125;    c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10 闭包_定时器_BOM">
+<meta property="og:url" content="http://yoursite.com/2017/12/14/10 闭包_定时器_BOM/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="题目1: 下面的代码输出多少？修改代码让 fnArr[i]()输出i。使用 两种以上的方法1234567891011var fnArr = [];    for (var i = 0; i &amp;lt; 10; i ++) &amp;#123;        fnArr[i] =  function()&amp;#123;    	    return i;        &amp;#125;;    &amp;#125;    c">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-f3f7662d3b20e7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-23T08:50:31.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 闭包_定时器_BOM">
+<meta name="twitter:description" content="题目1: 下面的代码输出多少？修改代码让 fnArr[i]()输出i。使用 两种以上的方法1234567891011var fnArr = [];    for (var i = 0; i &amp;lt; 10; i ++) &amp;#123;        fnArr[i] =  function()&amp;#123;    	    return i;        &amp;#125;;    &amp;#125;    c">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7280908-f3f7662d3b20e7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/14/10 闭包_定时器_BOM/"/>
+
+
+
+
+
+  <title>10 闭包_定时器_BOM | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/14/10 闭包_定时器_BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">10 闭包_定时器_BOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T21:44:52+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="题目1-下面的代码输出多少？修改代码让-fnArr-i-输出i。使用-两种以上的方法"><a href="#题目1-下面的代码输出多少？修改代码让-fnArr-i-输出i。使用-两种以上的方法" class="headerlink" title="题目1: 下面的代码输出多少？修改代码让 fnArr[i]()输出i。使用 两种以上的方法"></a>题目1: 下面的代码输出多少？修改代码让 <code>fnArr[i]()</code>输出<code>i</code>。使用 两种以上的方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">        fnArr[i] =  <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	    <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log( fnArr[<span class="number">3</span>]() ); <span class="comment">//打印出10 </span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">因为当i自增到10,才跳出for循环,然后开始执行fnArr[3](),匿名函数function()&#123;return i;&#125; 此时才被调用,</span></span><br><span class="line"><span class="comment">调用的时候i=10,所以返回10.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>解决办法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    fnArr[i] = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;    <span class="comment">//这个括号里的i是自有变量,与外部for里的i毫无关联,只受传入的参数影响</span></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     <span class="comment">//返回一个函数function()&#123;&#125;</span></span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)(i);  <span class="comment">//这个i为外部传入的参数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()) <span class="comment">//打印结果为3.  </span></span><br><span class="line"><span class="comment">//注意这里fnArr[3]()能调用,说明fnArr[i]是个函数,所以上面需要需要返回一个函数function()&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法2:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">       fnArr[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> i;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()) <span class="comment">//打印结果为3.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法3:</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;    <span class="comment">//let 语句声明一个块级作用域的本地变量</span></span><br><span class="line">  fnArr[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()); <span class="comment">//打印结果为3</span></span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h4><ul>
+<li>可以用立即表达式的方式在内部再声明一个内部自有变量,形成新的作用域阻隔变量提升,来解决因为变量提升所产生的问题</li>
+</ul>
+<h2 id="题目2：-封装一个汽车对象，可以通过如下方式获取汽车状态"><a href="#题目2：-封装一个汽车对象，可以通过如下方式获取汽车状态" class="headerlink" title="题目2： 封装一个汽车对象，可以通过如下方式获取汽车状态"></a>题目2： 封装一个汽车对象，可以通过如下方式获取汽车状态</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Car = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> speed = <span class="number">0</span>;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">setSpeed</span>(<span class="params">s</span>)</span>&#123;</span><br><span class="line">       speed = s</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">/* 补充*/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getSpeed</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> speed;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">accelerate</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      speed += <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">decelerate</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(speed &gt;= <span class="number">10</span>)&#123;</span><br><span class="line">           speed -= <span class="number">10</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'减速幅度大于当前最低速度,无法减速'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStatus</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(speed &gt; <span class="number">0</span>)&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'running'</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'stop'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">      setSpeed: setSpeed,</span><br><span class="line">     <span class="comment">/*补充*/</span></span><br><span class="line">     getSpeed: getSpeed,</span><br><span class="line">     accelerate: accelerate,</span><br><span class="line">     decelerate: decelerate,</span><br><span class="line">     getStatus: getStatus</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">Car.setSpeed(<span class="number">30</span>);</span><br><span class="line">Car.getSpeed(); <span class="comment">//30</span></span><br><span class="line">Car.accelerate();</span><br><span class="line">Car.getSpeed(); <span class="comment">//40;</span></span><br><span class="line">Car.decelerate();</span><br><span class="line">Car.decelerate();</span><br><span class="line">Car.getSpeed(); <span class="comment">//20</span></span><br><span class="line">Car.getStatus(); <span class="comment">// 'running';</span></span><br><span class="line">Car.decelerate(); </span><br><span class="line">Car.decelerate();</span><br><span class="line">Car.getStatus();  <span class="comment">//'stop';</span></span><br><span class="line"><span class="comment">//Car.speed;  //error</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-f3f7662d3b20e7cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="测试"></p>
+<h3 id="题目3：下面这段代码输出结果是-为什么"><a href="#题目3：下面这段代码输出结果是-为什么" class="headerlink" title="题目3：下面这段代码输出结果是? 为什么?"></a>题目3：下面这段代码输出结果是? 为什么?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line"><span class="built_in">console</span>.log(a); </span><br><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>解题思路:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明前置</span></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);     <span class="comment">//打印出2,但是由于setTimeout运行机制,需等到所有代码执行完,才会执行</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">//打印出1,因为上面a被赋值为1</span></span><br><span class="line">a = <span class="number">3</span>;   </span><br><span class="line"><span class="built_in">console</span>.log(a);  <span class="comment">//打印出3,因为上面a被赋值为3</span></span><br></pre></td></tr></table></figure></p>
+<p>因为定时器的运行机制:<strong>将指定的代码移出本次执行，等到下一轮 Event Loop 时，再检查是否到了指定时间。如果到了，就执行对应的代码；如果不到，就等到再下一轮 Event Loop 时重新判断时间</strong></p>
+<p>所以最终打印顺序及结果是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="题目4：下面这段代码输出结果是-为什么"><a href="#题目4：下面这段代码输出结果是-为什么" class="headerlink" title="题目4：下面这段代码输出结果是? 为什么?"></a>题目4：下面这段代码输出结果是? 为什么?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   <span class="comment">//由于setTimeout运行机制,要等到所有代码执行完,才会被执行,所以这里也永远不被执行</span></span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span>(flag)&#123;&#125;    <span class="comment">/*while循环的特性,只要指定条件是true,循环就可以一直执行代码.因为flag为true,while无限循环,不会执行之后的代码*/</span></span><br><span class="line"><span class="built_in">console</span>.log(flag); <span class="comment">//不被执行</span></span><br></pre></td></tr></table></figure>
+<p>代码没有任何输出</p>
+<h3 id="题目5：-下面这段代码输出？如何输出delayer-0-delayer-1…（使用闭包来实现）"><a href="#题目5：-下面这段代码输出？如何输出delayer-0-delayer-1…（使用闭包来实现）" class="headerlink" title="题目5： 下面这段代码输出？如何输出delayer: 0, delayer:1…（使用闭包来实现）"></a>题目5： 下面这段代码输出？如何输出delayer: 0, delayer:1…（使用闭包来实现）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i );</span><br><span class="line">	&#125;, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整理以上代码:声明提前,setTimeout代码执行置后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i); <span class="comment">//因为定时器执行机制, 所以此行优先执行,先输出0 1 2 3 4</span></span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i );  <span class="comment">//执行完所有代码后开始执行,i已经自增到5,因为只有一个全局变量i,此时i的值为5,所以输出5次 delayer:5</span></span><br><span class="line">	&#125;, <span class="number">0</span>);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>解题思路:可以在函数内部再声明一个内部变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">     (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;     <span class="comment">//这个i是函数自有变量 ,与外部变量i不是同一个变量,不受for循环里的i值影响,只受传入的参数i影响</span></span><br><span class="line">     setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i ); <span class="comment">// 这里的i也是自有内部变量,当所有代码执行完后,开始执行,传入参数依次是0 1 2 3 4</span></span><br><span class="line">	&#125;, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;)(i); <span class="comment">//i为传入参数 传入参数依次是 0 1 2 3 4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以最终输出结果是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">delayer:0</span><br><span class="line">delayer:1</span><br><span class="line">delayer:2</span><br><span class="line">delayer:3</span><br><span class="line">delayer:4</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="题目6：-如何获取元素的真实宽高"><a href="#题目6：-如何获取元素的真实宽高" class="headerlink" title="题目6： 如何获取元素的真实宽高"></a>题目6： 如何获取元素的真实宽高</h3><p>主流浏览器通过<code>window.getComputedStyle</code>来获取真实style，低版本IE通过<code>element.currentStyle</code>来获取真实style<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  .box&#123;</span><br><span class="line">      border: 3px solid red;</span><br><span class="line">      height: 300px;</span><br><span class="line">      width: 500px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"> </span><br><span class="line">&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">     var box = document.querySelector(&apos;.box&apos;)    //获取元素节点</span><br><span class="line"></span><br><span class="line">     //获取元素的真实style</span><br><span class="line">     function trueStyle(element,pseudoElt)&#123;</span><br><span class="line">         return element.currentStyle ? element.currentStyle : window.getComputedStyle(element,pseudoElt);</span><br><span class="line">     &#125;</span><br><span class="line">     var tureWidth = trueStyle(box).width;</span><br><span class="line">     var trueHeight = trueStyle(box).height;</span><br></pre></td></tr></table></figure></p>
+<h3 id="题目7：-URL-如何编码解码？为什么要编码？"><a href="#题目7：-URL-如何编码解码？为什么要编码？" class="headerlink" title="题目7： URL 如何编码解码？为什么要编码？"></a>题目7： URL 如何编码解码？为什么要编码？</h3><ul>
+<li><p>编码方式:<br><code>encodeURI()</code><br><code>encodeURIComponent()</code><br>区别:<br><code>encodeURI</code>方法不会对下列字符编码 <code>ASCII字母、数字、~!@#$&amp;*()=:/,;?+&#39;</code><br><code>encodeURIComponent</code>方法不会对下列字符编码 <code>ASCII字母、数字、~!*()&#39;</code><br>所以<code>encodeURIComponen</code>t比<code>encodeURI</code>编码的范围更大。</p>
+</li>
+<li><p>解码方式:<br><code>decodeURI()</code><br><code>decodeURIComponent()</code></p>
+</li>
+<li><p>编码原因:</p>
+<blockquote>
+<p>对于Url来说，之所以要进行编码，是因为Url中有些字符会引起歧义。<br>比如说“name1=value1”,其中value1的值是“va&amp;lu=e1”字符串，那么实际在传输过程中就会变成这样“name1=va&amp;lu=e1”。我们的本意是就只有一个键值对，但是服务端会解析成两个键值对，这样就产生了歧义。<br>又如，Url的编码格式采用的是ASCII码，而不是Unicode，这也就是说你不能在Url中包含任何非ASCII字符，例如中文。否则如果客户端浏览器和服务端浏览器支持的字符集不同的情况下，中文可能会造成问题。<br>URL编码的原则就是使用安全的字符（没有特殊用途或者特殊意义的可打印字符）去表示那些不安全的字符.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[参考]https://www.cnblogs.com/jerrysion/p/5522673.html</span><br><span class="line">-------------------</span><br><span class="line"></span><br><span class="line">### 题目8补全如下函数，判断用户的浏览器类型</span><br><span class="line">```javascript</span><br><span class="line">function isAndroid() &#123;</span><br><span class="line">    return /android/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br><span class="line">function isIphone()&#123;</span><br><span class="line">    return /iphone/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br><span class="line">function isIpad() &#123;</span><br><span class="line">    return /ipad/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br><span class="line">function isIOS() &#123;</span><br><span class="line">    return /iphone|ipad/i.test(navigator.userAgent)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/10/9 事件/" rel="next" title="9 事件">
+                <i class="fa fa-chevron-left"></i> 9 事件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/搭建成功/" rel="prev" title="Fair to be late, but never absent">
+                Fair to be late, but never absent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目1-下面的代码输出多少？修改代码让-fnArr-i-输出i。使用-两种以上的方法"><span class="nav-number">1.</span> <span class="nav-text">题目1: 下面的代码输出多少？修改代码让 fnArr[i]()输出i。使用 两种以上的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目2：-封装一个汽车对象，可以通过如下方式获取汽车状态"><span class="nav-number"></span> <span class="nav-text">题目2： 封装一个汽车对象，可以通过如下方式获取汽车状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目3：下面这段代码输出结果是-为什么"><span class="nav-number">1.</span> <span class="nav-text">题目3：下面这段代码输出结果是? 为什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目4：下面这段代码输出结果是-为什么"><span class="nav-number">2.</span> <span class="nav-text">题目4：下面这段代码输出结果是? 为什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目5：-下面这段代码输出？如何输出delayer-0-delayer-1…（使用闭包来实现）"><span class="nav-number">3.</span> <span class="nav-text">题目5： 下面这段代码输出？如何输出delayer: 0, delayer:1…（使用闭包来实现）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目6：-如何获取元素的真实宽高"><span class="nav-number">4.</span> <span class="nav-text">题目6： 如何获取元素的真实宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目7：-URL-如何编码解码？为什么要编码？"><span class="nav-number">5.</span> <span class="nav-text">题目7： URL 如何编码解码？为什么要编码？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
