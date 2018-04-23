@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -731,174 +731,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/18 对象&原型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/18 对象&原型/" itemprop="url">18对象和原型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T14:29:01+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="OOP-指什么？有哪些特性"><a href="#OOP-指什么？有哪些特性" class="headerlink" title="OOP 指什么？有哪些特性?"></a>OOP 指什么？有哪些特性?</h3><p>1、什么是OO<br>OO(Object–Oriented )面向对象，OO方法(Object-Oriented Method，面向对象方法，面向对象的方法)是一种把面向对象的思想应用于软件开发过程中，指导开发活动的系统方法，简称OO (Object-Oriented)方法，Object Oriented是建立在“对象”概念基础上的方法学。对象是由数据和容许的操作组成的封装体，与客观实体有直接对应关系，一个对象类定义了具有相似性质的一组对象。而每继承性是对具有层次关系的类的属性和操作进行共享的一种方式。所谓面向对象就是基于对象概念，以对象为中心，以类和继承为构造机制，来认识、理解、刻画客观世界和设计、构建相应的软件系统。</p>
-<p>2、OOP是什么？<br>面向对象编程（Object Oriented Programming，OOP，面向对象程序设计）是一种计算机编程架构。OOP 的一条基本原则是计算机程序是由单个能够起到子程序作用的单元或对象组合而成。</p>
-<p>核心思想：封装，继承，多态.<br>OOP 达到了软件工程的三个主要目标：重用性、灵活性和扩展性。为了实现整体运算，每个对象都能够接收信息、处理数据和向其它对象发送信息。<br>OOP 主要有以下的概念和组件：</p>
-<p>组件 － 数据和功能一起在运行着的计算机程序中形成的单元，组件在 OOP 计算机程序中是模块和结构化的基础。<br>抽象性 － 程序有能力忽略正在处理中信息的某些方面，即对信息主要方面关注的能力。<br>封装 － 也叫做信息封装：确保组件不会以不可预期的方式改变其它组件的内部状态；只有在那些提供了内部状态改变方法的组件中，才可以访问其内部状态。每类组件都提供了一个与其它组件联系的接口，并规定了其它组件进行调用的方法。<br>多态性 － 组件的引用和类集会涉及到其它许多不同类型的组件，而且引用组件所产生的结果得依据实际调用的类型。<br>继承性 － 允许在现存的组件基础上创建子类组件，这统一并增强了多态性和封装性。典型地来说就是用类来对组件进行分组，而且还可以定义新类为现存的类的扩展，这样就可以将类组织成树形或网状结构，这体现了动作的通用性。<br>由于抽象性、封装性、重用性以及便于使用等方面的原因，以组件为基础的编程在脚本语言中已经变得特别流行。Python 和 Ruby 是最近才出现的语言，在开发时完全采用了 OOP 的思想，而流行的 Perl 脚本语言从版本5开始也慢慢地加入了新的面向对象的功能组件。用组件代替“现实”上的实体成为 JavaScript（ECMAScript） 得以流行的原因，有论证表明对组件进行适当的组合就可以在英特网上代替 HTML 和 XML 的文档对象模型（DOM）。</p>
-<h3 id="如何通过构造函数的方式创建一个拥有属性和方法的对象"><a href="#如何通过构造函数的方式创建一个拥有属性和方法的对象" class="headerlink" title="如何通过构造函数的方式创建一个拥有属性和方法的对象?"></a>如何通过构造函数的方式创建一个拥有属性和方法的对象?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Byron'</span>, <span class="number">25</span>);</span><br><span class="line"><span class="comment">// 第二种方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Byron'</span>, <span class="number">25</span>);</span><br><span class="line">p1.sayName();</span><br></pre></td></tr></table></figure>
-<h3 id="prototype-是什么？有什么特性"><a href="#prototype-是什么？有什么特性" class="headerlink" title="prototype 是什么？有什么特性?"></a>prototype 是什么？有什么特性?</h3><p>1.是什么</p>
-<ul>
-<li>显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为<code>prototype</code>的属性，这个属性指向函数的原型对象。<strong>Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。</strong></li>
-<li>隐式原型 implicit prototype link：JavaScript中任意对象都有一个内置属性<code>[[prototype]]</code>，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过<code>__proto__</code>来访问。ES5中有了对于这个内置属性标准的Get方法Object.getPrototypeOf().   <strong>Note: Object.prototype 这个对象是个例外，它的<code>__proto__</code>值为null.</strong></li>
-<li>二者的关系：<br>隐式原型指向创建这个对象的函数(constructor)的prototype</li>
-</ul>
-<p>2.作用是什么？</p>
-<ul>
-<li>显式原型的作用：用来实现基于原型的继承与属性的共享。</li>
-<li>隐式原型的作用：构成原型链，同样用于实现基于原型的继承。举个例子，当我们访问obj这个对象中的x属性时，如果在obj中找不到，那么就会沿着<code>__proto__</code>依次查找。</li>
-</ul>
-<p>3.<code>__proto__</code>的指向<br><code>__proto__</code>的指向到底如何判断呢？根据ECMA定义 ‘to the value of its constructor’s “prototype” ‘ —-指向创建这个对象的函数的显式原型。所以关键的点在于找到创建这个对象的构造函数，接下来就来看一下JS中对象被创建的方式，有三种方式：（1）对象字面量的方式 （2）new 的方式 （3）ES5中的Object.create() 但是我认为本质上只有一种方式，也就是通过new来创建。为什么这么说呢，首先字面量的方式是一种为了开发人员更方便创建对象的一个语法糖，本质就是 var o = new Object(); o.xx = xx;o.yy=yy; 再来看看Object.create(),这是ES5中新增的方法，在这之前这被称为原型式继承。</p>
-<h3 id="画出如下代码的原型图"><a href="#画出如下代码的原型图" class="headerlink" title="画出如下代码的原型图"></a>画出如下代码的原型图</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span> (<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'my name is:'</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">People.prototype.walk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is walking'</span>);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'饥人谷'</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> People(<span class="string">'前端'</span>);</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/7280908-07b6b5a71282dd05.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原型图.jpg"></p>
-<h3 id="创建一个-Car-对象，拥有属性name、color、status；拥有方法run，stop，getStatus"><a href="#创建一个-Car-对象，拥有属性name、color、status；拥有方法run，stop，getStatus" class="headerlink" title="创建一个 Car 对象，拥有属性name、color、status；拥有方法run，stop，getStatus"></a>创建一个 Car 对象，拥有属性name、color、status；拥有方法run，stop，getStatus</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Car</span> (<span class="params">name,color,status</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.color = color</span><br><span class="line">  <span class="keyword">this</span>.status = status</span><br><span class="line">&#125;</span><br><span class="line">Car.prototype = &#123;</span><br><span class="line">  run: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'is running'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  stop: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'is stoped'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getStatus: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'this.status'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> car1 = <span class="keyword">new</span> Car(<span class="string">'benz'</span>,<span class="string">'red'</span>,<span class="string">'1'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="创建一个-GoTop-对象，当-new-一个-GotTop-对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法"><a href="#创建一个-GoTop-对象，当-new-一个-GotTop-对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法" class="headerlink" title="创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法"></a>创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法</h3><ol>
-<li><code>ct</code>属性，GoTop 对应的 DOM 元素的容器</li>
-<li><code>target</code>属性， GoTop 对应的 DOM 元素</li>
-<li><code>bindEvent</code> 方法， 用于绑定事件</li>
-<li><code>createNode</code> 方法， 用于在容器内创建节点<br><a href="http://js.jirengu.com/makusihiyo/1/edit?html,output" target="_blank" rel="noopener">代码实现</a><br><a href="http://js.jirengu.com/makusihiyo" target="_blank" rel="noopener">效果预览</a></li>
-</ol>
-<h3 id="使用木桶布局实现一个图片墙"><a href="#使用木桶布局实现一个图片墙" class="headerlink" title="使用木桶布局实现一个图片墙"></a>使用木桶布局实现一个图片墙</h3><p><a href="http://js.jirengu.com/wokidadesa/1/edit?html,output" target="_blank" rel="noopener">代码实现</a><br><a href="http://js.jirengu.com/wokidadesa/1" target="_blank" rel="noopener">效果预览</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/19  this&原型链&继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1092,6 +924,174 @@
 <hr>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>1.获取父类属性<br>方法: 在子类的构造函数中,执行父类的构造函数,借助call绑定this指向实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 子类(<span class="params"></span>)</span>&#123;</span><br><span class="line">   父类.call(<span class="keyword">this</span>,<span class="built_in">arguments</span>)     <span class="comment">//this指向子类的实例,执行一遍后获取到父类的属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>2.获取父类的方法<br>方法一般都设置在类的prototype中,所以从这点出发<br>实现: 借助<code>Object.create()</code>方法,将<code>子类.prototype.__proto__ = 父类.prototype</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">子类.prototype = <span class="built_in">Object</span>.create(父类.prototype)   <span class="comment">//设置完后,此时 子类.prototype.constructor为父类,需纠正</span></span><br><span class="line">子类.prototype.constructor = 子类</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/18 对象&原型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/18/18 对象&原型/" itemprop="url">18对象和原型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T14:29:01+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="OOP-指什么？有哪些特性"><a href="#OOP-指什么？有哪些特性" class="headerlink" title="OOP 指什么？有哪些特性?"></a>OOP 指什么？有哪些特性?</h3><p>1、什么是OO<br>OO(Object–Oriented )面向对象，OO方法(Object-Oriented Method，面向对象方法，面向对象的方法)是一种把面向对象的思想应用于软件开发过程中，指导开发活动的系统方法，简称OO (Object-Oriented)方法，Object Oriented是建立在“对象”概念基础上的方法学。对象是由数据和容许的操作组成的封装体，与客观实体有直接对应关系，一个对象类定义了具有相似性质的一组对象。而每继承性是对具有层次关系的类的属性和操作进行共享的一种方式。所谓面向对象就是基于对象概念，以对象为中心，以类和继承为构造机制，来认识、理解、刻画客观世界和设计、构建相应的软件系统。</p>
+<p>2、OOP是什么？<br>面向对象编程（Object Oriented Programming，OOP，面向对象程序设计）是一种计算机编程架构。OOP 的一条基本原则是计算机程序是由单个能够起到子程序作用的单元或对象组合而成。</p>
+<p>核心思想：封装，继承，多态.<br>OOP 达到了软件工程的三个主要目标：重用性、灵活性和扩展性。为了实现整体运算，每个对象都能够接收信息、处理数据和向其它对象发送信息。<br>OOP 主要有以下的概念和组件：</p>
+<p>组件 － 数据和功能一起在运行着的计算机程序中形成的单元，组件在 OOP 计算机程序中是模块和结构化的基础。<br>抽象性 － 程序有能力忽略正在处理中信息的某些方面，即对信息主要方面关注的能力。<br>封装 － 也叫做信息封装：确保组件不会以不可预期的方式改变其它组件的内部状态；只有在那些提供了内部状态改变方法的组件中，才可以访问其内部状态。每类组件都提供了一个与其它组件联系的接口，并规定了其它组件进行调用的方法。<br>多态性 － 组件的引用和类集会涉及到其它许多不同类型的组件，而且引用组件所产生的结果得依据实际调用的类型。<br>继承性 － 允许在现存的组件基础上创建子类组件，这统一并增强了多态性和封装性。典型地来说就是用类来对组件进行分组，而且还可以定义新类为现存的类的扩展，这样就可以将类组织成树形或网状结构，这体现了动作的通用性。<br>由于抽象性、封装性、重用性以及便于使用等方面的原因，以组件为基础的编程在脚本语言中已经变得特别流行。Python 和 Ruby 是最近才出现的语言，在开发时完全采用了 OOP 的思想，而流行的 Perl 脚本语言从版本5开始也慢慢地加入了新的面向对象的功能组件。用组件代替“现实”上的实体成为 JavaScript（ECMAScript） 得以流行的原因，有论证表明对组件进行适当的组合就可以在英特网上代替 HTML 和 XML 的文档对象模型（DOM）。</p>
+<h3 id="如何通过构造函数的方式创建一个拥有属性和方法的对象"><a href="#如何通过构造函数的方式创建一个拥有属性和方法的对象" class="headerlink" title="如何通过构造函数的方式创建一个拥有属性和方法的对象?"></a>如何通过构造函数的方式创建一个拥有属性和方法的对象?</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Byron'</span>, <span class="number">25</span>);</span><br><span class="line"><span class="comment">// 第二种方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Byron'</span>, <span class="number">25</span>);</span><br><span class="line">p1.sayName();</span><br></pre></td></tr></table></figure>
+<h3 id="prototype-是什么？有什么特性"><a href="#prototype-是什么？有什么特性" class="headerlink" title="prototype 是什么？有什么特性?"></a>prototype 是什么？有什么特性?</h3><p>1.是什么</p>
+<ul>
+<li>显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为<code>prototype</code>的属性，这个属性指向函数的原型对象。<strong>Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。</strong></li>
+<li>隐式原型 implicit prototype link：JavaScript中任意对象都有一个内置属性<code>[[prototype]]</code>，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过<code>__proto__</code>来访问。ES5中有了对于这个内置属性标准的Get方法Object.getPrototypeOf().   <strong>Note: Object.prototype 这个对象是个例外，它的<code>__proto__</code>值为null.</strong></li>
+<li>二者的关系：<br>隐式原型指向创建这个对象的函数(constructor)的prototype</li>
+</ul>
+<p>2.作用是什么？</p>
+<ul>
+<li>显式原型的作用：用来实现基于原型的继承与属性的共享。</li>
+<li>隐式原型的作用：构成原型链，同样用于实现基于原型的继承。举个例子，当我们访问obj这个对象中的x属性时，如果在obj中找不到，那么就会沿着<code>__proto__</code>依次查找。</li>
+</ul>
+<p>3.<code>__proto__</code>的指向<br><code>__proto__</code>的指向到底如何判断呢？根据ECMA定义 ‘to the value of its constructor’s “prototype” ‘ —-指向创建这个对象的函数的显式原型。所以关键的点在于找到创建这个对象的构造函数，接下来就来看一下JS中对象被创建的方式，有三种方式：（1）对象字面量的方式 （2）new 的方式 （3）ES5中的Object.create() 但是我认为本质上只有一种方式，也就是通过new来创建。为什么这么说呢，首先字面量的方式是一种为了开发人员更方便创建对象的一个语法糖，本质就是 var o = new Object(); o.xx = xx;o.yy=yy; 再来看看Object.create(),这是ES5中新增的方法，在这之前这被称为原型式继承。</p>
+<h3 id="画出如下代码的原型图"><a href="#画出如下代码的原型图" class="headerlink" title="画出如下代码的原型图"></a>画出如下代码的原型图</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span> (<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'my name is:'</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">People.prototype.walk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is walking'</span>);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'饥人谷'</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> People(<span class="string">'前端'</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/7280908-07b6b5a71282dd05.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原型图.jpg"></p>
+<h3 id="创建一个-Car-对象，拥有属性name、color、status；拥有方法run，stop，getStatus"><a href="#创建一个-Car-对象，拥有属性name、color、status；拥有方法run，stop，getStatus" class="headerlink" title="创建一个 Car 对象，拥有属性name、color、status；拥有方法run，stop，getStatus"></a>创建一个 Car 对象，拥有属性name、color、status；拥有方法run，stop，getStatus</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Car</span> (<span class="params">name,color,status</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.color = color</span><br><span class="line">  <span class="keyword">this</span>.status = status</span><br><span class="line">&#125;</span><br><span class="line">Car.prototype = &#123;</span><br><span class="line">  run: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'is running'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  stop: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'is stoped'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getStatus: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'this.status'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> car1 = <span class="keyword">new</span> Car(<span class="string">'benz'</span>,<span class="string">'red'</span>,<span class="string">'1'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个-GoTop-对象，当-new-一个-GotTop-对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法"><a href="#创建一个-GoTop-对象，当-new-一个-GotTop-对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法" class="headerlink" title="创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法"></a>创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法</h3><ol>
+<li><code>ct</code>属性，GoTop 对应的 DOM 元素的容器</li>
+<li><code>target</code>属性， GoTop 对应的 DOM 元素</li>
+<li><code>bindEvent</code> 方法， 用于绑定事件</li>
+<li><code>createNode</code> 方法， 用于在容器内创建节点<br><a href="http://js.jirengu.com/makusihiyo/1/edit?html,output" target="_blank" rel="noopener">代码实现</a><br><a href="http://js.jirengu.com/makusihiyo" target="_blank" rel="noopener">效果预览</a></li>
+</ol>
+<h3 id="使用木桶布局实现一个图片墙"><a href="#使用木桶布局实现一个图片墙" class="headerlink" title="使用木桶布局实现一个图片墙"></a>使用木桶布局实现一个图片墙</h3><p><a href="http://js.jirengu.com/wokidadesa/1/edit?html,output" target="_blank" rel="noopener">代码实现</a><br><a href="http://js.jirengu.com/wokidadesa/1" target="_blank" rel="noopener">效果预览</a></p>
 
           
         
@@ -2397,6 +2397,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
