@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.\d，\w,\s,[a-zA-Z0-9],\b,.,*,+,?,x{3},^,$分别是什么?   字符 等价类 含义     \d [0-9] 数字字符   \w [a-zA-Z_0-9] 单词字符，字母、数字下划线   \s [\t\n\x0B\f\r] 空白符（空格或Tab）   [a-zA-Z0-9] – a-z，A-Z，0-9的字符   \b – 单词边界   . [^\r\n] 除了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7 正则表达式">
+<meta property="og:url" content="http://yoursite.com/2017/12/08/7 正则表达式/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="1.\d，\w,\s,[a-zA-Z0-9],\b,.,*,+,?,x{3},^,$分别是什么?   字符 等价类 含义     \d [0-9] 数字字符   \w [a-zA-Z_0-9] 单词字符，字母、数字下划线   \s [\t\n\x0B\f\r] 空白符（空格或Tab）   [a-zA-Z0-9] – a-z，A-Z，0-9的字符   \b – 单词边界   . [^\r\n] 除了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-23T08:44:25.402Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 正则表达式">
+<meta name="twitter:description" content="1.\d，\w,\s,[a-zA-Z0-9],\b,.,*,+,?,x{3},^,$分别是什么?   字符 等价类 含义     \d [0-9] 数字字符   \w [a-zA-Z_0-9] 单词字符，字母、数字下划线   \s [\t\n\x0B\f\r] 空白符（空格或Tab）   [a-zA-Z0-9] – a-z，A-Z，0-9的字符   \b – 单词边界   . [^\r\n] 除了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/08/7 正则表达式/"/>
+
+
+
+
+
+  <title>7 正则表达式 | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/08/7 正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7 正则表达式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-08T12:31:50+08:00">
+                2017-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-d，-w-s-a-zA-Z0-9-b-x-3-分别是什么"><a href="#1-d，-w-s-a-zA-Z0-9-b-x-3-分别是什么" class="headerlink" title="1.\d，\w,\s,[a-zA-Z0-9],\b,.,*,+,?,x{3},^,$分别是什么?"></a>1.\d，\w,\s,[a-zA-Z0-9],\b,.,*,+,?,x{3},^,$分别是什么?</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">等价类</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:center">[0-9]</td>
+<td style="text-align:center">数字字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:center">[a-zA-Z_0-9]</td>
+<td style="text-align:center">单词字符，字母、数字下划线</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:center">[\t\n\x0B\f\r]</td>
+<td style="text-align:center">空白符（空格或Tab）</td>
+</tr>
+<tr>
+<td style="text-align:center">[a-zA-Z0-9]</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">a-z，A-Z，0-9的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:center">–</td>
+<td style="text-align:center">单词边界</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">[^\r\n]</td>
+<td style="text-align:center">除了回车符和换行符之外的所有字符</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">{0,}</td>
+<td style="text-align:center">出现零次或多次（任意次）</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">{1,}</td>
+<td style="text-align:center">出现一次或多次（至少出现一次）</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">{0,1}</td>
+<td style="text-align:center">出现零次或一次（最多出现一次）</td>
+</tr>
+<tr>
+<td style="text-align:center">x{3}</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x出现3次，比如’xxx’</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">在中括号内代表取反义符号/在整体正则中表示以xxx开头</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">以xxx结尾</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-写一个函数trim-str-，去除字符串两边的空白字符"><a href="#2-写一个函数trim-str-，去除字符串两边的空白字符" class="headerlink" title="2. 写一个函数trim(str)，去除字符串两边的空白字符"></a>2. 写一个函数trim(str)，去除字符串两边的空白字符</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function trim(str)&#123;</span><br><span class="line">  return str.replace(/^\s+|\s+$/g,&apos;&apos;)</span><br><span class="line">&#125;</span><br><span class="line">console.log(trim(&apos; he he  &apos;)) // 输出he he</span><br></pre></td></tr></table></figure>
+<h1 id="3-写一个函数isEmail-str-，判断用户输入的是不是邮箱"><a href="#3-写一个函数isEmail-str-，判断用户输入的是不是邮箱" class="headerlink" title="3. 写一个函数isEmail(str)，判断用户输入的是不是邮箱"></a>3. 写一个函数isEmail(str)，判断用户输入的是不是邮箱</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function isEmail(str)&#123;</span><br><span class="line">  var reg = /^\w+@\w+\.\w+$/</span><br><span class="line">  return reg.test(str)</span><br><span class="line">&#125;</span><br><span class="line">console.log(isEmail(&apos;haha@email.com&apos;))    //true</span><br><span class="line">console.log(isEmail(&apos;hah&apos;))    //false</span><br></pre></td></tr></table></figure>
+<h1 id="4-写一个函数isPhoneNum-str-，判断用户输入的是不是手机号"><a href="#4-写一个函数isPhoneNum-str-，判断用户输入的是不是手机号" class="headerlink" title="4. 写一个函数isPhoneNum(str)，判断用户输入的是不是手机号"></a>4. 写一个函数isPhoneNum(str)，判断用户输入的是不是手机号</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function isPhoneNumber(str)&#123;</span><br><span class="line">  return /^1\d&#123;10&#125;$/.test(str)</span><br><span class="line">&#125;</span><br><span class="line">console.log(isPhoneNumber(&apos;18012349856&apos;)) //true</span><br><span class="line">console.log(isPhoneNumber(&apos;28012349632&apos;)) //false</span><br></pre></td></tr></table></figure>
+<h1 id="5-写一个函数isValidUsername-str-，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）"><a href="#5-写一个函数isValidUsername-str-，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）" class="headerlink" title="5. 写一个函数isValidUsername(str)，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）"></a>5. 写一个函数isValidUsername(str)，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function isValidUsername(str)&#123;</span><br><span class="line">  var reg = /^\w&#123;6,20&#125;$/</span><br><span class="line">  return reg.test(str)</span><br><span class="line">&#125;</span><br><span class="line">console.log(isValidUsername(&apos;haha180&apos;))    //true</span><br><span class="line">console.log(isValidUsername(&apos;--haha180&apos;)) //false</span><br></pre></td></tr></table></figure>
+<h1 id="6-写一个函数isValidPassword-str-判断用户输入的是不是合法密码（长度6-20个字符，只包括大写字母、小写字母、数字、下划线，且至少至少包括两种）"><a href="#6-写一个函数isValidPassword-str-判断用户输入的是不是合法密码（长度6-20个字符，只包括大写字母、小写字母、数字、下划线，且至少至少包括两种）" class="headerlink" title="6.  写一个函数isValidPassword(str), 判断用户输入的是不是合法密码（长度6-20个字符，只包括大写字母、小写字母、数字、下划线，且至少至少包括两种）"></a>6.  写一个函数isValidPassword(str), 判断用户输入的是不是合法密码（长度6-20个字符，只包括大写字母、小写字母、数字、下划线，且至少至少包括两种）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function isValidPassword(str)&#123;</span><br><span class="line">  if(!/^\w&#123;6,20&#125;$/.test(str)) return false</span><br><span class="line">  if(/^[A-Z]&#123;6,20&#125;$/.test(str)) return false</span><br><span class="line">  if(/^[a-z]&#123;6,20&#125;$/.test(str)) return false</span><br><span class="line">  if(/^\d&#123;6,20&#125;$/.test(str)) return false</span><br><span class="line">  return true</span><br><span class="line">&#125;</span><br><span class="line">console.log(isValidUsername(&apos;haha&apos;))   //false</span><br><span class="line">console.log(isValidUsername(&apos;haha123&apos;))  //true</span><br></pre></td></tr></table></figure>
+<h1 id="7-写一个正则表达式，得到如下字符串里所有的颜色"><a href="#7-写一个正则表达式，得到如下字符串里所有的颜色" class="headerlink" title="7. 写一个正则表达式，得到如下字符串里所有的颜色"></a>7. 写一个正则表达式，得到如下字符串里所有的颜色</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var re = /#([0-9a-fA-F]&#123;6&#125;|[0-9a-fA-F]&#123;3&#125;)(?=;)/g</span><br><span class="line">var subj = &quot;color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee &quot;</span><br><span class="line">console.log( subj.match(re) )  // [&apos;#121212&apos;, &apos;#AA00ef&apos;]</span><br></pre></td></tr></table></figure>
+<h1 id="8-下面代码输出什么-为什么-改写代码，让其输出-“”hunger””-“”world””"><a href="#8-下面代码输出什么-为什么-改写代码，让其输出-“”hunger””-“”world””" class="headerlink" title="8. 下面代码输出什么? 为什么? 改写代码，让其输出[“”hunger””, “”world””]."></a>8. 下面代码输出什么? 为什么? 改写代码，让其输出[“”hunger””, “”world””].</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello  &quot;hunger&quot; , hello &quot;world&quot;&apos;;</span><br><span class="line">var pat =  /&quot;.*&quot;/g;</span><br><span class="line">str.match(pat);</span><br><span class="line">//输出[&quot;&quot;hunger&quot; , hello &quot;world&quot;&quot;],因为默认贪婪模式下会尽可能多的匹配&quot;&quot;中的内容，再量词后面加上?即可改为非贪婪模式</span><br><span class="line">改写:</span><br><span class="line">var pat =  /&quot;.*?&quot;/g;  // [&quot;&quot;hunger&quot;&quot;, &quot;&quot;world&quot;&quot;]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/07/6 Math数组Date/" rel="next" title="6 Math数组Date">
+                <i class="fa fa-chevron-left"></i> 6 Math数组Date
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/08/8 DOM操作/" rel="prev" title="8 DOM操作">
+                8 DOM操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-d，-w-s-a-zA-Z0-9-b-x-3-分别是什么"><span class="nav-number">1.</span> <span class="nav-text">1.\d，\w,\s,[a-zA-Z0-9],\b,.,*,+,?,x{3},^,$分别是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-写一个函数trim-str-，去除字符串两边的空白字符"><span class="nav-number">2.</span> <span class="nav-text">2. 写一个函数trim(str)，去除字符串两边的空白字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-写一个函数isEmail-str-，判断用户输入的是不是邮箱"><span class="nav-number">3.</span> <span class="nav-text">3. 写一个函数isEmail(str)，判断用户输入的是不是邮箱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-写一个函数isPhoneNum-str-，判断用户输入的是不是手机号"><span class="nav-number">4.</span> <span class="nav-text">4. 写一个函数isPhoneNum(str)，判断用户输入的是不是手机号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-写一个函数isValidUsername-str-，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）"><span class="nav-number">5.</span> <span class="nav-text">5. 写一个函数isValidUsername(str)，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-写一个函数isValidPassword-str-判断用户输入的是不是合法密码（长度6-20个字符，只包括大写字母、小写字母、数字、下划线，且至少至少包括两种）"><span class="nav-number">6.</span> <span class="nav-text">6.  写一个函数isValidPassword(str), 判断用户输入的是不是合法密码（长度6-20个字符，只包括大写字母、小写字母、数字、下划线，且至少至少包括两种）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-写一个正则表达式，得到如下字符串里所有的颜色"><span class="nav-number">7.</span> <span class="nav-text">7. 写一个正则表达式，得到如下字符串里所有的颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-下面代码输出什么-为什么-改写代码，让其输出-“”hunger””-“”world””"><span class="nav-number">8.</span> <span class="nav-text">8. 下面代码输出什么? 为什么? 改写代码，让其输出[“”hunger””, “”world””].</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
