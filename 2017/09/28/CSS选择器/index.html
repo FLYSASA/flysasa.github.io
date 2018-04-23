@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.class和id的使用场景？class 选择器：class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。class 选择器在HTML中以class属性表示, 在 CSS 中，类选择器以一个点”.”号显示。 例：1.center &amp;#123;text-align:center;&amp;#125; 在上面的例子中，所有拥有center类的HTML元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fair to be late, but never absent">
+<meta property="og:url" content="http://yoursite.com/2017/09/28/CSS选择器/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="1.class和id的使用场景？class 选择器：class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。class 选择器在HTML中以class属性表示, 在 CSS 中，类选择器以一个点”.”号显示。 例：1.center &amp;#123;text-align:center;&amp;#125; 在上面的例子中，所有拥有center类的HTML元素">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-d2fa1c71639562e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-c00b7bc42c26c8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-cf4cdaf0ed02903c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-d5f6fa96aee458db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-a706255d107b1fe9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-23T08:10:16.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fair to be late, but never absent">
+<meta name="twitter:description" content="1.class和id的使用场景？class 选择器：class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。class 选择器在HTML中以class属性表示, 在 CSS 中，类选择器以一个点”.”号显示。 例：1.center &amp;#123;text-align:center;&amp;#125; 在上面的例子中，所有拥有center类的HTML元素">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7280908-d2fa1c71639562e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/28/CSS选择器/"/>
+
+
+
+
+
+  <title>Fair to be late, but never absent | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/28/CSS选择器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Fair to be late, but never absent</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-28T17:54:22+08:00">
+                2017-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-class和id的使用场景？"><a href="#1-class和id的使用场景？" class="headerlink" title="1.class和id的使用场景？"></a>1.class和id的使用场景？</h1><h3 id="class-选择器："><a href="#class-选择器：" class="headerlink" title="class 选择器："></a>class 选择器：</h3><p>class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。<br>class 选择器在HTML中以class属性表示, 在 CSS 中，类选择器以一个点”.”号显示。</p>
+<h3 id="例："><a href="#例：" class="headerlink" title="例："></a>例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.center &#123;text-align:center;&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，所有拥有center类的HTML元素均为居中。</p>
+<h3 id="id-选择器："><a href="#id-选择器：" class="headerlink" title="id 选择器："></a>id 选择器：</h3><p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。<br>HTML元素以id属性来设置id选择器,CSS 中 id 选择器以 “#” 来定义。</p>
+<h3 id="例：-1"><a href="#例：-1" class="headerlink" title="例："></a>例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#para1</span><br><span class="line">&#123;</span><br><span class="line">text-align:center;</span><br><span class="line">color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，应用于元素属性id=”para1”。</p>
+<h1 id="2-css选择器常见的有几种？"><a href="#2-css选择器常见的有几种？" class="headerlink" title="2.css选择器常见的有几种？"></a>2.css选择器常见的有几种？</h1><h3 id="1-基础选择器"><a href="#1-基础选择器" class="headerlink" title="1.基础选择器"></a>1.基础选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>通用元素选择器，匹配页面任何元素（这也就决定了我们很少使用）</td>
+</tr>
+<tr>
+<td># id</td>
+<td>id选择器，匹配特定id的元素</td>
+</tr>
+<tr>
+<td>.class</td>
+<td>类选择器，匹配class包含(不是等于)特定类的元素</td>
+</tr>
+<tr>
+<td>element</td>
+<td>标签选择器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-组合选择器"><a href="#2-组合选择器" class="headerlink" title="2.组合选择器"></a>2.组合选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E,F</td>
+<td>多元素选择器，用,分隔，同时匹配元素E或元素F</td>
+</tr>
+<tr>
+<td>E F</td>
+<td>后代选择器，用空格分隔，匹配E元素所有的后代（不只是子元素、子元素向下递归）元素F</td>
+</tr>
+<tr>
+<td>E&gt;F</td>
+<td>子元素选择器，用&gt;分隔，匹配E元素的所有直接子元素</td>
+</tr>
+<tr>
+<td>E+F</td>
+<td>直接相邻选择器，匹配E元素之后的相邻的同级元素F</td>
+</tr>
+<tr>
+<td>E~F</td>
+<td>普通相邻选择器（弟弟选择器），匹配E元素之后的同级元素F（无论直接相邻与否）</td>
+</tr>
+<tr>
+<td>.class1.class2</td>
+<td>id和class选择器和选择器连写的时候中间没有分隔符，. 和 # 本身充当分隔符的元素</td>
+</tr>
+<tr>
+<td>element#id</td>
+<td>id和class选择器和选择器连写的时候中间没有分隔符，. 和 # 本身充当分隔符的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-属性选择器"><a href="#3-属性选择器" class="headerlink" title="3.属性选择器"></a>3.属性选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E[attr]</td>
+<td>匹配所有具有属性attr的元素，div[id]就能取到所有有id属性的div</td>
+</tr>
+<tr>
+<td>E[attr = value]</td>
+<td>匹配属性attr值为value的元素，div[id=test],匹配id=test的div</td>
+</tr>
+<tr>
+<td>E[attr ~= value]</td>
+<td>匹配所有属性attr具有多个空格分隔、其中一个值等于value的元素</td>
+</tr>
+<tr>
+<td>E[attr ^= value]</td>
+<td>匹配属性attr的值以value开头的元素</td>
+</tr>
+<tr>
+<td>E[attr $= value]</td>
+<td>匹配属性attr的值以value结尾的元素</td>
+</tr>
+<tr>
+<td>E[attr *= value]</td>
+<td>匹配属性attr的值包含value的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-伪类选择器"><a href="#4-伪类选择器" class="headerlink" title="4.伪类选择器"></a>4.伪类选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td>匹配作为长子（第一个子女）的元素E</td>
+</tr>
+<tr>
+<td>E:link</td>
+<td>匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td>E:visited</td>
+<td>匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td>E:active</td>
+<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
+</tr>
+<tr>
+<td>E:hover</td>
+<td>匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>E:focus</td>
+<td>匹配获得当前焦点的E元素</td>
+</tr>
+<tr>
+<td>E:lang(c)</td>
+<td>匹配lang属性等于c的E元素</td>
+</tr>
+<tr>
+<td>E:enabled</td>
+<td>匹配表单中可用的元素</td>
+</tr>
+<tr>
+<td>E:disabled</td>
+<td>匹配表单中禁用的元素</td>
+</tr>
+<tr>
+<td>E:checked</td>
+<td>匹配表单中被选中的radio或checkbox元素</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>匹配用户当前选中的元素</td>
+</tr>
+<tr>
+<td>E:root</td>
+<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td>匹配其父元素的第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-last-child(n)</td>
+<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:nth-last-of-type(n)</td>
+<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:only-child</td>
+<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:only-of-type</td>
+<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:empty</td>
+<td>匹配一个不包含任何子元素的元素，文本节点也被看作子元素</td>
+</tr>
+<tr>
+<td>E:not(selector)</td>
+<td>匹配不符合当前选择器的任何元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="n的取值"><a href="#n的取值" class="headerlink" title="n的取值"></a>n的取值</h5><p>1，2，3，4，5<br>2n+1, 2n, 4n-1<br>odd, even</p>
+<h3 id="5-伪元素选择器"><a href="#5-伪元素选择器" class="headerlink" title="5.伪元素选择器"></a>5.伪元素选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E::first-line</td>
+<td>匹配E元素内容的第一行</td>
+</tr>
+<tr>
+<td>E::first-letter</td>
+<td>匹配E元素内容的第一个字母</td>
+</tr>
+<tr>
+<td>E::before</td>
+<td>在E元素之前插入生成的内容</td>
+</tr>
+<tr>
+<td>E::after</td>
+<td>在E元素之后插入生成的内容</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？"><a href="#3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？" class="headerlink" title="3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？"></a>3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？</h1><h3 id="选择器优先级：从高到底分别是"><a href="#选择器优先级：从高到底分别是" class="headerlink" title="选择器优先级：从高到底分别是"></a>选择器优先级：从高到底分别是</h3><p>1.在属性后面使用 !important 会覆盖页面内任何位置定义的元素样式<br>2.作为style属性写在元素标签上的内联样式<br>3.id选择器<code>#id</code><br>4.类选择器<code>.class</code><br>5.伪类选择器<code>a:hover</code><br>6.属性选择器<br>7.标签选择器<br>8.通配符选择器<br>9.浏览器自定义</p>
+<h3 id="对于复杂场景如何计算优先级"><a href="#对于复杂场景如何计算优先级" class="headerlink" title="对于复杂场景如何计算优先级"></a>对于复杂场景如何计算优先级</h3><p>选择器的特殊性值表述为4个部分，用0,0,0,0表示。</p>
+<ul>
+<li>ID选择器的特殊性值，加0,1,0,0;</li>
+<li>类选择器、属性选择器或伪类，加0,0,1,0;</li>
+<li>标签选择器和伪元素，加0,0,0,1;</li>
+<li>通配选择器对特殊性没有贡献，即0,0,0,0;</li>
+<li>最后比较特殊的一个标志!important(权重)，它没有特殊值，但是他的优先级是最高的，为了方便记忆，可认为他的默认值是1,0,0,0.<br>示例如下：</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-d2fa1c71639562e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>执行效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-c00b7bc42c26c8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？"><a href="#4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？" class="headerlink" title="4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？"></a>4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？</h1><p>四个选择器优先级相同，考虑他们会相互覆盖，应该按照这个顺序：</p>
+<p>a:link（未被点击）<br>a:visited（已被点击）<br>a:hover（鼠标悬停其上）<br>a:active（鼠标已经按下，还没有释放）</p>
+<p>因为：<br>1.四个选择器优先级相同，越往后的样式会覆盖前面的样式<br>2.链接被访问后，样式会发生改变，所以<code>a:visited</code>应放在<code>a:link</code>之后<br>3.当鼠标悬停在链接上时，无论链接是否已经被访问过，其样式都会发生改变，所以<code>a:hover</code>应放在<code>a:visited</code>之后<br>4.当鼠标按下链接但未松开时，链接样式会发生改变，但此时也属于鼠标悬停的状态，所以应把 <code>a:active</code> 放在 <code>a:hover</code> 之后，这样可以覆盖<code>a:hover</code>的样式</p>
+<p>记这顺序有个小招数，“LoVe？ HA!”。</p>
+<h1 id="5-以下选择器分别是什么意思？"><a href="#5-以下选择器分别是什么意思？" class="headerlink" title="5.以下选择器分别是什么意思？"></a>5.以下选择器分别是什么意思？</h1><p><img src="http://upload-images.jianshu.io/upload_images/7280908-cf4cdaf0ed02903c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="·列出你知道的伪类选择器"><a href="#·列出你知道的伪类选择器" class="headerlink" title="·列出你知道的伪类选择器"></a>·列出你知道的伪类选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td>匹配作为长子（第一个子女）的元素E</td>
+</tr>
+<tr>
+<td>E:link</td>
+<td>匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td>E:visited</td>
+<td>匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td>E:active</td>
+<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
+</tr>
+<tr>
+<td>E:hover</td>
+<td>匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>E:focus</td>
+<td>匹配获得当前焦点的E元素</td>
+</tr>
+<tr>
+<td>E:lang(c)</td>
+<td>匹配lang属性等于c的E元素</td>
+</tr>
+<tr>
+<td>E:enabled</td>
+<td>匹配表单中可用的元素</td>
+</tr>
+<tr>
+<td>E:disabled</td>
+<td>匹配表单中禁用的元素</td>
+</tr>
+<tr>
+<td>E:checked</td>
+<td>匹配表单中被选中的radio或checkbox元素</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>匹配用户当前选中的元素</td>
+</tr>
+<tr>
+<td>E:root</td>
+<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td>匹配其父元素的第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-last-child(n)</td>
+<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:nth-last-of-type(n)</td>
+<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:only-child</td>
+<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:only-of-type</td>
+<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:empty</td>
+<td>匹配一个不包含任何子元素的元素，文本节点也被看作子元素</td>
+</tr>
+<tr>
+<td>E:not(selector)</td>
+<td>匹配不符合当前选择器的任何元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="n的取值-1"><a href="#n的取值-1" class="headerlink" title="n的取值"></a>n的取值</h5><p>1，2，3，4，5<br>2n+1, 2n, 4n-1<br>odd, even</p>
+<h3 id="·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）"><a href="#·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）" class="headerlink" title="·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）"></a>·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）</h3><p>·first-child 匹配其父元素的第一个子元素<br>·first-of-type 匹配其父元素下拥有相同标签的第一个元素</p>
+<p>1.div:first-child        div下的第一个子元素<br>2.div:first-of-type    div下的第一个同类型的子元素<br>3.div :first-child    匹配所有div元素内所有元素中属于其父元素的首个子元素<br>4.div :first-of-type  匹配所有div元素内所有元素中属于其父元素的首个类型的子元素</p>
+<h3 id="·运行如下代码，解析下输出样式的原因。"><a href="#·运行如下代码，解析下输出样式的原因。" class="headerlink" title="·运行如下代码，解析下输出样式的原因。"></a>·运行如下代码，解析下输出样式的原因。</h3><p><img src="http://upload-images.jianshu.io/upload_images/7280908-d5f6fa96aee458db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>运行如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-a706255d107b1fe9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item1:first-child&#123;</span><br><span class="line">  color: red;</span><br></pre></td></tr></table></figure></p>
+<p>item1类下的第一个元素颜色为红色，所以aa为红色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item1:first-of-type&#123;</span><br><span class="line">  background: blue;</span><br></pre></td></tr></table></figure></p>
+<p>item1类下拥有相同标签的第一个子元素背景为蓝色，p标签下第一个子元素是aa,h3标签下第一个子元素是bb,所以aa和bb的背景变为蓝色，ccc是第和h3标签下第二个子元素所以不变。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/26/CSS 基础/" rel="next" title="Fair to be late, but never absent">
+                <i class="fa fa-chevron-left"></i> Fair to be late, but never absent
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/搭建成功/" rel="prev" title="Fair to be late, but never absent">
+                Fair to be late, but never absent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-class和id的使用场景？"><span class="nav-number">1.</span> <span class="nav-text">1.class和id的使用场景？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-选择器："><span class="nav-number">1.0.1.</span> <span class="nav-text">class 选择器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例："><span class="nav-number">1.0.2.</span> <span class="nav-text">例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id-选择器："><span class="nav-number">1.0.3.</span> <span class="nav-text">id 选择器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例：-1"><span class="nav-number">1.0.4.</span> <span class="nav-text">例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-css选择器常见的有几种？"><span class="nav-number">2.</span> <span class="nav-text">2.css选择器常见的有几种？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基础选择器"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.基础选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组合选择器"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.组合选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-属性选择器"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-伪类选择器"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#n的取值"><span class="nav-number">2.0.4.0.1.</span> <span class="nav-text">n的取值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-伪元素选择器"><span class="nav-number">2.0.5.</span> <span class="nav-text">5.伪元素选择器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？"><span class="nav-number">3.</span> <span class="nav-text">3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器优先级：从高到底分别是"><span class="nav-number">3.0.1.</span> <span class="nav-text">选择器优先级：从高到底分别是</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于复杂场景如何计算优先级"><span class="nav-number">3.0.2.</span> <span class="nav-text">对于复杂场景如何计算优先级</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？"><span class="nav-number">4.</span> <span class="nav-text">4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-以下选择器分别是什么意思？"><span class="nav-number">5.</span> <span class="nav-text">5.以下选择器分别是什么意思？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#·列出你知道的伪类选择器"><span class="nav-number">5.0.1.</span> <span class="nav-text">·列出你知道的伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#n的取值-1"><span class="nav-number">5.0.1.0.1.</span> <span class="nav-text">n的取值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）"><span class="nav-number">5.0.2.</span> <span class="nav-text">·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#·运行如下代码，解析下输出样式的原因。"><span class="nav-number">5.0.3.</span> <span class="nav-text">·运行如下代码，解析下输出样式的原因。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
