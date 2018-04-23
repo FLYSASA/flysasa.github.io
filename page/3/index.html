@@ -252,6 +252,689 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/28/CSS选择器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/28/CSS选择器/" itemprop="url">CSS选择器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-28T17:54:22+08:00">
+                2017-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-class和id的使用场景？"><a href="#1-class和id的使用场景？" class="headerlink" title="1.class和id的使用场景？"></a>1.class和id的使用场景？</h1><h3 id="class-选择器："><a href="#class-选择器：" class="headerlink" title="class 选择器："></a>class 选择器：</h3><p>class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。<br>class 选择器在HTML中以class属性表示, 在 CSS 中，类选择器以一个点”.”号显示。</p>
+<h3 id="例："><a href="#例：" class="headerlink" title="例："></a>例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.center &#123;text-align:center;&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，所有拥有center类的HTML元素均为居中。</p>
+<h3 id="id-选择器："><a href="#id-选择器：" class="headerlink" title="id 选择器："></a>id 选择器：</h3><p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。<br>HTML元素以id属性来设置id选择器,CSS 中 id 选择器以 “#” 来定义。</p>
+<h3 id="例：-1"><a href="#例：-1" class="headerlink" title="例："></a>例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#para1</span><br><span class="line">&#123;</span><br><span class="line">text-align:center;</span><br><span class="line">color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，应用于元素属性id=”para1”。</p>
+<h1 id="2-css选择器常见的有几种？"><a href="#2-css选择器常见的有几种？" class="headerlink" title="2.css选择器常见的有几种？"></a>2.css选择器常见的有几种？</h1><h3 id="1-基础选择器"><a href="#1-基础选择器" class="headerlink" title="1.基础选择器"></a>1.基础选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>通用元素选择器，匹配页面任何元素（这也就决定了我们很少使用）</td>
+</tr>
+<tr>
+<td># id</td>
+<td>id选择器，匹配特定id的元素</td>
+</tr>
+<tr>
+<td>.class</td>
+<td>类选择器，匹配class包含(不是等于)特定类的元素</td>
+</tr>
+<tr>
+<td>element</td>
+<td>标签选择器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-组合选择器"><a href="#2-组合选择器" class="headerlink" title="2.组合选择器"></a>2.组合选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E,F</td>
+<td>多元素选择器，用,分隔，同时匹配元素E或元素F</td>
+</tr>
+<tr>
+<td>E F</td>
+<td>后代选择器，用空格分隔，匹配E元素所有的后代（不只是子元素、子元素向下递归）元素F</td>
+</tr>
+<tr>
+<td>E&gt;F</td>
+<td>子元素选择器，用&gt;分隔，匹配E元素的所有直接子元素</td>
+</tr>
+<tr>
+<td>E+F</td>
+<td>直接相邻选择器，匹配E元素之后的相邻的同级元素F</td>
+</tr>
+<tr>
+<td>E~F</td>
+<td>普通相邻选择器（弟弟选择器），匹配E元素之后的同级元素F（无论直接相邻与否）</td>
+</tr>
+<tr>
+<td>.class1.class2</td>
+<td>id和class选择器和选择器连写的时候中间没有分隔符，. 和 # 本身充当分隔符的元素</td>
+</tr>
+<tr>
+<td>element#id</td>
+<td>id和class选择器和选择器连写的时候中间没有分隔符，. 和 # 本身充当分隔符的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-属性选择器"><a href="#3-属性选择器" class="headerlink" title="3.属性选择器"></a>3.属性选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E[attr]</td>
+<td>匹配所有具有属性attr的元素，div[id]就能取到所有有id属性的div</td>
+</tr>
+<tr>
+<td>E[attr = value]</td>
+<td>匹配属性attr值为value的元素，div[id=test],匹配id=test的div</td>
+</tr>
+<tr>
+<td>E[attr ~= value]</td>
+<td>匹配所有属性attr具有多个空格分隔、其中一个值等于value的元素</td>
+</tr>
+<tr>
+<td>E[attr ^= value]</td>
+<td>匹配属性attr的值以value开头的元素</td>
+</tr>
+<tr>
+<td>E[attr $= value]</td>
+<td>匹配属性attr的值以value结尾的元素</td>
+</tr>
+<tr>
+<td>E[attr *= value]</td>
+<td>匹配属性attr的值包含value的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-伪类选择器"><a href="#4-伪类选择器" class="headerlink" title="4.伪类选择器"></a>4.伪类选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td>匹配作为长子（第一个子女）的元素E</td>
+</tr>
+<tr>
+<td>E:link</td>
+<td>匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td>E:visited</td>
+<td>匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td>E:active</td>
+<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
+</tr>
+<tr>
+<td>E:hover</td>
+<td>匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>E:focus</td>
+<td>匹配获得当前焦点的E元素</td>
+</tr>
+<tr>
+<td>E:lang(c)</td>
+<td>匹配lang属性等于c的E元素</td>
+</tr>
+<tr>
+<td>E:enabled</td>
+<td>匹配表单中可用的元素</td>
+</tr>
+<tr>
+<td>E:disabled</td>
+<td>匹配表单中禁用的元素</td>
+</tr>
+<tr>
+<td>E:checked</td>
+<td>匹配表单中被选中的radio或checkbox元素</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>匹配用户当前选中的元素</td>
+</tr>
+<tr>
+<td>E:root</td>
+<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td>匹配其父元素的第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-last-child(n)</td>
+<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:nth-last-of-type(n)</td>
+<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:only-child</td>
+<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:only-of-type</td>
+<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:empty</td>
+<td>匹配一个不包含任何子元素的元素，文本节点也被看作子元素</td>
+</tr>
+<tr>
+<td>E:not(selector)</td>
+<td>匹配不符合当前选择器的任何元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="n的取值"><a href="#n的取值" class="headerlink" title="n的取值"></a>n的取值</h5><p>1，2，3，4，5<br>2n+1, 2n, 4n-1<br>odd, even</p>
+<h3 id="5-伪元素选择器"><a href="#5-伪元素选择器" class="headerlink" title="5.伪元素选择器"></a>5.伪元素选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E::first-line</td>
+<td>匹配E元素内容的第一行</td>
+</tr>
+<tr>
+<td>E::first-letter</td>
+<td>匹配E元素内容的第一个字母</td>
+</tr>
+<tr>
+<td>E::before</td>
+<td>在E元素之前插入生成的内容</td>
+</tr>
+<tr>
+<td>E::after</td>
+<td>在E元素之后插入生成的内容</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？"><a href="#3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？" class="headerlink" title="3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？"></a>3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？</h1><h3 id="选择器优先级：从高到底分别是"><a href="#选择器优先级：从高到底分别是" class="headerlink" title="选择器优先级：从高到底分别是"></a>选择器优先级：从高到底分别是</h3><p>1.在属性后面使用 !important 会覆盖页面内任何位置定义的元素样式<br>2.作为style属性写在元素标签上的内联样式<br>3.id选择器<code>#id</code><br>4.类选择器<code>.class</code><br>5.伪类选择器<code>a:hover</code><br>6.属性选择器<br>7.标签选择器<br>8.通配符选择器<br>9.浏览器自定义</p>
+<h3 id="对于复杂场景如何计算优先级"><a href="#对于复杂场景如何计算优先级" class="headerlink" title="对于复杂场景如何计算优先级"></a>对于复杂场景如何计算优先级</h3><p>选择器的特殊性值表述为4个部分，用0,0,0,0表示。</p>
+<ul>
+<li>ID选择器的特殊性值，加0,1,0,0;</li>
+<li>类选择器、属性选择器或伪类，加0,0,1,0;</li>
+<li>标签选择器和伪元素，加0,0,0,1;</li>
+<li>通配选择器对特殊性没有贡献，即0,0,0,0;</li>
+<li>最后比较特殊的一个标志!important(权重)，它没有特殊值，但是他的优先级是最高的，为了方便记忆，可认为他的默认值是1,0,0,0.<br>示例如下：</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-d2fa1c71639562e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>执行效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-c00b7bc42c26c8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？"><a href="#4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？" class="headerlink" title="4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？"></a>4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？</h1><p>四个选择器优先级相同，考虑他们会相互覆盖，应该按照这个顺序：</p>
+<p>a:link（未被点击）<br>a:visited（已被点击）<br>a:hover（鼠标悬停其上）<br>a:active（鼠标已经按下，还没有释放）</p>
+<p>因为：<br>1.四个选择器优先级相同，越往后的样式会覆盖前面的样式<br>2.链接被访问后，样式会发生改变，所以<code>a:visited</code>应放在<code>a:link</code>之后<br>3.当鼠标悬停在链接上时，无论链接是否已经被访问过，其样式都会发生改变，所以<code>a:hover</code>应放在<code>a:visited</code>之后<br>4.当鼠标按下链接但未松开时，链接样式会发生改变，但此时也属于鼠标悬停的状态，所以应把 <code>a:active</code> 放在 <code>a:hover</code> 之后，这样可以覆盖<code>a:hover</code>的样式</p>
+<p>记这顺序有个小招数，“LoVe？ HA!”。</p>
+<h1 id="5-以下选择器分别是什么意思？"><a href="#5-以下选择器分别是什么意思？" class="headerlink" title="5.以下选择器分别是什么意思？"></a>5.以下选择器分别是什么意思？</h1><p><img src="http://upload-images.jianshu.io/upload_images/7280908-cf4cdaf0ed02903c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="·列出你知道的伪类选择器"><a href="#·列出你知道的伪类选择器" class="headerlink" title="·列出你知道的伪类选择器"></a>·列出你知道的伪类选择器</h3><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:first-child</td>
+<td>匹配作为长子（第一个子女）的元素E</td>
+</tr>
+<tr>
+<td>E:link</td>
+<td>匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td>E:visited</td>
+<td>匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td>E:active</td>
+<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
+</tr>
+<tr>
+<td>E:hover</td>
+<td>匹配鼠标悬停其上的E元素</td>
+</tr>
+<tr>
+<td>E:focus</td>
+<td>匹配获得当前焦点的E元素</td>
+</tr>
+<tr>
+<td>E:lang(c)</td>
+<td>匹配lang属性等于c的E元素</td>
+</tr>
+<tr>
+<td>E:enabled</td>
+<td>匹配表单中可用的元素</td>
+</tr>
+<tr>
+<td>E:disabled</td>
+<td>匹配表单中禁用的元素</td>
+</tr>
+<tr>
+<td>E:checked</td>
+<td>匹配表单中被选中的radio或checkbox元素</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>匹配用户当前选中的元素</td>
+</tr>
+<tr>
+<td>E:root</td>
+<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td>匹配其父元素的第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-last-child(n)</td>
+<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:nth-last-of-type(n)</td>
+<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:only-child</td>
+<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
+</tr>
+<tr>
+<td>E:only-of-type</td>
+<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td>E:empty</td>
+<td>匹配一个不包含任何子元素的元素，文本节点也被看作子元素</td>
+</tr>
+<tr>
+<td>E:not(selector)</td>
+<td>匹配不符合当前选择器的任何元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="n的取值-1"><a href="#n的取值-1" class="headerlink" title="n的取值"></a>n的取值</h5><p>1，2，3，4，5<br>2n+1, 2n, 4n-1<br>odd, even</p>
+<h3 id="·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）"><a href="#·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）" class="headerlink" title="·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）"></a>·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）</h3><p>·first-child 匹配其父元素的第一个子元素<br>·first-of-type 匹配其父元素下拥有相同标签的第一个元素</p>
+<p>1.div:first-child        div下的第一个子元素<br>2.div:first-of-type    div下的第一个同类型的子元素<br>3.div :first-child    匹配所有div元素内所有元素中属于其父元素的首个子元素<br>4.div :first-of-type  匹配所有div元素内所有元素中属于其父元素的首个类型的子元素</p>
+<h3 id="·运行如下代码，解析下输出样式的原因。"><a href="#·运行如下代码，解析下输出样式的原因。" class="headerlink" title="·运行如下代码，解析下输出样式的原因。"></a>·运行如下代码，解析下输出样式的原因。</h3><p><img src="http://upload-images.jianshu.io/upload_images/7280908-d5f6fa96aee458db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>运行如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-a706255d107b1fe9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item1:first-child&#123;</span><br><span class="line">  color: red;</span><br></pre></td></tr></table></figure></p>
+<p>item1类下的第一个元素颜色为红色，所以aa为红色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item1:first-of-type&#123;</span><br><span class="line">  background: blue;</span><br></pre></td></tr></table></figure></p>
+<p>item1类下拥有相同标签的第一个子元素背景为蓝色，p标签下第一个子元素是aa,h3标签下第一个子元素是bb,所以aa和bb的背景变为蓝色，ccc是第和h3标签下第二个子元素所以不变。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/26/CSS 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/26/CSS 基础/" itemprop="url">CSS基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T14:27:22+08:00">
+                2017-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-CSS的全称是什么？"><a href="#1-CSS的全称是什么？" class="headerlink" title="1.CSS的全称是什么？"></a>1.CSS的全称是什么？</h1><p>CSS全称是 Cascading Style Sheets, 层叠样式表。<br>CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。<br>CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力。</p>
+<h1 id="2-CSS有几种引入方式？link和-import有什么区别？"><a href="#2-CSS有几种引入方式？link和-import有什么区别？" class="headerlink" title="2.CSS有几种引入方式？link和@import有什么区别？"></a>2.CSS有几种引入方式？link和@import有什么区别？</h1><p>#####css的引入方式有三种。</p>
+<p>######1.内联样式<br>当特殊的样式需要应用到个别元素时，就可以使用内联样式。 使用内联样式的方法是直接在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。简单直接，但后续修改以及添加样式会很繁琐。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style=&quot;color: red; font-size: 20px;&quot;&gt;&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
+<h6 id="2-内部样式"><a href="#2-内部样式" class="headerlink" title="2.内部样式"></a>2.内部样式</h6><p>当单个文件需要特别样式时，就可以使用内部样式表。你可以在 head 部分通过 <code>&lt;style&gt;</code> 标签定义内部样式表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">body &#123;background-color: red&#125;</span><br><span class="line">p &#123;margin-left: 20px&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
+<h6 id="3-外部样式"><a href="#3-外部样式" class="headerlink" title="3.外部样式"></a>3.外部样式</h6><p>当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观。实现了内容与样式分离。<br>rel:告诉浏览器引用的是一个样式表文件<br>type:文件类型（可省略）<br>href:文件地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import url(&quot;hello.css&quot;);</span><br><span class="line">  @import &quot;world.css&quot;;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="link和-import的区别："><a href="#link和-import的区别：" class="headerlink" title="link和@import的区别："></a>link和@import的区别：</h5><p>本质上，这两种方式都是为了加载<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>文件，但还是存在着细微的差别。</p>
+<ul>
+<li>差别1：link属于<a href="https://www.baidu.com/s?wd=XHTML&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">XHTML</a>标签，而@import完全是<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>提供的一种方式。link标签除了可以加载<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>外，还可以做很多其它的事情，比如定义<a href="https://www.baidu.com/s?wd=RSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">RSS</a>，定义rel连接属性等，@import就只能加载CSS了。</li>
+<li>差别2：加载顺序的差别。当一个页面被加载的时候（就是被浏览者浏览的时候），link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。所以有时候浏览@import加载CSS的页面时开始会没有样式（就是闪烁），网速慢的时候还挺明显。</li>
+<li>差别3：兼容性的差别。由于@import是CSS2.1提出的所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。</li>
+<li>差别4：使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。<h1 id="3-以下这几种文件路径分别用在什么地方，代表什么意思"><a href="#3-以下这几种文件路径分别用在什么地方，代表什么意思" class="headerlink" title="3.以下这几种文件路径分别用在什么地方，代表什么意思?"></a>3.以下这几种文件路径分别用在什么地方，代表什么意思?</h1>文件路径 | 代表<br>—| :—:<br>css/a.css   |   在与本文件同级的css文件夹下的a.css文件<br>./css/a.css |   ./代表当前，当前与本文件同级的css文件夹下的a.css文件<br>b.css | 同级的b.css文件<br>../imgs/a.png | 上一级的目录的imgs文件夹下的a.png文件，../代表返回上一级<br>/Users/hunger/project/css/a.css |本地文件的绝对路径<br>/static/css/a.css | 网站路径的绝对路径<br><a href="http://cdn.jirengu.com/kejian1/8-1.png|" target="_blank" rel="noopener">http://cdn.jirengu.com/kejian1/8-1.png|</a> 图片上传后生成的线上地址<h1 id="4-如果我想在js-jirengu-com上展示一个图片，需要怎么操作"><a href="#4-如果我想在js-jirengu-com上展示一个图片，需要怎么操作" class="headerlink" title="4.如果我想在js.jirengu.com上展示一个图片，需要怎么操作?"></a>4.如果我想在js.jirengu.com上展示一个图片，需要怎么操作?</h1>第1种：先把图片上传至服务器，然后引用相对路径<br>第2种：上传图片，生成图片链接，然后引用图片</li>
+</ul>
+<h1 id="5-列出5条以上html和css的书写规范"><a href="#5-列出5条以上html和css的书写规范" class="headerlink" title="5.列出5条以上html和css的书写规范"></a>5.列出5条以上html和css的书写规范</h1><h6 id="基本准则"><a href="#基本准则" class="headerlink" title="基本准则"></a>基本准则</h6><p>符合web标准, 语义化html, 结构表现行为分离, 兼容性优良. 页面性能方面, 代码要求简洁明了有序, 尽可能的减小服务器负载, 保证最快的解析速度.</p>
+<h6 id="html规范："><a href="#html规范：" class="headerlink" title="html规范："></a>html规范：</h6><ol>
+<li>文档类型声明及编码: 统一为html5声明类型&lt;!DOCTYPE html&gt;; 编码统一为<meta charset="”gbk”">, 书写时利用IDE实现层次分明的缩进;</li>
+<li>非特殊情况下样式文件必须外链至<head>…</head>之间;非特殊情况下JavaScript文件必须外链至页面底部;</li>
+<li>引入样式文件或JavaScript文件时, 须略去默认类型声明, 写法如下:<code>&lt;link rel=”stylesheet” href=”…” /&gt;&lt;style&gt;…&lt;/style&gt;&lt;script src=”…”&gt;&lt;/script&gt;</code></li>
+<li>引入JS库文件, 文件名须包含库名称及版本号及是否为压缩版, 比如jquery-1.4.1.min.js; 引入插件, 文件名格式为库名称+插件名称, 比如jQuery.cookie.js;</li>
+<li>所有编码均遵循xhtml标准, 标签 &amp; 属性 &amp; 属性命名 必须由小写字母及下划线数字组成, 且所有标签必须闭合, 包括 br (<br>), hr(<hr>)等; 属性值必须用双引号包括;</li>
+<li>充分利用无兼容性问题的html自身标签, 比如span, em, strong, optgroup, label,等等; 需要为html元素添加自定义属性的时候, 首先要考虑下有没有默认的已有的合适标签去设置, 如果没有, 可以使用须以”data-”为前缀来添加自定义属性，避免使用”data:”等其他命名方式;</li>
+<li>语义化html, 如 标题根据重要性用h*(同一页面只能有一个h1), 段落标记用p, 列表用ul, 内联元素中不可嵌套块级元素;</li>
+<li>尽可能减少div嵌套, 如<div><div class="”welcome”">欢迎访问XXX, 您的用户名是<div class="”name”">用户名</div></div></div>完全可以用以下代码替代: <div><p>欢迎访问XXX, 您的用户名是<span>用户名</span></p></div>;</li>
+<li>书写链接地址时, 必须避免重定向，例如：href=“<a href="https://link.zhihu.com/?target=http%3A//itaolun.com/" target="_blank" rel="noopener">http://itaolun.com/**</a>”, 即须在URL地址后面加上“/”；</li>
+<li>在页面中尽量避免使用style属性,即style=“…”;</li>
+<li>必须为含有描述性表单元素(input, textarea)添加label, 如<p>姓名: <input type="”text”" id="”name”" name="”name”"></p>须写成:<p><label for="”name”">姓名: </label><input type="”text”" id="”name”"></p></li>
+<li>能以背景形式呈现的图片, 尽量写入css样式中;</li>
+<li>重要图片必须加上alt属性; 给重要的元素和截断的元素加上title;</li>
+<li>给区块代码及重要功能(比如循环)加上注释, 方便后台添加功能;</li>
+<li>特殊符号使用: 尽可能使用代码替代: 比如 &lt;(&lt;) &amp; &gt;(&gt;) &amp; 空格( ) &amp; »(») 等等;</li>
+<li>书写页面过程中, 请考虑向后扩展性;</li>
+<li><p>class &amp; id 参见 css书写规范.</p>
+<h6 id="css书写规范："><a href="#css书写规范：" class="headerlink" title="css书写规范："></a>css书写规范：</h6></li>
+<li><p>编码统一为utf-8;</p>
+</li>
+<li>协作开发及分工: i会根据各个模块, 同时根据页面相似程序, 事先写好大体框架文件,<br>分配给前端人员实现内部结构&amp;表现&amp;行为; 共用css文件base.css由i书写, 协作开发过程中, 每个页面请务必都要引入,<br>此文件包含reset及头部底部样式, 此文件不可随意修改;</li>
+<li>class与id的使用: id是唯一的并是父级的, class是可以重复的并是子级的, 所以id仅使用在大的模块上, class可用在重复使用率高及子级中; id原则上都是由分发框架文件时命名的（如#header #footer #content #nav 等）, 为JavaScript预留钩子的除外;</li>
+<li>为JavaScript预留钩子的命名, 请以 js_ 起始, 比如: js_hide, js_show(淘宝是用的J_开头);</li>
+<li>class与id命名:<br>大的框架命名比如header/footer/wrapper/left/right之类的在2中由i统一命名.其他样式名称由 小写英文 &amp;<br>数字 &amp; _ 来组合命名, 如i_comment, fontred, width200; 避免使用中文拼音, 尽量使用简易的单词组合;<br>总之, 命名要语义化, 简明化.</li>
+<li>规避class与id命名:<br>a） 通过从属写法规避, 示例见d;<br>b）取父级元素id/class命名部分命名, 示例见d;<br>c）重复使用率高的命名, 请以自己代号加下划线起始, 比如i_clear;<br>d）a,b两条, 适用于在2中已建好框架的页面, 如, 要在2中已建好框架的页面代码<div id="”mainnav”"></div>中加入新的div元素,<br>按a命名法则: <div id="”mainnav”"><div>…</div></div>,<br>样式写法: #mainnav .firstnav{…….}<br>按b命名法则: <div id="”mainnav”"><div>…</div></div>,<br>样式写法: .main_firstnav{…….}<h1 id="6-介绍chrome-开发者工具的功能区"><a href="#6-介绍chrome-开发者工具的功能区" class="headerlink" title="6.介绍chrome 开发者工具的功能区"></a>6.介绍chrome 开发者工具的功能区</h1></li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-e7ccaedf885e0b2c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/16/HTML表单的用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -975,7 +1658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

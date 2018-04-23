@@ -252,6 +252,366 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/06/5 字符串与相关概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/06/5 字符串与相关概念/" itemprop="url">5 字符串与相关概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T10:48:38+08:00">
+                2017-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1、使用数组拼接出如下字符串-，其中styles数组里的个数不定"><a href="#1、使用数组拼接出如下字符串-，其中styles数组里的个数不定" class="headerlink" title="1、使用数组拼接出如下字符串 ，其中styles数组里的个数不定"></a>1、使用数组拼接出如下字符串 ，其中styles数组里的个数不定</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl class=&quot;product&quot;&gt;&lt;dt&gt;女装&lt;/dt&gt;&lt;dd&gt;短款&lt;/dd&gt;&lt;dd&gt;冬季&lt;/dd&gt;&lt;dd&gt;春装&lt;/dd&gt;&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
+<p>方法1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var prod = &#123;</span><br><span class="line">    name: &apos;女装&apos;,</span><br><span class="line">    styles: [&apos;短款&apos;, &apos;冬季&apos;, &apos;春装&apos;]</span><br><span class="line">&#125;;</span><br><span class="line">function getTpl(data)&#123;</span><br><span class="line">    var dress = [];</span><br><span class="line">    dress.push(&quot;&lt;dl class=\&quot;product\&quot;&gt;&quot;);// .push给数组后面添加元素</span><br><span class="line">    dress.push(&quot;&lt;dt&gt;&quot;+data.name+&quot;&lt;/dt&gt;&quot;);</span><br><span class="line">    for(var key in data.styles)&#123;</span><br><span class="line">        dress.push(&quot;&lt;dd&gt;&quot;+data.styles[key]+&quot;&lt;/dd&gt;&quot;)</span><br><span class="line">     &#125;</span><br><span class="line">    dress.push(&quot;&lt;/dl&gt;&quot;);</span><br><span class="line">    var a = dress.join(&quot;&quot;);</span><br><span class="line">    return a;</span><br><span class="line">&#125;;</span><br><span class="line">var result = getTpl(prod);  //result为下面的字符串</span><br><span class="line"></span><br><span class="line">&lt;dl class=&quot;product&quot;&gt;&lt;dt&gt;女装&lt;/dt&gt;&lt;dd&gt;短款&lt;/dd&gt;&lt;dd&gt;冬季&lt;/dd&gt;&lt;dd&gt;春装&lt;/dd&gt;&lt;/dl&gt;</span><br></pre></td></tr></table></figure></p>
+<p>方法2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function getTpl(data)&#123;</span><br><span class="line">    var dress = &quot;&lt;dt class=\&quot;product\&quot;&gt;&quot;;</span><br><span class="line">    for(var key in data)&#123;</span><br><span class="line">       if(typeof data[key]===&quot;string&quot;)&#123;</span><br><span class="line">           dress += (&quot;&lt;dt&gt;&quot;+data[key]+&quot;&lt;/dt&gt;&quot;) </span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            for(var i=0, i&lt;data[key].length; i++)&#123;</span><br><span class="line">                dress += (&quot;&lt;dd&gt;&quot; + data[key][i] + &quot;&lt;/dd&gt;&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    dress += &quot;&lt;/dt&gt;&quot;;</span><br><span class="line">    return dress;</span><br><span class="line">    console.log(dress)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="2-写出两种以上声明多行字符串的方法"><a href="#2-写出两种以上声明多行字符串的方法" class="headerlink" title="2.写出两种以上声明多行字符串的方法"></a>2.写出两种以上声明多行字符串的方法</h1><p>字符串默认只能写在一行内，分成多行将会报错，如果需分成多行可以使用如下方法：</p>
+<ul>
+<li><p>方法一:在每一行的尾部使用反斜杠\，注意：反斜杠的后面必须是换行符，而不能有其他字符（比如空格），否则会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;abcdeabcdeabcdean\</span><br><span class="line">cdeabcdeabcdeabcd\</span><br><span class="line">eancdeabcdeabcd\</span><br><span class="line">eabcdeancdeab\</span><br><span class="line">cdeabcdeabcdeancde&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法2:连接运算符（+）可以连接多个单行字符串，用来模拟多行字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;abcdeabcdeabcdean&apos;</span><br><span class="line">+&apos;cdeabcdeabcdeabcd&apos;</span><br><span class="line">+&apos;eancdeabcdeabcd&apos;</span><br><span class="line">+&apos;eabcdeancdeab&apos;</span><br><span class="line">+&apos;cdeabcdeabcdeancde&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法3:利用多行注释，生成多行字符串的变通方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var longString = (function() &#123;/*</span><br><span class="line">abcdeabcdeabcdeancde</span><br><span class="line">abcdeabcdeabcdeancde</span><br><span class="line">abcdeabcdeabcdeancde</span><br><span class="line">abcdeabcdeabcdeancde</span><br><span class="line">*/&#125;).toString().split(&apos;\n&apos;).slice(1,-1).join(&apos;&apos;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="3-补全如下代码-让输出结果为字符串-hello-饥人谷"><a href="#3-补全如下代码-让输出结果为字符串-hello-饥人谷" class="headerlink" title="3.补全如下代码,让输出结果为字符串:hello\\饥人谷"></a>3.补全如下代码,让输出结果为字符串:<code>hello\\饥人谷</code></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello\\\\饥人谷&apos;;</span><br><span class="line">console.log(str);</span><br></pre></td></tr></table></figure>
+<h1 id="4-以下代码输出什么-为什么"><a href="#4-以下代码输出什么-为什么" class="headerlink" title="4.以下代码输出什么?为什么"></a>4.以下代码输出什么?为什么</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;jirengu\nruoyu&apos;;</span><br><span class="line">console.log(str.length); //13,因为字面量(转义序列)\n作为一个字符来解析。</span><br></pre></td></tr></table></figure>
+<h1 id="5-写一个函数，判断一个字符串是回文字符串，如-abcdcba是回文字符串-abcdcbb不是"><a href="#5-写一个函数，判断一个字符串是回文字符串，如-abcdcba是回文字符串-abcdcbb不是" class="headerlink" title="5.写一个函数，判断一个字符串是回文字符串，如 abcdcba是回文字符串, abcdcbb不是"></a>5.写一个函数，判断一个字符串是回文字符串，如 abcdcba是回文字符串, abcdcbb不是</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function plalindrome(str)&#123;</span><br><span class="line">    var newStr = str.split(&apos;&apos;).reverse().join(&apos;&apos;)//  切割成数组/数组内元素反列/数组重新组合成字符串</span><br><span class="line">    if(newStr === str)&#123;</span><br><span class="line">        console.log(&apos;yes&apos;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        console.log(&apos;no&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">plalindrome(&apos;abcdcba&apos;);//yes</span><br><span class="line">plalindrome(&apos;abcdcbb&apos;);//no</span><br></pre></td></tr></table></figure>
+<h1 id="6-写一个函数，统计字符串里出现出现频率最多的字符"><a href="#6-写一个函数，统计字符串里出现出现频率最多的字符" class="headerlink" title="6.写一个函数，统计字符串里出现出现频率最多的字符"></a>6.写一个函数，统计字符串里出现出现频率最多的字符</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var dostring = &quot;hello my world hohohoho.&quot;</span><br><span class="line">  function maxChar(str) &#123;</span><br><span class="line">    var i, list=&#123;&#125;;</span><br><span class="line">    for(i = 0; i &lt; str.length; i++) &#123;</span><br><span class="line">      if(list[str[i]]) &#123;</span><br><span class="line">        ++list[str[i]];//list中有这个字符,出现次数加1</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        list[str[i]] = 1//没有这个字符,赋值为1</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var counts; //声明初始counts</span><br><span class="line">    var maxValue = 0;   //声明最大值</span><br><span class="line">    for(var key in list)&#123;  //遍历</span><br><span class="line">      if(list[key] &gt; maxValue) &#123; //遍历到的属性的值大于maxValue </span><br><span class="line">        counts = key;   //把该属性赋给counts</span><br><span class="line">        maxValue = list[key];  //再把值赋给他</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(counts,maxValue);</span><br><span class="line">  &#125;</span><br><span class="line">maxChar(dostring);</span><br></pre></td></tr></table></figure>
+<h1 id="7-写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如"><a href="#7-写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如" class="headerlink" title="7.写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如"></a>7.写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">camelize(&quot;background-color&quot;) == &apos;backgroundColor&apos;</span><br><span class="line">camelize(&quot;list-style-image&quot;) == &apos;listStyleImage&apos;</span><br><span class="line"></span><br><span class="line">function camelize(str)&#123;</span><br><span class="line">    var arr = str.split(&apos;-&apos;);</span><br><span class="line">    for( var i=1;i&lt;arr.length;i++)&#123;</span><br><span class="line">        arr[i] = arr[i].replace(arr[i][0],arr[i][0].toUpperCase());//从第二个元素开始,将其首字母用大写代替,注意这里从i=1即第二个开始</span><br><span class="line">    &#125;</span><br><span class="line">    return arr.join(&apos;&apos;);</span><br><span class="line">&#125;</span><br><span class="line">var str = &apos;my-short-string&apos;</span><br><span class="line">console.log(camelize(str))//myShortString</span><br></pre></td></tr></table></figure>
+<h1 id="8-写一个-ucFirst函数，返回第一个字母为大写的字符-（-）"><a href="#8-写一个-ucFirst函数，返回第一个字母为大写的字符-（-）" class="headerlink" title="8.写一个 ucFirst函数，返回第一个字母为大写的字符 （***）"></a>8.写一个 ucFirst函数，返回第一个字母为大写的字符 （***）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ucFirst(&quot;hunger&quot;) == &quot;Hunger&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function ucFirst(str)&#123;</span><br><span class="line">    return str = str.replace(str[0],str[0].toUpperCase());//用逗号后面的str[0].toUpperCase()代替前面的str[0]</span><br><span class="line">&#125;</span><br><span class="line">ucFirst(&quot;hunger&quot;)</span><br></pre></td></tr></table></figure>
+<h1 id="9、写一个函数truncate-str-maxlength-如果str的长度大于maxlength，会把str截断到maxlength长，并加上…，如"><a href="#9、写一个函数truncate-str-maxlength-如果str的长度大于maxlength，会把str截断到maxlength长，并加上…，如" class="headerlink" title="9、写一个函数truncate(str, maxlength), 如果str的长度大于maxlength，会把str截断到maxlength长，并加上…，如"></a>9、写一个函数truncate(str, maxlength), 如果str的长度大于maxlength，会把str截断到maxlength长，并加上…，如</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">truncate(&quot;hello, this is hunger valley,&quot;, 10) == &quot;hello, thi...&quot;;</span><br><span class="line">truncate(&quot;hello world&quot;, 20) == &quot;hello world&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">方法1:</span><br><span class="line">function truncate(str,maxlength)&#123;</span><br><span class="line">    if(str.length &gt; maxlength)&#123;</span><br><span class="line">        return str.substr(0,maxlength)+&apos;...&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br><span class="line">truncate(&quot;hello, this is hunger valley,&quot;, 10)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">方法2:</span><br><span class="line">function truncate(str, maxlength)&#123;</span><br><span class="line">if(str.length &gt; maxlength)&#123;</span><br><span class="line">    var arr=str.split(&apos;&apos;).slice(0,maxlength);</span><br><span class="line">    arr[maxlength]=&apos;...&apos;;</span><br><span class="line">    console.log(arr.join(&apos;&apos;)); </span><br><span class="line">&#125;else&#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="10-什么是-JSON格式数据？JSON格式数据如何表示对象？window-JSON-是什么？"><a href="#10-什么是-JSON格式数据？JSON格式数据如何表示对象？window-JSON-是什么？" class="headerlink" title="10.什么是 JSON格式数据？JSON格式数据如何表示对象？window.JSON 是什么？"></a>10.什么是 JSON格式数据？JSON格式数据如何表示对象？window.JSON 是什么？</h1><ul>
+<li><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。是JavaScript的一个严格的子集但不从属于javascript,JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。这些特性使JSON成为理想的数据交换语言。优点:易于人阅读和编写，同时也易于机器解析和生成(网络传输速度)。</p>
+</li>
+<li><p>JSON对象,表示一组无序的键值对，而每个键值对中的值可以是简单值也可以是复杂数据类型的值,基本要符合以下规则.</p>
+<ul>
+<li>复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。</li>
+<li>简单类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN, Infinity, -Infinity和undefined）。</li>
+<li>字符串必须使用双引号表示，不能使用单引号。</li>
+<li>对象的键名必须放在双引号里面。</li>
+<li><p>数组或对象最后一个成员的后面，不能加逗号</p>
+</li>
+<li><p>JSON 语法是 JavaScript 对象表示语法的子集。 </p>
+<ul>
+<li>数据在名称/值对中:名称/值对组合中的名称写在前面（在双引号中），值对写在后面(同样在双引号中)，中间用冒号:隔开</li>
+<li>数据由逗号分隔</li>
+<li>花括号保存对象</li>
+<li>方括号保存数组名称/值对<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//js中的对象</span><br><span class="line">var person = &#123;</span><br><span class="line">  name : &quot;jirengu&quot; , </span><br><span class="line">  age : 28</span><br><span class="line">&#125;;</span><br><span class="line">//JSON中</span><br><span class="line">var person = &#123;               //花括号保存对象</span><br><span class="line">  &quot;name&quot; : &quot;jirengu&quot;,      //字符串和键名要在双引号里</span><br><span class="line">  &quot;age&quot; : 28               //最后一行不能加逗号</span><br><span class="line">｝</span><br><span class="line">var person2 = [               //方括号保存数组</span><br><span class="line">  &#123;&quot;name&quot; : &quot;jirengu&quot;,   &quot;age&quot; : 28 &#125;</span><br><span class="line">  &#123;&quot;name&quot; : &quot;jirengu2&quot;,   &quot;age&quot; : 25 &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>window.JSON:</p>
+<ul>
+<li>window.JSON是ECMAScript 5定义的一个原生的浏览器内置对象，用来检测对JSON的支持情况；</li>
+<li>JSON对象内置了JSON.parse()和JSON.stringify()方法；</li>
+<li>当HTML页面指定了DOCTYPE且浏览器模式为IE8时，才支持内置的window.JSON对象,IE8版本以上才内置支持JSON.parse()函数方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(window.JOSN)&#123;</span><br><span class="line">   jsonObj2 = JSON.parse(json);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="11、如何把JSON-格式的字符串转换为-JS-对象？如何把-JS对象转换为-JSON-格式的字符串"><a href="#11、如何把JSON-格式的字符串转换为-JS-对象？如何把-JS对象转换为-JSON-格式的字符串" class="headerlink" title="11、如何把JSON 格式的字符串转换为 JS 对象？如何把 JS对象转换为 JSON 格式的字符串?"></a>11、如何把JSON 格式的字符串转换为 JS 对象？如何把 JS对象转换为 JSON 格式的字符串?</h1><ul>
+<li><p>parse()用于从一个JSON 格式字符串中解析出js对象,如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;&#123;&quot;name&quot;:&quot;huangxiaojian&quot;,&quot;age&quot;:&quot;23&quot;&#125;&apos;</span><br><span class="line">JSON.parse(str)</span><br><span class="line">//</span><br><span class="line">&#123;name: &quot;haha&quot;,age: &quot;23&quot;&#125;</span><br><span class="line">注意：单引号写在&#123;&#125;外，每个属性名都必须用双引号，否则会抛出异常。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>stringify()用于从一个JS对象解析出JSON 格式字符串，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var</span><br><span class="line"> a = &#123;a:1,b:2&#125;</span><br><span class="line">JSON.stringify(a)</span><br><span class="line">//</span><br><span class="line">&quot;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/4 引用类型对象拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/04/4 引用类型对象拷贝/" itemprop="url">4 引用类型对象拷贝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T17:37:29+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-javascript引用类型有哪些？非引用类型有哪些"><a href="#1-javascript引用类型有哪些？非引用类型有哪些" class="headerlink" title="1.javascript引用类型有哪些？非引用类型有哪些?"></a>1.javascript引用类型有哪些？非引用类型有哪些?</h1><p>引用类型:对象、数组、函数、正则表达式，指保存在堆内存中的对象，变量中保存的实际上是一个指针，这个指针指向内存中的另一个位置，由该位置保存对象。<br>非引用类型: 数值、布尔、字符串、null、undefined，这些是基本类型，指的事保存在栈内存中的简单数据段。</p>
+<h1 id="2-如下代码输出什么？为什么"><a href="#2-如下代码输出什么？为什么" class="headerlink" title="2.如下代码输出什么？为什么?"></a>2.如下代码输出什么？为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;a:1, b:2&#125;;</span><br><span class="line">var obj2 = &#123;a:1, b:2&#125;;</span><br><span class="line">console.log(obj1 == obj2);//输出false    因为obj1和obj2指向不同的地址</span><br><span class="line">console.log(obj1 = obj2);//输出&#123;a:1,b:2&#125;   obj1 = obj2赋值操作，</span><br><span class="line">也就是obj2将储存在变量对象中的值（即指向对象位置的指针）复制了一份放到obj1的内存空间中，这时obj1和obj2都指向堆内存里的同一个对象</span><br><span class="line">console.log(obj1 == obj2);//输出true  因为上一步的操作obj1和obj2指向了同一个地址</span><br></pre></td></tr></table></figure>
+<h1 id="3-如下代码输出什么？为什么"><a href="#3-如下代码输出什么？为什么" class="headerlink" title="3.如下代码输出什么？为什么?"></a>3.如下代码输出什么？为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">var b = 2</span><br><span class="line">var c = &#123; name: &apos;饥人谷&apos;, age: 2 &#125;</span><br><span class="line">var d = [a, b, c]</span><br><span class="line"></span><br><span class="line">var aa = a</span><br><span class="line">var bb = b</span><br><span class="line">var cc = c//复制的是指针</span><br><span class="line">var dd = d//复制的是指针</span><br><span class="line"></span><br><span class="line">a = 11</span><br><span class="line">b = 22</span><br><span class="line">c.name = &apos;hello&apos;</span><br><span class="line">d[2][&apos;age&apos;] = 3</span><br><span class="line"></span><br><span class="line">console.log(aa) //输出1, a为基本类型值,var aa=a只是将a的值赋给1,a和aa指向不同的栈内存位置,互不影响</span><br><span class="line">console.log(bb) //输出2, 同上</span><br><span class="line">console.log(cc) //输出&#123;name:&apos;hello&apos;, age: 3&#125;,c为引用类型值,var cc = c是将c指向堆内存的指针复制给cc,所以cc和c引用的是同一个对象,</span><br><span class="line">                  对象c.name=&apos;hello&apos;,name改变,所以cc同样改变, d[2][&apos;age&apos;] = 3同样age也变为3</span><br><span class="line">console.log(dd) //输出[1,2,&#123;name: &apos;hello&apos;, age: 3&#125;], d为引用类型值,var dd=d是指d指向堆内存的指针复制给dd,a和b是基本类型值按值传递,d引用类型的值改变,dd也相应改变.</span><br></pre></td></tr></table></figure>
+<h1 id="4-如下代码输出什么-为什么"><a href="#4-如下代码输出什么-为什么" class="headerlink" title="4.如下代码输出什么? 为什么?"></a>4.如下代码输出什么? 为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">var c = &#123; name: &apos;jirengu&apos;, age: 2 &#125;</span><br><span class="line"></span><br><span class="line">function f1(n)&#123;</span><br><span class="line"> ++n</span><br><span class="line">&#125;</span><br><span class="line">function f2(obj)&#123;</span><br><span class="line">  ++obj.age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f1(a) </span><br><span class="line">f2(c) </span><br><span class="line">f1(c.age) </span><br><span class="line">console.log(a) // 输出1, 因为f1(a)想当于声明了一个var n=a,把a的值1赋给了n,++n将n值加1,</span><br><span class="line">它们在不同的栈内存位置中互不影响,所以a值不改变,最后输出1</span><br><span class="line">console.log(c)//输出&#123; name: &apos;jirengu&apos;, age:3 &#125;  f2(c)相当于在f2(obj)中声明一个 var obj=c,将c的指向堆内存的指针复制给obj,</span><br><span class="line">++obj.age,age加1,同样改变了c.age为3</span><br></pre></td></tr></table></figure>
+<h1 id="5-过滤如下数组，只保留正数，直接在原数组上操作"><a href="#5-过滤如下数组，只保留正数，直接在原数组上操作" class="headerlink" title="5.过滤如下数组，只保留正数，直接在原数组上操作"></a>5.过滤如下数组，只保留正数，直接在原数组上操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,1,0,-1,-3,2,-5]</span><br><span class="line">function filter(arr)&#123;</span><br><span class="line">&#125;</span><br><span class="line">filter(arr)</span><br><span class="line">console.log(arr) // [3,1,2]</span><br><span class="line"></span><br><span class="line">如下:</span><br><span class="line">var arr = [3,1,0,-1,-3,2,-5]</span><br><span class="line">function filter(arr) &#123;</span><br><span class="line">        for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">            if (arr[i] &lt;= 0) &#123;</span><br><span class="line">                arr.splice(i, 1);//从第i个开始,删除个数为1,即删除数组第i个元素</span><br><span class="line">                i--//删除之后数组长度缩减 ,原位置的元素被新元素代替所以需减1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       return arr</span><br><span class="line">    &#125;</span><br><span class="line">console.log(arr) // [3,1,2]</span><br></pre></td></tr></table></figure>
+<h1 id="6-过滤如下数组，只保留正数，原数组不变，生成新数组"><a href="#6-过滤如下数组，只保留正数，原数组不变，生成新数组" class="headerlink" title="6.过滤如下数组，只保留正数，原数组不变，生成新数组"></a>6.过滤如下数组，只保留正数，原数组不变，生成新数组</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,1,0,-1,-3,2,-5]</span><br><span class="line">function filter(arr)&#123;</span><br><span class="line">&#125;</span><br><span class="line">var arr2 = filter(arr)</span><br><span class="line">console.log(arr2) // [3,1,2]</span><br><span class="line">console.log(arr)  // [3,1,0,-1,-3,2,-5]</span><br><span class="line"></span><br><span class="line">如下:</span><br><span class="line">var arr = [3,1,0,-1,-3,2,-5]</span><br><span class="line">function filter(arr)&#123; </span><br><span class="line">        var arr2=[]// 将[]的指向堆内存的指针复制给arr2,这个堆内存的位置与arr指向的堆内存不一样</span><br><span class="line">        for(var i=0;i&lt;arr.length;i++)&#123;</span><br><span class="line">            arr2[i] =arr[i]</span><br><span class="line">       &#125;</span><br><span class="line">        for(var i =0; i&lt;arr.length;i++)&#123;</span><br><span class="line">            if(arr2[i]&lt;=0)&#123;</span><br><span class="line">                arr2.splice(i,1)</span><br><span class="line">                i--</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return arr2</span><br><span class="line">&#125;</span><br><span class="line">var arr2 = filter(arr)</span><br><span class="line">console.log(arr2) // [3,1,2]</span><br><span class="line">console.log(arr)  // [3,1,0,-1,-3,2,-5]</span><br></pre></td></tr></table></figure>
+<h1 id="7-写一个深拷贝函数，用两种方式实现"><a href="#7-写一个深拷贝函数，用两种方式实现" class="headerlink" title="7.写一个深拷贝函数，用两种方式实现"></a>7.写一个深拷贝函数，用两种方式实现</h1><p>深拷贝:在对含有指针成员的对象进行拷贝时，必须要自己定义拷贝构造函数，使拷贝后的对象指针成员有自己的内存空间，即进行深拷贝</p>
+<ul>
+<li><p>方法1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;</span><br><span class="line">    name:&apos;fang&apos;,</span><br><span class="line">    friend:&#123;</span><br><span class="line">                name:&apos;haha&apos;,</span><br><span class="line">        age:18,</span><br><span class="line">        sex:&apos;female&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function copy(obj)&#123;</span><br><span class="line">    var newObj=&#123;&#125;</span><br><span class="line">    for(var key in obj)&#123;</span><br><span class="line">        if(obj.hasOwnProperty(key))&#123;</span><br><span class="line">            if(typeof obj[key]===&apos;number&apos;||typeof obj[key]===&apos;boolean&apos;||typeof obj[key]===&apos;string&apos;||obj[key]===undefined</span><br><span class="line">||obj[key]===null)&#123;</span><br><span class="line">    newObj[key]=obj[key]</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                newObj[key]=copy(obj[key])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return newObj</span><br><span class="line">&#125;</span><br><span class="line">var obj2= copy(obj)</span><br><span class="line">console.log(obj2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function copy(obj)&#123;</span><br><span class="line">      var newObj=JSON.parse(JSON.stringify(obj))//  JSON.stringify(obj)把对象转化为字符串, </span><br><span class="line">JSON.parse(JSON.stringify(obj))把字符串重新生成一个对象</span><br><span class="line">      return newObj</span><br><span class="line">&#125;</span><br><span class="line">var obj2= copy(obj)</span><br><span class="line">console.log(obj2)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/3 函数与作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1012,216 +1372,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/浮动定位BFC边距合并/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/09/浮动定位BFC边距合并/" itemprop="url">浮动定位BFC边距合并</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T09:42:33+08:00">
-                2017-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"><a href="#1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？" class="headerlink" title="1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"></a>1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？</h1><p>浮动模型也是一种可视化格式模型，浮动的框可以左右移动（根据float属性值而定），直到它的外边缘碰到包含框或者另一个浮动元素的框的边缘。浮动元素不在文档的普通流中，文档的普通流中的元素表现的就像浮动元素不存在一样.</p>
-<ul>
-<li><strong>对父容器的影响</strong>：当父容器的子元素都是浮动元素时，那么父容器将会高度坍塌。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c899923e8c0fb083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-</ul>
-<ul>
-<li><strong>对其他浮动元素影响</strong>： 如果包含块儿太窄无法容纳水平排列的三个浮动元素,那么其它浮动块儿向下移动,直到有足够的空间,如果浮动元素的高度不同,那么向下移动的时候可能被卡住。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-ee18bffec31f5136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-</ul>
-<ul>
-<li><p><strong>对普通元素影响</strong>：浮动元素脱离普通流，如果浮动元素后面有个文档流中的普通元素，那么这个普通元素的框会表现的浮动元素不存在。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-23410e8869c08e28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-<li><p><strong>对文字影响</strong>： 浮动元素后面的文档流中的元素，这个元素的框会表现的像浮动元素不存在，但是框的文本内容会受到浮动元素影响，会移动以留出空间。<br>浮动元素旁边的行框被缩短,从而给浮动元素流出空间,因而行框围绕浮动框。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-e339cd96c2bb061f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-</ul>
-<h1 id="2-清除浮动指什么？如何清除浮动？两种以上方法"><a href="#2-清除浮动指什么？如何清除浮动？两种以上方法" class="headerlink" title="2.清除浮动指什么？如何清除浮动？两种以上方法"></a>2.清除浮动指什么？如何清除浮动？两种以上方法</h1><p>清理浮动：解决父容器高度坍塌问题</p>
-<p>###方法1</p>
-<p>如果我们想让父元素在视觉上包围浮动元素可以在父元素最后添加一个空div，<br><code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>对它清理。缺点是增加了一个无意义的标签，如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-1ece5ebf927c73d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>使父容器生成BFC,因为BFC可以包含浮动，从而达到“清除浮动”效果，如何形成浮动：</p>
-<ul>
-<li>float为 left|right</li>
-<li>overflow为 hidden|auto|scroll</li>
-<li>display为 table-cell|table-caption|inline-block</li>
-<li>position为 absolute|fixed<br>但是注意用BFC特性清理浮动都有副作用：比如float： left;让父容器变成浮动元素<br>副作用较小的是： overflow： auto;或者overflow: hidden;</li>
-</ul>
-<h3 id="通用的清理浮动法案"><a href="#通用的清理浮动法案" class="headerlink" title="通用的清理浮动法案"></a>通用的清理浮动法案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/*方法1*/</span><br><span class="line"> .clearfix&#123;</span><br><span class="line">     *zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line"> .clearfix:after&#123;</span><br><span class="line">     content: &quot;&quot;;</span><br><span class="line">     display: block;</span><br><span class="line">     clear: both;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /*方法2*/</span><br><span class="line"> .clearfix&#123;</span><br><span class="line">   *zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line"> .clearfix:after&#123;</span><br><span class="line">   content:&quot;&quot;;</span><br><span class="line">     display:table;</span><br><span class="line">     clear:both;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"><a href="#3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？" class="headerlink" title="3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"></a>3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？</h1><p>css定位方式有四种：默认定位（static）、相对定位（relative）、绝对定位（absolute）和固定定位（fixed）</p>
-<ul>
-<li><p><strong>static</strong>:默认值。没有定位，元素在正常的流中,top,right,bottom,left和z-index属性无效。<br>参考点：无</p>
-</li>
-<li><p><strong>relative</strong>:生成相对定位的元素，通过top,bottom,left,right的位置相对于其原来位置进行定位。left:20px 会向元素的 left 位置添加20px</p>
-<blockquote>
-<p>其中的相对指的是相对于元素在默认流中的位置。元素偏移之后，他本来在默认文档流中占据的位置仍然存在，其紧挨其后的元素的定位依据它本来的位置定位<br>参考点：元素本身位置<br>使用场景：元素相对偏移<br>案例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c7c9743c22a693fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</blockquote>
-</li>
-<li><p><strong>absolute</strong>：生成绝对定位的元素，相对于static定位外的第一个父元素进行定位。元素的位置通过 left, top, right 以及 bottom 属性进行规定。</p>
-<blockquote>
-<p>绝对定位的元素已经脱离了文档流，普通流中其他元素的布局就像绝对元素不存在一样；绝对定位的元素的位置是相对于最近的已定位的祖先元素，如果元素没有已定位的祖先元素，它的位置就相对于body根元素；绝对定位的框可以覆盖页面的其他元素。<br>参考点：距离最近的非static元素，否则为body<br>使用场景：垂直水平居中<br>案例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-8e708860a5b43a7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>top: 20px; left:20px 相对的值是看其父容器是否存在 position：relative;absolute;fixed;这三个值，如果有就是相对父容器的内边框。<br>当父容器里有 绝对定位 的子元素时，子元素设置width:100%实际上指的是相对于父容器的padding+content的宽度。当子元素是非绝对定位的元素时width:100%才是指子元素的 content 等于父元素的 content宽度查看范例<a href="http://js.jirengu.com/jatog/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/jatog/1/edit</a></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><strong>fixed</strong>: 本质上是一种绝对定位，不为元素预留空间。通过指定相对于屏幕视窗的位置来指定元素的空间，且元素的位置在屏幕滚动时不会发生变化。应用于很多网站顶端的固定导航、右下角的固定广告等等。<br>参考点：浏览器窗口<br>使用场景：登录框覆盖层</li>
-</ul>
-<p>注意只有position: relative; absolute; fixed;才能设置top left 等的值；</p>
-<h1 id="4-z-index有什么作用？如何使用？"><a href="#4-z-index有什么作用？如何使用？" class="headerlink" title="4.z-index有什么作用？如何使用？"></a>4.z-index有什么作用？如何使用？</h1><p>z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。如果为正数，则离用户更近，为负数则表示离用户更远。Z-index 仅能在定位元素上奏效。</p>
-<h1 id="5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别"><a href="#5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别" class="headerlink" title="5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?"></a>5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?</h1><p>position:relative和负margin都可以使元素位置发生偏移,二者区别：</p>
-<ul>
-<li>position:relative相对定位后元素位置发生偏移，只是视觉上显示的位置变化，但是它仍会占据原来的空间，不会影响其他文档流元素。</li>
-<li>负margin会使元素在文档流中位置发生偏移，会影响周边的元素位置变化<h1 id="6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明"><a href="#6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明" class="headerlink" title="6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明"></a>6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明</h1></li>
-<li>BFC:全称是 [Block Format Content] ,块级格式化上下文(<a href="http://www.w3.org/TR/CSS21/visuren.html#block-formatting)，" target="_blank" rel="noopener">http://www.w3.org/TR/CSS21/visuren.html#block-formatting)，</a><blockquote>
-<p>BFC特性：<br>1.BFC会阻止垂直外边距（margin-top、margin-bottom）折叠<br> 按照BFC的定义，只有同属于一个BFC时，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。<br>因此要解决margin重叠问题，只要让它们不在同一个BFC就行了，但是对于两个相邻元素来说，意义不大，没有必要给它们加个外壳，但是对于嵌套元素来说就很有必要了，只要把父元素设为BFC就可以了。这样子元素的margin就不会和父元素的margin发生重叠<br>2.BFC不会重叠浮动元素<br>3.BFC可以包含浮动</p>
-</blockquote>
-</li>
-<li>生成BFC:<blockquote>
-<ul>
-<li>float为 left|right</li>
-<li>overflow为 hidden|auto|scroll</li>
-<li>display为 table-cell|table-caption|inline-block</li>
-<li>position为 absolute|fixed</li>
-</ul>
-</blockquote>
-</li>
-<li>BFC作用：<br>1.会阻止垂直外边距（margin-top、margin-bottom）折叠<br>2.清除浮动<h1 id="7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"><a href="#7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例" class="headerlink" title="7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"></a>7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例</h1>当块处于同一个文档流同一个BFC中，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。对于父子元素，容器没有padding和border内部的margin会导致外边距合并。<br>相邻元素box1和box2的垂直外边距合并，如下例，<br><img src="http://upload-images.jianshu.io/upload_images/7280908-bcc1429094c2659b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><blockquote>
-<p>合并规则：<br>1.两个margin都是正值的时候，取两者的最大值；<br> 2.当 margin 都是负值的时候，取的是其中绝对值较大的，然后，从0位置，负向位移；<br> 3.当有正有负的时候，先取出负 margin 中绝对值中最大的，然后和正 margin 值中最大的 margin 相加。</p>
-</blockquote>
-</li>
-</ul>
-<p>如何不让相邻元素外边距合并：<br>1.被非空内容、padding、border 或 clear 分隔开。<br>2.不在一个普通流中或一个BFC中。<br>3.浮动元素、inline-block 元素、绝对定位元素的 margin 不会和垂直方向上其他元素的 margin 折叠（注意这里指的是上下相邻的元素）。</p>
-<p>父子外边距合并见下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-9049d87a4bd1b6ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解决外边距合并，让父容器设为BFC就可以了。给父容器加入overflow: auto;包裹h1，使得h1的margin内部生效，从而不会margin合并。这样子元素的margin就不会和父元素的margin发生重叠。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-4cef8375c552c107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>参考<a href="http://blog.csdn.net/github_37037281/article/details/55505825" target="_blank" rel="noopener">http://blog.csdn.net/github_37037281/article/details/55505825</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/浏览器兼容/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1430,6 +1580,216 @@
 <li><a href="http://caniuse.com/" target="_blank" rel="noopener">caniuse.com</a>查CSS属性兼容</li>
 <li><a href="http://browserhacks.com/" target="_blank" rel="noopener">browserhacks</a>查 Hack 的写法<br>另外 <a href="http://tongji.baidu.com/data/browser" target="_blank" rel="noopener">浏览器市场份额</a>可以查看各个浏览器所占市场的份额。</li>
 </ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/浮动定位BFC边距合并/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/09/浮动定位BFC边距合并/" itemprop="url">浮动定位BFC边距合并</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T09:42:33+08:00">
+                2017-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"><a href="#1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？" class="headerlink" title="1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"></a>1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？</h1><p>浮动模型也是一种可视化格式模型，浮动的框可以左右移动（根据float属性值而定），直到它的外边缘碰到包含框或者另一个浮动元素的框的边缘。浮动元素不在文档的普通流中，文档的普通流中的元素表现的就像浮动元素不存在一样.</p>
+<ul>
+<li><strong>对父容器的影响</strong>：当父容器的子元素都是浮动元素时，那么父容器将会高度坍塌。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c899923e8c0fb083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<ul>
+<li><strong>对其他浮动元素影响</strong>： 如果包含块儿太窄无法容纳水平排列的三个浮动元素,那么其它浮动块儿向下移动,直到有足够的空间,如果浮动元素的高度不同,那么向下移动的时候可能被卡住。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-ee18bffec31f5136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<ul>
+<li><p><strong>对普通元素影响</strong>：浮动元素脱离普通流，如果浮动元素后面有个文档流中的普通元素，那么这个普通元素的框会表现的浮动元素不存在。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-23410e8869c08e28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>对文字影响</strong>： 浮动元素后面的文档流中的元素，这个元素的框会表现的像浮动元素不存在，但是框的文本内容会受到浮动元素影响，会移动以留出空间。<br>浮动元素旁边的行框被缩短,从而给浮动元素流出空间,因而行框围绕浮动框。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-e339cd96c2bb061f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<h1 id="2-清除浮动指什么？如何清除浮动？两种以上方法"><a href="#2-清除浮动指什么？如何清除浮动？两种以上方法" class="headerlink" title="2.清除浮动指什么？如何清除浮动？两种以上方法"></a>2.清除浮动指什么？如何清除浮动？两种以上方法</h1><p>清理浮动：解决父容器高度坍塌问题</p>
+<p>###方法1</p>
+<p>如果我们想让父元素在视觉上包围浮动元素可以在父元素最后添加一个空div，<br><code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>对它清理。缺点是增加了一个无意义的标签，如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-1ece5ebf927c73d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>使父容器生成BFC,因为BFC可以包含浮动，从而达到“清除浮动”效果，如何形成浮动：</p>
+<ul>
+<li>float为 left|right</li>
+<li>overflow为 hidden|auto|scroll</li>
+<li>display为 table-cell|table-caption|inline-block</li>
+<li>position为 absolute|fixed<br>但是注意用BFC特性清理浮动都有副作用：比如float： left;让父容器变成浮动元素<br>副作用较小的是： overflow： auto;或者overflow: hidden;</li>
+</ul>
+<h3 id="通用的清理浮动法案"><a href="#通用的清理浮动法案" class="headerlink" title="通用的清理浮动法案"></a>通用的清理浮动法案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/*方法1*/</span><br><span class="line"> .clearfix&#123;</span><br><span class="line">     *zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line"> .clearfix:after&#123;</span><br><span class="line">     content: &quot;&quot;;</span><br><span class="line">     display: block;</span><br><span class="line">     clear: both;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /*方法2*/</span><br><span class="line"> .clearfix&#123;</span><br><span class="line">   *zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line"> .clearfix:after&#123;</span><br><span class="line">   content:&quot;&quot;;</span><br><span class="line">     display:table;</span><br><span class="line">     clear:both;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"><a href="#3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？" class="headerlink" title="3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"></a>3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？</h1><p>css定位方式有四种：默认定位（static）、相对定位（relative）、绝对定位（absolute）和固定定位（fixed）</p>
+<ul>
+<li><p><strong>static</strong>:默认值。没有定位，元素在正常的流中,top,right,bottom,left和z-index属性无效。<br>参考点：无</p>
+</li>
+<li><p><strong>relative</strong>:生成相对定位的元素，通过top,bottom,left,right的位置相对于其原来位置进行定位。left:20px 会向元素的 left 位置添加20px</p>
+<blockquote>
+<p>其中的相对指的是相对于元素在默认流中的位置。元素偏移之后，他本来在默认文档流中占据的位置仍然存在，其紧挨其后的元素的定位依据它本来的位置定位<br>参考点：元素本身位置<br>使用场景：元素相对偏移<br>案例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c7c9743c22a693fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</blockquote>
+</li>
+<li><p><strong>absolute</strong>：生成绝对定位的元素，相对于static定位外的第一个父元素进行定位。元素的位置通过 left, top, right 以及 bottom 属性进行规定。</p>
+<blockquote>
+<p>绝对定位的元素已经脱离了文档流，普通流中其他元素的布局就像绝对元素不存在一样；绝对定位的元素的位置是相对于最近的已定位的祖先元素，如果元素没有已定位的祖先元素，它的位置就相对于body根元素；绝对定位的框可以覆盖页面的其他元素。<br>参考点：距离最近的非static元素，否则为body<br>使用场景：垂直水平居中<br>案例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-8e708860a5b43a7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>top: 20px; left:20px 相对的值是看其父容器是否存在 position：relative;absolute;fixed;这三个值，如果有就是相对父容器的内边框。<br>当父容器里有 绝对定位 的子元素时，子元素设置width:100%实际上指的是相对于父容器的padding+content的宽度。当子元素是非绝对定位的元素时width:100%才是指子元素的 content 等于父元素的 content宽度查看范例<a href="http://js.jirengu.com/jatog/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/jatog/1/edit</a></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><strong>fixed</strong>: 本质上是一种绝对定位，不为元素预留空间。通过指定相对于屏幕视窗的位置来指定元素的空间，且元素的位置在屏幕滚动时不会发生变化。应用于很多网站顶端的固定导航、右下角的固定广告等等。<br>参考点：浏览器窗口<br>使用场景：登录框覆盖层</li>
+</ul>
+<p>注意只有position: relative; absolute; fixed;才能设置top left 等的值；</p>
+<h1 id="4-z-index有什么作用？如何使用？"><a href="#4-z-index有什么作用？如何使用？" class="headerlink" title="4.z-index有什么作用？如何使用？"></a>4.z-index有什么作用？如何使用？</h1><p>z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。如果为正数，则离用户更近，为负数则表示离用户更远。Z-index 仅能在定位元素上奏效。</p>
+<h1 id="5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别"><a href="#5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别" class="headerlink" title="5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?"></a>5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?</h1><p>position:relative和负margin都可以使元素位置发生偏移,二者区别：</p>
+<ul>
+<li>position:relative相对定位后元素位置发生偏移，只是视觉上显示的位置变化，但是它仍会占据原来的空间，不会影响其他文档流元素。</li>
+<li>负margin会使元素在文档流中位置发生偏移，会影响周边的元素位置变化<h1 id="6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明"><a href="#6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明" class="headerlink" title="6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明"></a>6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明</h1></li>
+<li>BFC:全称是 [Block Format Content] ,块级格式化上下文(<a href="http://www.w3.org/TR/CSS21/visuren.html#block-formatting)，" target="_blank" rel="noopener">http://www.w3.org/TR/CSS21/visuren.html#block-formatting)，</a><blockquote>
+<p>BFC特性：<br>1.BFC会阻止垂直外边距（margin-top、margin-bottom）折叠<br> 按照BFC的定义，只有同属于一个BFC时，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。<br>因此要解决margin重叠问题，只要让它们不在同一个BFC就行了，但是对于两个相邻元素来说，意义不大，没有必要给它们加个外壳，但是对于嵌套元素来说就很有必要了，只要把父元素设为BFC就可以了。这样子元素的margin就不会和父元素的margin发生重叠<br>2.BFC不会重叠浮动元素<br>3.BFC可以包含浮动</p>
+</blockquote>
+</li>
+<li>生成BFC:<blockquote>
+<ul>
+<li>float为 left|right</li>
+<li>overflow为 hidden|auto|scroll</li>
+<li>display为 table-cell|table-caption|inline-block</li>
+<li>position为 absolute|fixed</li>
+</ul>
+</blockquote>
+</li>
+<li>BFC作用：<br>1.会阻止垂直外边距（margin-top、margin-bottom）折叠<br>2.清除浮动<h1 id="7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"><a href="#7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例" class="headerlink" title="7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"></a>7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例</h1>当块处于同一个文档流同一个BFC中，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。对于父子元素，容器没有padding和border内部的margin会导致外边距合并。<br>相邻元素box1和box2的垂直外边距合并，如下例，<br><img src="http://upload-images.jianshu.io/upload_images/7280908-bcc1429094c2659b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><blockquote>
+<p>合并规则：<br>1.两个margin都是正值的时候，取两者的最大值；<br> 2.当 margin 都是负值的时候，取的是其中绝对值较大的，然后，从0位置，负向位移；<br> 3.当有正有负的时候，先取出负 margin 中绝对值中最大的，然后和正 margin 值中最大的 margin 相加。</p>
+</blockquote>
+</li>
+</ul>
+<p>如何不让相邻元素外边距合并：<br>1.被非空内容、padding、border 或 clear 分隔开。<br>2.不在一个普通流中或一个BFC中。<br>3.浮动元素、inline-block 元素、绝对定位元素的 margin 不会和垂直方向上其他元素的 margin 折叠（注意这里指的是上下相邻的元素）。</p>
+<p>父子外边距合并见下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-9049d87a4bd1b6ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解决外边距合并，让父容器设为BFC就可以了。给父容器加入overflow: auto;包裹h1，使得h1的margin内部生效，从而不会margin合并。这样子元素的margin就不会和父元素的margin发生重叠。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-4cef8375c552c107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>参考<a href="http://blog.csdn.net/github_37037281/article/details/55505825" target="_blank" rel="noopener">http://blog.csdn.net/github_37037281/article/details/55505825</a></p>
 
           
         
@@ -2043,689 +2403,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/28/CSS选择器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/28/CSS选择器/" itemprop="url">CSS选择器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-28T17:54:22+08:00">
-                2017-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-class和id的使用场景？"><a href="#1-class和id的使用场景？" class="headerlink" title="1.class和id的使用场景？"></a>1.class和id的使用场景？</h1><h3 id="class-选择器："><a href="#class-选择器：" class="headerlink" title="class 选择器："></a>class 选择器：</h3><p>class 选择器用于描述一组元素的样式，class 选择器有别于id选择器，class可以在多个元素中使用。<br>class 选择器在HTML中以class属性表示, 在 CSS 中，类选择器以一个点”.”号显示。</p>
-<h3 id="例："><a href="#例：" class="headerlink" title="例："></a>例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.center &#123;text-align:center;&#125;</span><br></pre></td></tr></table></figure>
-<p>在上面的例子中，所有拥有center类的HTML元素均为居中。</p>
-<h3 id="id-选择器："><a href="#id-选择器：" class="headerlink" title="id 选择器："></a>id 选择器：</h3><p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。<br>HTML元素以id属性来设置id选择器,CSS 中 id 选择器以 “#” 来定义。</p>
-<h3 id="例：-1"><a href="#例：-1" class="headerlink" title="例："></a>例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#para1</span><br><span class="line">&#123;</span><br><span class="line">text-align:center;</span><br><span class="line">color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上面的例子中，应用于元素属性id=”para1”。</p>
-<h1 id="2-css选择器常见的有几种？"><a href="#2-css选择器常见的有几种？" class="headerlink" title="2.css选择器常见的有几种？"></a>2.css选择器常见的有几种？</h1><h3 id="1-基础选择器"><a href="#1-基础选择器" class="headerlink" title="1.基础选择器"></a>1.基础选择器</h3><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>通用元素选择器，匹配页面任何元素（这也就决定了我们很少使用）</td>
-</tr>
-<tr>
-<td># id</td>
-<td>id选择器，匹配特定id的元素</td>
-</tr>
-<tr>
-<td>.class</td>
-<td>类选择器，匹配class包含(不是等于)特定类的元素</td>
-</tr>
-<tr>
-<td>element</td>
-<td>标签选择器</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-组合选择器"><a href="#2-组合选择器" class="headerlink" title="2.组合选择器"></a>2.组合选择器</h3><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E,F</td>
-<td>多元素选择器，用,分隔，同时匹配元素E或元素F</td>
-</tr>
-<tr>
-<td>E F</td>
-<td>后代选择器，用空格分隔，匹配E元素所有的后代（不只是子元素、子元素向下递归）元素F</td>
-</tr>
-<tr>
-<td>E&gt;F</td>
-<td>子元素选择器，用&gt;分隔，匹配E元素的所有直接子元素</td>
-</tr>
-<tr>
-<td>E+F</td>
-<td>直接相邻选择器，匹配E元素之后的相邻的同级元素F</td>
-</tr>
-<tr>
-<td>E~F</td>
-<td>普通相邻选择器（弟弟选择器），匹配E元素之后的同级元素F（无论直接相邻与否）</td>
-</tr>
-<tr>
-<td>.class1.class2</td>
-<td>id和class选择器和选择器连写的时候中间没有分隔符，. 和 # 本身充当分隔符的元素</td>
-</tr>
-<tr>
-<td>element#id</td>
-<td>id和class选择器和选择器连写的时候中间没有分隔符，. 和 # 本身充当分隔符的元素</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-属性选择器"><a href="#3-属性选择器" class="headerlink" title="3.属性选择器"></a>3.属性选择器</h3><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E[attr]</td>
-<td>匹配所有具有属性attr的元素，div[id]就能取到所有有id属性的div</td>
-</tr>
-<tr>
-<td>E[attr = value]</td>
-<td>匹配属性attr值为value的元素，div[id=test],匹配id=test的div</td>
-</tr>
-<tr>
-<td>E[attr ~= value]</td>
-<td>匹配所有属性attr具有多个空格分隔、其中一个值等于value的元素</td>
-</tr>
-<tr>
-<td>E[attr ^= value]</td>
-<td>匹配属性attr的值以value开头的元素</td>
-</tr>
-<tr>
-<td>E[attr $= value]</td>
-<td>匹配属性attr的值以value结尾的元素</td>
-</tr>
-<tr>
-<td>E[attr *= value]</td>
-<td>匹配属性attr的值包含value的元素</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-伪类选择器"><a href="#4-伪类选择器" class="headerlink" title="4.伪类选择器"></a>4.伪类选择器</h3><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E:first-child</td>
-<td>匹配作为长子（第一个子女）的元素E</td>
-</tr>
-<tr>
-<td>E:link</td>
-<td>匹配所有未被点击的链接</td>
-</tr>
-<tr>
-<td>E:visited</td>
-<td>匹配所有已被点击的链接</td>
-</tr>
-<tr>
-<td>E:active</td>
-<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
-</tr>
-<tr>
-<td>E:hover</td>
-<td>匹配鼠标悬停其上的E元素</td>
-</tr>
-<tr>
-<td>E:focus</td>
-<td>匹配获得当前焦点的E元素</td>
-</tr>
-<tr>
-<td>E:lang(c)</td>
-<td>匹配lang属性等于c的E元素</td>
-</tr>
-<tr>
-<td>E:enabled</td>
-<td>匹配表单中可用的元素</td>
-</tr>
-<tr>
-<td>E:disabled</td>
-<td>匹配表单中禁用的元素</td>
-</tr>
-<tr>
-<td>E:checked</td>
-<td>匹配表单中被选中的radio或checkbox元素</td>
-</tr>
-<tr>
-<td>E::selection</td>
-<td>匹配用户当前选中的元素</td>
-</tr>
-<tr>
-<td>E:root</td>
-<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
-</tr>
-<tr>
-<td>E:nth-child(n)</td>
-<td>匹配其父元素的第n个子元素，第一个编号为1</td>
-</tr>
-<tr>
-<td>E:nth-last-child(n)</td>
-<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
-</tr>
-<tr>
-<td>E:nth-of-type(n)</td>
-<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
-</tr>
-<tr>
-<td>E:nth-last-of-type(n)</td>
-<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
-</tr>
-<tr>
-<td>E:last-child</td>
-<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
-</tr>
-<tr>
-<td>E:first-of-type</td>
-<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
-</tr>
-<tr>
-<td>E:last-of-type</td>
-<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
-</tr>
-<tr>
-<td>E:only-child</td>
-<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
-</tr>
-<tr>
-<td>E:only-of-type</td>
-<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
-</tr>
-<tr>
-<td>E:empty</td>
-<td>匹配一个不包含任何子元素的元素，文本节点也被看作子元素</td>
-</tr>
-<tr>
-<td>E:not(selector)</td>
-<td>匹配不符合当前选择器的任何元素</td>
-</tr>
-</tbody>
-</table>
-<h5 id="n的取值"><a href="#n的取值" class="headerlink" title="n的取值"></a>n的取值</h5><p>1，2，3，4，5<br>2n+1, 2n, 4n-1<br>odd, even</p>
-<h3 id="5-伪元素选择器"><a href="#5-伪元素选择器" class="headerlink" title="5.伪元素选择器"></a>5.伪元素选择器</h3><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E::first-line</td>
-<td>匹配E元素内容的第一行</td>
-</tr>
-<tr>
-<td>E::first-letter</td>
-<td>匹配E元素内容的第一个字母</td>
-</tr>
-<tr>
-<td>E::before</td>
-<td>在E元素之前插入生成的内容</td>
-</tr>
-<tr>
-<td>E::after</td>
-<td>在E元素之后插入生成的内容</td>
-</tr>
-</tbody>
-</table>
-<h1 id="3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？"><a href="#3-选择器的优先级是怎样的-对于复杂场景如何计算优先级？" class="headerlink" title="3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？"></a>3.选择器的优先级是怎样的?对于复杂场景如何计算优先级？</h1><h3 id="选择器优先级：从高到底分别是"><a href="#选择器优先级：从高到底分别是" class="headerlink" title="选择器优先级：从高到底分别是"></a>选择器优先级：从高到底分别是</h3><p>1.在属性后面使用 !important 会覆盖页面内任何位置定义的元素样式<br>2.作为style属性写在元素标签上的内联样式<br>3.id选择器<code>#id</code><br>4.类选择器<code>.class</code><br>5.伪类选择器<code>a:hover</code><br>6.属性选择器<br>7.标签选择器<br>8.通配符选择器<br>9.浏览器自定义</p>
-<h3 id="对于复杂场景如何计算优先级"><a href="#对于复杂场景如何计算优先级" class="headerlink" title="对于复杂场景如何计算优先级"></a>对于复杂场景如何计算优先级</h3><p>选择器的特殊性值表述为4个部分，用0,0,0,0表示。</p>
-<ul>
-<li>ID选择器的特殊性值，加0,1,0,0;</li>
-<li>类选择器、属性选择器或伪类，加0,0,1,0;</li>
-<li>标签选择器和伪元素，加0,0,0,1;</li>
-<li>通配选择器对特殊性没有贡献，即0,0,0,0;</li>
-<li>最后比较特殊的一个标志!important(权重)，它没有特殊值，但是他的优先级是最高的，为了方便记忆，可认为他的默认值是1,0,0,0.<br>示例如下：</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-d2fa1c71639562e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>执行效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-c00b7bc42c26c8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h1 id="4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？"><a href="#4-a-link-a-hover-a-active-a-visited-的顺序是怎样的？-为什么？" class="headerlink" title="4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？"></a>4.a:link, a:hover, a:active, a:visited 的顺序是怎样的？ 为什么？</h1><p>四个选择器优先级相同，考虑他们会相互覆盖，应该按照这个顺序：</p>
-<p>a:link（未被点击）<br>a:visited（已被点击）<br>a:hover（鼠标悬停其上）<br>a:active（鼠标已经按下，还没有释放）</p>
-<p>因为：<br>1.四个选择器优先级相同，越往后的样式会覆盖前面的样式<br>2.链接被访问后，样式会发生改变，所以<code>a:visited</code>应放在<code>a:link</code>之后<br>3.当鼠标悬停在链接上时，无论链接是否已经被访问过，其样式都会发生改变，所以<code>a:hover</code>应放在<code>a:visited</code>之后<br>4.当鼠标按下链接但未松开时，链接样式会发生改变，但此时也属于鼠标悬停的状态，所以应把 <code>a:active</code> 放在 <code>a:hover</code> 之后，这样可以覆盖<code>a:hover</code>的样式</p>
-<p>记这顺序有个小招数，“LoVe？ HA!”。</p>
-<h1 id="5-以下选择器分别是什么意思？"><a href="#5-以下选择器分别是什么意思？" class="headerlink" title="5.以下选择器分别是什么意思？"></a>5.以下选择器分别是什么意思？</h1><p><img src="http://upload-images.jianshu.io/upload_images/7280908-cf4cdaf0ed02903c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h3 id="·列出你知道的伪类选择器"><a href="#·列出你知道的伪类选择器" class="headerlink" title="·列出你知道的伪类选择器"></a>·列出你知道的伪类选择器</h3><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E:first-child</td>
-<td>匹配作为长子（第一个子女）的元素E</td>
-</tr>
-<tr>
-<td>E:link</td>
-<td>匹配所有未被点击的链接</td>
-</tr>
-<tr>
-<td>E:visited</td>
-<td>匹配所有已被点击的链接</td>
-</tr>
-<tr>
-<td>E:active</td>
-<td>匹配鼠标已经其上按下、还没有释放的E元素</td>
-</tr>
-<tr>
-<td>E:hover</td>
-<td>匹配鼠标悬停其上的E元素</td>
-</tr>
-<tr>
-<td>E:focus</td>
-<td>匹配获得当前焦点的E元素</td>
-</tr>
-<tr>
-<td>E:lang(c)</td>
-<td>匹配lang属性等于c的E元素</td>
-</tr>
-<tr>
-<td>E:enabled</td>
-<td>匹配表单中可用的元素</td>
-</tr>
-<tr>
-<td>E:disabled</td>
-<td>匹配表单中禁用的元素</td>
-</tr>
-<tr>
-<td>E:checked</td>
-<td>匹配表单中被选中的radio或checkbox元素</td>
-</tr>
-<tr>
-<td>E::selection</td>
-<td>匹配用户当前选中的元素</td>
-</tr>
-<tr>
-<td>E:root</td>
-<td>匹配文档的根元素，对于HTML文档，就是HTML元素</td>
-</tr>
-<tr>
-<td>E:nth-child(n)</td>
-<td>匹配其父元素的第n个子元素，第一个编号为1</td>
-</tr>
-<tr>
-<td>E:nth-last-child(n)</td>
-<td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
-</tr>
-<tr>
-<td>E:nth-of-type(n)</td>
-<td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
-</tr>
-<tr>
-<td>E:nth-last-of-type(n)</td>
-<td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
-</tr>
-<tr>
-<td>E:last-child</td>
-<td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
-</tr>
-<tr>
-<td>E:first-of-type</td>
-<td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
-</tr>
-<tr>
-<td>E:last-of-type</td>
-<td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
-</tr>
-<tr>
-<td>E:only-child</td>
-<td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
-</tr>
-<tr>
-<td>E:only-of-type</td>
-<td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
-</tr>
-<tr>
-<td>E:empty</td>
-<td>匹配一个不包含任何子元素的元素，文本节点也被看作子元素</td>
-</tr>
-<tr>
-<td>E:not(selector)</td>
-<td>匹配不符合当前选择器的任何元素</td>
-</tr>
-</tbody>
-</table>
-<h5 id="n的取值-1"><a href="#n的取值-1" class="headerlink" title="n的取值"></a>n的取值</h5><p>1，2，3，4，5<br>2n+1, 2n, 4n-1<br>odd, even</p>
-<h3 id="·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）"><a href="#·div-first-child、div-first-of-type、div-first-child和div-first-of-type的作用和区别-（注意空格的作用）" class="headerlink" title="·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）"></a>·div:first-child、div:first-of-type、div :first-child和div :first-of-type的作用和区别 （注意空格的作用）</h3><p>·first-child 匹配其父元素的第一个子元素<br>·first-of-type 匹配其父元素下拥有相同标签的第一个元素</p>
-<p>1.div:first-child        div下的第一个子元素<br>2.div:first-of-type    div下的第一个同类型的子元素<br>3.div :first-child    匹配所有div元素内所有元素中属于其父元素的首个子元素<br>4.div :first-of-type  匹配所有div元素内所有元素中属于其父元素的首个类型的子元素</p>
-<h3 id="·运行如下代码，解析下输出样式的原因。"><a href="#·运行如下代码，解析下输出样式的原因。" class="headerlink" title="·运行如下代码，解析下输出样式的原因。"></a>·运行如下代码，解析下输出样式的原因。</h3><p><img src="http://upload-images.jianshu.io/upload_images/7280908-d5f6fa96aee458db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>运行如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-a706255d107b1fe9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item1:first-child&#123;</span><br><span class="line">  color: red;</span><br></pre></td></tr></table></figure></p>
-<p>item1类下的第一个元素颜色为红色，所以aa为红色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item1:first-of-type&#123;</span><br><span class="line">  background: blue;</span><br></pre></td></tr></table></figure></p>
-<p>item1类下拥有相同标签的第一个子元素背景为蓝色，p标签下第一个子元素是aa,h3标签下第一个子元素是bb,所以aa和bb的背景变为蓝色，ccc是第和h3标签下第二个子元素所以不变。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/26/CSS 基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/26/CSS 基础/" itemprop="url">CSS基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T14:27:22+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-CSS的全称是什么？"><a href="#1-CSS的全称是什么？" class="headerlink" title="1.CSS的全称是什么？"></a>1.CSS的全称是什么？</h1><p>CSS全称是 Cascading Style Sheets, 层叠样式表。<br>CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。<br>CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力。</p>
-<h1 id="2-CSS有几种引入方式？link和-import有什么区别？"><a href="#2-CSS有几种引入方式？link和-import有什么区别？" class="headerlink" title="2.CSS有几种引入方式？link和@import有什么区别？"></a>2.CSS有几种引入方式？link和@import有什么区别？</h1><p>#####css的引入方式有三种。</p>
-<p>######1.内联样式<br>当特殊的样式需要应用到个别元素时，就可以使用内联样式。 使用内联样式的方法是直接在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。简单直接，但后续修改以及添加样式会很繁琐。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style=&quot;color: red; font-size: 20px;&quot;&gt;&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
-<h6 id="2-内部样式"><a href="#2-内部样式" class="headerlink" title="2.内部样式"></a>2.内部样式</h6><p>当单个文件需要特别样式时，就可以使用内部样式表。你可以在 head 部分通过 <code>&lt;style&gt;</code> 标签定义内部样式表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">body &#123;background-color: red&#125;</span><br><span class="line">p &#123;margin-left: 20px&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
-<h6 id="3-外部样式"><a href="#3-外部样式" class="headerlink" title="3.外部样式"></a>3.外部样式</h6><p>当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观。实现了内容与样式分离。<br>rel:告诉浏览器引用的是一个样式表文件<br>type:文件类型（可省略）<br>href:文件地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import url(&quot;hello.css&quot;);</span><br><span class="line">  @import &quot;world.css&quot;;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="link和-import的区别："><a href="#link和-import的区别：" class="headerlink" title="link和@import的区别："></a>link和@import的区别：</h5><p>本质上，这两种方式都是为了加载<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>文件，但还是存在着细微的差别。</p>
-<ul>
-<li>差别1：link属于<a href="https://www.baidu.com/s?wd=XHTML&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">XHTML</a>标签，而@import完全是<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>提供的一种方式。link标签除了可以加载<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>外，还可以做很多其它的事情，比如定义<a href="https://www.baidu.com/s?wd=RSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">RSS</a>，定义rel连接属性等，@import就只能加载CSS了。</li>
-<li>差别2：加载顺序的差别。当一个页面被加载的时候（就是被浏览者浏览的时候），link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。所以有时候浏览@import加载CSS的页面时开始会没有样式（就是闪烁），网速慢的时候还挺明显。</li>
-<li>差别3：兼容性的差别。由于@import是CSS2.1提出的所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。</li>
-<li>差别4：使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。<h1 id="3-以下这几种文件路径分别用在什么地方，代表什么意思"><a href="#3-以下这几种文件路径分别用在什么地方，代表什么意思" class="headerlink" title="3.以下这几种文件路径分别用在什么地方，代表什么意思?"></a>3.以下这几种文件路径分别用在什么地方，代表什么意思?</h1>文件路径 | 代表<br>—| :—:<br>css/a.css   |   在与本文件同级的css文件夹下的a.css文件<br>./css/a.css |   ./代表当前，当前与本文件同级的css文件夹下的a.css文件<br>b.css | 同级的b.css文件<br>../imgs/a.png | 上一级的目录的imgs文件夹下的a.png文件，../代表返回上一级<br>/Users/hunger/project/css/a.css |本地文件的绝对路径<br>/static/css/a.css | 网站路径的绝对路径<br><a href="http://cdn.jirengu.com/kejian1/8-1.png|" target="_blank" rel="noopener">http://cdn.jirengu.com/kejian1/8-1.png|</a> 图片上传后生成的线上地址<h1 id="4-如果我想在js-jirengu-com上展示一个图片，需要怎么操作"><a href="#4-如果我想在js-jirengu-com上展示一个图片，需要怎么操作" class="headerlink" title="4.如果我想在js.jirengu.com上展示一个图片，需要怎么操作?"></a>4.如果我想在js.jirengu.com上展示一个图片，需要怎么操作?</h1>第1种：先把图片上传至服务器，然后引用相对路径<br>第2种：上传图片，生成图片链接，然后引用图片</li>
-</ul>
-<h1 id="5-列出5条以上html和css的书写规范"><a href="#5-列出5条以上html和css的书写规范" class="headerlink" title="5.列出5条以上html和css的书写规范"></a>5.列出5条以上html和css的书写规范</h1><h6 id="基本准则"><a href="#基本准则" class="headerlink" title="基本准则"></a>基本准则</h6><p>符合web标准, 语义化html, 结构表现行为分离, 兼容性优良. 页面性能方面, 代码要求简洁明了有序, 尽可能的减小服务器负载, 保证最快的解析速度.</p>
-<h6 id="html规范："><a href="#html规范：" class="headerlink" title="html规范："></a>html规范：</h6><ol>
-<li>文档类型声明及编码: 统一为html5声明类型&lt;!DOCTYPE html&gt;; 编码统一为<meta charset="”gbk”">, 书写时利用IDE实现层次分明的缩进;</li>
-<li>非特殊情况下样式文件必须外链至<head>…</head>之间;非特殊情况下JavaScript文件必须外链至页面底部;</li>
-<li>引入样式文件或JavaScript文件时, 须略去默认类型声明, 写法如下:<code>&lt;link rel=”stylesheet” href=”…” /&gt;&lt;style&gt;…&lt;/style&gt;&lt;script src=”…”&gt;&lt;/script&gt;</code></li>
-<li>引入JS库文件, 文件名须包含库名称及版本号及是否为压缩版, 比如jquery-1.4.1.min.js; 引入插件, 文件名格式为库名称+插件名称, 比如jQuery.cookie.js;</li>
-<li>所有编码均遵循xhtml标准, 标签 &amp; 属性 &amp; 属性命名 必须由小写字母及下划线数字组成, 且所有标签必须闭合, 包括 br (<br>), hr(<hr>)等; 属性值必须用双引号包括;</li>
-<li>充分利用无兼容性问题的html自身标签, 比如span, em, strong, optgroup, label,等等; 需要为html元素添加自定义属性的时候, 首先要考虑下有没有默认的已有的合适标签去设置, 如果没有, 可以使用须以”data-”为前缀来添加自定义属性，避免使用”data:”等其他命名方式;</li>
-<li>语义化html, 如 标题根据重要性用h*(同一页面只能有一个h1), 段落标记用p, 列表用ul, 内联元素中不可嵌套块级元素;</li>
-<li>尽可能减少div嵌套, 如<div><div class="”welcome”">欢迎访问XXX, 您的用户名是<div class="”name”">用户名</div></div></div>完全可以用以下代码替代: <div><p>欢迎访问XXX, 您的用户名是<span>用户名</span></p></div>;</li>
-<li>书写链接地址时, 必须避免重定向，例如：href=“<a href="https://link.zhihu.com/?target=http%3A//itaolun.com/" target="_blank" rel="noopener">http://itaolun.com/**</a>”, 即须在URL地址后面加上“/”；</li>
-<li>在页面中尽量避免使用style属性,即style=“…”;</li>
-<li>必须为含有描述性表单元素(input, textarea)添加label, 如<p>姓名: <input type="”text”" id="”name”" name="”name”"></p>须写成:<p><label for="”name”">姓名: </label><input type="”text”" id="”name”"></p></li>
-<li>能以背景形式呈现的图片, 尽量写入css样式中;</li>
-<li>重要图片必须加上alt属性; 给重要的元素和截断的元素加上title;</li>
-<li>给区块代码及重要功能(比如循环)加上注释, 方便后台添加功能;</li>
-<li>特殊符号使用: 尽可能使用代码替代: 比如 &lt;(&lt;) &amp; &gt;(&gt;) &amp; 空格( ) &amp; »(») 等等;</li>
-<li>书写页面过程中, 请考虑向后扩展性;</li>
-<li><p>class &amp; id 参见 css书写规范.</p>
-<h6 id="css书写规范："><a href="#css书写规范：" class="headerlink" title="css书写规范："></a>css书写规范：</h6></li>
-<li><p>编码统一为utf-8;</p>
-</li>
-<li>协作开发及分工: i会根据各个模块, 同时根据页面相似程序, 事先写好大体框架文件,<br>分配给前端人员实现内部结构&amp;表现&amp;行为; 共用css文件base.css由i书写, 协作开发过程中, 每个页面请务必都要引入,<br>此文件包含reset及头部底部样式, 此文件不可随意修改;</li>
-<li>class与id的使用: id是唯一的并是父级的, class是可以重复的并是子级的, 所以id仅使用在大的模块上, class可用在重复使用率高及子级中; id原则上都是由分发框架文件时命名的（如#header #footer #content #nav 等）, 为JavaScript预留钩子的除外;</li>
-<li>为JavaScript预留钩子的命名, 请以 js_ 起始, 比如: js_hide, js_show(淘宝是用的J_开头);</li>
-<li>class与id命名:<br>大的框架命名比如header/footer/wrapper/left/right之类的在2中由i统一命名.其他样式名称由 小写英文 &amp;<br>数字 &amp; _ 来组合命名, 如i_comment, fontred, width200; 避免使用中文拼音, 尽量使用简易的单词组合;<br>总之, 命名要语义化, 简明化.</li>
-<li>规避class与id命名:<br>a） 通过从属写法规避, 示例见d;<br>b）取父级元素id/class命名部分命名, 示例见d;<br>c）重复使用率高的命名, 请以自己代号加下划线起始, 比如i_clear;<br>d）a,b两条, 适用于在2中已建好框架的页面, 如, 要在2中已建好框架的页面代码<div id="”mainnav”"></div>中加入新的div元素,<br>按a命名法则: <div id="”mainnav”"><div>…</div></div>,<br>样式写法: #mainnav .firstnav{…….}<br>按b命名法则: <div id="”mainnav”"><div>…</div></div>,<br>样式写法: .main_firstnav{…….}<h1 id="6-介绍chrome-开发者工具的功能区"><a href="#6-介绍chrome-开发者工具的功能区" class="headerlink" title="6.介绍chrome 开发者工具的功能区"></a>6.介绍chrome 开发者工具的功能区</h1></li>
-</ol>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-e7ccaedf885e0b2c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2780,7 +2457,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目1： jQuery 中， $(document).ready()是什么意思？定义和用法: 当 DOM（文档对象模型） 已经加载，并且页面（包括图像）已经完全呈现时，会发生 ready 事件。由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。ready() 函数规定当 ready 事件发生时执行的代码。ready() 函数仅能用于当前文档，因此无需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14 jQuery与jQuery ajax">
+<meta property="og:url" content="http://yoursite.com/2018/01/03/14 jQuery与jQuery ajax/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="题目1： jQuery 中， $(document).ready()是什么意思？定义和用法: 当 DOM（文档对象模型） 已经加载，并且页面（包括图像）已经完全呈现时，会发生 ready 事件。由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。ready() 函数规定当 ready 事件发生时执行的代码。ready() 函数仅能用于当前文档，因此无需">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-8717eec78616aab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-a7290508c39bb8e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-ec6d9ac2f79401e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-3a8440cc306b95fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-3326854498a3a4f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-94f0b2d5d94f2ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-6e5416021ce4860b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-af870de4cdcf21ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-9d9ba1404a07e5fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-9efba8c59238c9fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-0c22c2e68c9b5aa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-f730e3019ba95983.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-75461ec81f77336e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-094b986ec11caad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-b84e9ac64532f0eb.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-23T09:00:08.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="14 jQuery与jQuery ajax">
+<meta name="twitter:description" content="题目1： jQuery 中， $(document).ready()是什么意思？定义和用法: 当 DOM（文档对象模型） 已经加载，并且页面（包括图像）已经完全呈现时，会发生 ready 事件。由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。ready() 函数规定当 ready 事件发生时执行的代码。ready() 函数仅能用于当前文档，因此无需">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7280908-8717eec78616aab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/03/14 jQuery与jQuery ajax/"/>
+
+
+
+
+
+  <title>14 jQuery与jQuery ajax | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/03/14 jQuery与jQuery ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">14 jQuery与jQuery ajax</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T11:40:25+08:00">
+                2018-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="题目1：-jQuery-中，-document-ready-是什么意思？"><a href="#题目1：-jQuery-中，-document-ready-是什么意思？" class="headerlink" title="题目1： jQuery 中， $(document).ready()是什么意思？"></a>题目1： jQuery 中， $(document).ready()是什么意思？</h1><h6 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法:"></a>定义和用法:</h6><blockquote>
+<p>当 DOM（文档对象模型） 已经加载，并且页面（包括图像）已经完全呈现时，会发生 ready 事件。<br>由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。<br>ready() 函数规定当 ready 事件发生时执行的代码。<br>ready() 函数仅能用于当前文档，因此无需选择器。</p>
+</blockquote>
+<p>允许使用以下三种语法:<br><code>$(document).ready(function)</code><br><code>$().ready(function)</code><br><code>$(function)</code></p>
+<h6 id="jQuery中-document-ready与Javascript中window-onload区别"><a href="#jQuery中-document-ready与Javascript中window-onload区别" class="headerlink" title="jQuery中$(document).ready与Javascript中window.onload区别:"></a>jQuery中$(document).ready与Javascript中window.onload区别:</h6><p><code>window.onload</code>:<br>window.onload在页面的DOM加载完成，所有的图片、子frame等所有的元素都加载完成的时候才会触发。<br><code>$(document).ready()</code>:<br>$(document).ready方法发生在DOM树构造完成，而不会等到其余的所有的元素都加载完成。其实说白了就是ready方法在onload之前发生，一般发生在DOM树构造完成的时候。<br><img src="http://upload-images.jianshu.io/upload_images/7280908-8717eec78616aab4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>具体一些，可以从以下几方面对比$(document).ready和window.onload的区别:</p>
+<p><strong>1.执行时间</strong><br><code>window.onload</code>必须等到页面内包括图片的所有元素加载完毕后才能执行。<br><code>$(document).ready</code>是DOM结构绘制完毕后就执行，不必等到图片等资源加载完成后才执行。</p>
+<p><strong>2.编写个数不同</strong><br><code>window.onload</code>不能同时编写多个，如果有多个<code>window.onload</code>方法，后面会覆盖前面，并且只会执行一个onload方法。<br><code>$(document).ready</code>可以同时编写多个，并且都可以得到执行。<br>如下例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"window.onload event1"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"window.onload event2"</span>);</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"jquery ready event1"</span>);</span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"jquery ready event2"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>执行结果如下:<br><img src="http://upload-images.jianshu.io/upload_images/7280908-a7290508c39bb8e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="输出结果"><br>可以看出ready先于onload事件。并且onload只能有一个，后面覆盖前面，而ready恰好相反。</p>
+<p><strong>3.简化写法</strong><br>window.onload没有简化写法。<br><code>$(document).ready(function(){})</code>可以简写成<code>$(function(){});</code><br>在一些开发中，大多数时候，第一行写的是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//coding...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="关于-window-load"><a href="#关于-window-load" class="headerlink" title="关于$(window).load:"></a>关于$(window).load:</h3><p><code>$(window).load</code>与<code>window.onload</code>其实没什么大的区别<br>jquery API中提到<code>$(window).load</code>方法是<code>$(window).on(&#39;load&#39;,handler)</code>的shortcut,而且<code>$(window).on(&#39;load&#39;,handler)</code>相当于<code>window.onload</code>方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="comment">// coding</span></span><br><span class="line">&#125;);  </span><br><span class="line"><span class="comment">//等价于 JavaScript 中的以下代码  </span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="comment">// coding</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果真要说区别的<br><code>$(window).load(handler)</code>可以用多次使用，并且handler都会依次执行。但是window.onload就不行，就像上面介绍的一样,<code>window.onload = handler</code>后面的hanlder会覆盖之前的handler。</p>
+<blockquote>
+<p>注意：由于在$(document).ready()方法内注册的事件，只要 DOM 就绪就会被执行，因此可能此时元素的关联文件未下载完。例如与图片有关的 html 下载完毕，并且已经解析为 DOM 树了，但很有可能图片还没有加载完毕，所以获取图片的高度和宽度这样的属性此时不一定有效。要解决这个问题，可以使用 jquery 中另一个关于页面加载的方法 —load() 方法。 Load() 方法会在元素的 onload 事件中绑定一个处理函数。如果处理函数绑定给 window 对象，则会在所有内容 ( 包括窗口、框架、对象和图像等 ) 加载完毕后触发，如果处理函数绑定在元素上，则会在元素的内容加载完毕后触发。</p>
+</blockquote>
+<h3 id="用原生JS实现jQuery的ready方法"><a href="#用原生JS实现jQuery的ready方法" class="headerlink" title="用原生JS实现jQuery的ready方法"></a>用原生JS实现jQuery的ready方法</h3><p>那么，对于某些特殊需求，不希望使用jQuery，但又想实现jQuery的ready方法。该如何用原生JS实现jQuery的ready方法呢？下面是其中之一的做法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ready</span>(<span class="params">fn</span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">document</span>.addEventListener)&#123;      </span><br><span class="line">        <span class="comment">//标准浏览器  </span></span><br><span class="line">        <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">            <span class="comment">//注销事件，避免反复触发  </span></span><br><span class="line">            <span class="built_in">document</span>.removeEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="built_in">arguments</span>.callee,<span class="literal">false</span>); </span><br><span class="line">            <span class="comment">//执行函数   </span></span><br><span class="line">            fn();</span><br><span class="line">        &#125;,<span class="literal">false</span>);  </span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.attachEvent)&#123;     </span><br><span class="line">        <span class="comment">//IE浏览器  </span></span><br><span class="line">        <span class="built_in">document</span>.attachEvent(<span class="string">'onreadystatechange'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">document</span>.readyState==<span class="string">'complete'</span>)&#123;  </span><br><span class="line">                <span class="built_in">document</span>.detachEvent(<span class="string">'onreadystatechange'</span>,<span class="built_in">arguments</span>.callee);  </span><br><span class="line">                <span class="comment">//执行函数   </span></span><br><span class="line">                fn();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面用一段代码验证ready函数的正确性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"window.onload event"</span>);</span><br><span class="line">&#125;</span><br><span class="line">ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'window ready event'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>执行效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/7280908-ec6d9ac2f79401e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行效果"></p>
+<h1 id="题目2：-node-html-和-node-text-的区别"><a href="#题目2：-node-html-和-node-text-的区别" class="headerlink" title="题目2： $node.html()和$node.text()的区别?"></a>题目2： $node.html()和$node.text()的区别?</h1><ul>
+<li><p>相同点:<br>html()和text()都是读写两用方法。</p>
+</li>
+<li><p>区别:</p>
+<ul>
+<li>html()对jQuery对象的html进行操作，相当于原生js的innerHTML；text()对jQuery对象的text进行操作，相当于原生js的innerText</li>
+<li>没有传递参数时，html()获取的是第一个匹配元素的innerHTML；text()获取的是所有匹配元素的innerText</li>
+<li>传递了string参数时，html()修改所有匹配元素的innerHTML为参数值，text()修改所有匹配元素的innerText为参数值<br>如例:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;span&gt;item1 &lt;/span&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;span&gt;item2 &lt;/span&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;span&gt;item3 &lt;/span&gt;&lt;/li&gt;</span><br><span class="line"></span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        console.log($('li').html())/</span><span class="regexp">/&lt;span&gt;item1 &lt;/</span>span&gt;</span><br><span class="line">        <span class="built_in">console</span>.log($(<span class="string">'li'</span>).text())<span class="comment">//item1 item2 item3</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log($(<span class="string">'li'</span>).html(<span class="string">'&lt;span&gt;insert span&lt;/span&gt;'</span>))<span class="comment">//</span></span><br><span class="line">        <span class="built_in">console</span>.log($(<span class="string">'li'</span>).text(<span class="string">'insert text'</span>))<span class="comment">//</span></span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>下面代码打印结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log($(&apos;li&apos;).html())//&lt;span&gt;item1 &lt;/span&gt;</span><br><span class="line">console.log($(&apos;li&apos;).text())//item1 item2 item3</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-3a8440cc306b95fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下面代码打印结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log($(&apos;li&apos;).html(&apos;&lt;span&gt;insert span&lt;/span&gt;&apos;))</span><br><span class="line">console.log($(&apos;li&apos;).text(&apos;insert text&apos;))</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-3326854498a3a4f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="题目3：-extend-的作用和用法"><a href="#题目3：-extend-的作用和用法" class="headerlink" title="题目3： $.extend 的作用和用法?"></a>题目3： $.extend 的作用和用法?</h1><blockquote>
+<p>定义<br>jQuery.extend() 函数用于将一个或多个对象的内容合并到目标对象。相同属性后面对象的值覆盖前面对象的值，target将被修改并通过$.extend()返回。参数 deep 为布尔值true/false，用来设置合并操作是否递归（深拷贝）。<code>$.extend( [deep ], target, object1 [, objectN ] )</code><br>注意：</p>
+<ol>
+<li>如果只为$.extend()指定了一个参数，则意味着参数target被省略。此时，target就是jQuery对象本身。通过这种方式，我们可以为全局对象jQuery添加新的函数。</li>
+<li>如果多个对象具有相同的属性，则后者会覆盖前者的属性值。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>用法:<br>如果我们想保留原对象，可通过传递一个空对象作为目标对象：<br><code>var object = $.extend({}, object1, object2); //将object1, object2合并到{}中</code><br>默认<code>$.extend()</code>合并操作是浅复制，如果第一个对象的属性本身是一个对象或数组，那么它将完全用第二个对象相同的key重写一个属性。这些值不会被合并。如果将 true作为该函数的第一个参数，那么会在对象上进行递归的合并。</p>
+<p>######语法:<br><code>$.extend( target [, object1 ] [, objectN ] )</code></p>
+</blockquote>
+<p>如例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> object1 = &#123;</span><br><span class="line">        amy: <span class="number">0</span>,</span><br><span class="line">        tom: &#123;</span><br><span class="line">            height: <span class="number">180</span>, <span class="attr">user</span>: &#123;</span><br><span class="line">                age: <span class="number">20</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> object2 = &#123;</span><br><span class="line">        jim: <span class="number">100</span>,</span><br><span class="line">        tom: &#123;</span><br><span class="line">            weight: <span class="number">100</span>, <span class="attr">user</span>: &#123;</span><br><span class="line">                age: <span class="number">100</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log($.extend(object1, object2))<span class="comment">//浅复制，将object2合并到object1中</span></span><br><span class="line">    <span class="built_in">console</span>.log(object1)<span class="comment">//object1为返回的最终结果</span></span><br><span class="line">    <span class="built_in">console</span>.log(object2)<span class="comment">//object2值不变</span></span><br><span class="line">    <span class="built_in">console</span>.log($.extend(<span class="literal">true</span>, object1, object2))<span class="comment">//深复制，将object2合并到object1中</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>打印结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log($.extend(object1, object2))</span><br><span class="line">//浅复制，将object2合并到object1中,tom对象属性完全被object2中的tom属性取代</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-94f0b2d5d94f2ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(object1)//object1为返回合并后的最终结果</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-6e5416021ce4860b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(object2)//object2值不变</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-af870de4cdcf21ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log($.extend(true, object1, object2))</span><br><span class="line">//深复制，将object2合并到object1中</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-9d9ba1404a07e5fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>关于深复制和浅复制的区别参考:<a href="https://www.cnblogs.com/tracylin/p/5346314.html" target="_blank" rel="noopener">https://www.cnblogs.com/tracylin/p/5346314.html</a></p>
+<h1 id="题目4：-jQuery-的链式调用是什么？"><a href="#题目4：-jQuery-的链式调用是什么？" class="headerlink" title="题目4： jQuery 的链式调用是什么？"></a>题目4： jQuery 的链式调用是什么？</h1><p>链式调用适用于异步编程，可避免线程阻塞，实现原理是在当前函数执行完后return this，即返回该函数的执行环境，下一个函数就可以继续在这个函数下运行了，结果就是多种方法在一个jQuery对象上一个接一个地调用<br>示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;hello world&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;bybe world&lt;/</span>h2&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="string">'p'</span>).on(<span class="string">'mouseenter'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="keyword">this</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>)</span><br><span class="line">        &#125;).on(<span class="string">'mouseleave'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="keyword">this</span>).css(<span class="string">'background-color'</span>, <span class="string">'blue'</span>)</span><br><span class="line">        &#125;).parents(<span class="string">'body'</span>).find(<span class="string">'h2'</span>).toggle(<span class="number">500</span>)</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure></p>
+<p>执行效果:<br><img src="http://upload-images.jianshu.io/upload_images/7280908-9efba8c59238c9fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初始状态"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-0c22c2e68c9b5aa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="500ms后bybe world消失"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7280908-f730e3019ba95983.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="鼠标放置上去"><br><img src="http://upload-images.jianshu.io/upload_images/7280908-75461ec81f77336e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="鼠标移开"><br>本例中，mouseenter和mouseleave是事件监听，只有事件触发后才会执行相应函数中的代码，属于异步执行，与以上所说的在同一jQuery上一个接一个地调用方法并不冲突。<br>结果就是无论如何js引擎都会先执行<code>$(&#39;p&#39;).parents(&#39;body&#39;).find(&#39;h2&#39;).toggle(500)</code>切换h2的显示状态为隐藏，再根据用户是否触发鼠标事件来计算结果。</p>
+<h1 id="题目5：-jQuery-中-data-函数的作用"><a href="#题目5：-jQuery-中-data-函数的作用" class="headerlink" title="题目5： jQuery 中 data 函数的作用?"></a>题目5： jQuery 中 data 函数的作用?</h1><ul>
+<li><p>#####jquery data()的作用<br>data() 方法向被选元素附加数据，或者从被选元素获取数据。<br>通过data()函数存取的数据都是临时数据，一旦页面刷新，之前存放的数据都将不复存在。<br>该函数属于jQuery对象(实例)。如果需要移除通过data()函数存放的数据，请使用 removeData() 函数。</p>
+</li>
+<li><p>#####jquery data的使用方式<br>1、获取附加的data的值<br><code>$(selector).data(name)</code><br>参数说明<br><code>name</code>：可选。规定要取回的数据的名称。<br>如果没有规定名称，则该方法将以对象的形式从元素中返回所有存储的数据。</p>
+</li>
+</ul>
+<p>2、用name和value为对象附加数据<br><code>$(selector).data(name,value)</code><br>参数说明<br><code>selector</code>：为需要附加或者获取数据的对象。<br><code>name</code>：参数为数据的名称。<br><code>value</code>：参数为数据的值。</p>
+<p>3、使用对象向元素附加数据<br>使用带有名称/值对的对象向被选元素添加数据。<br>除了以提供 name 和 value 的方式进行赋值，我们还可以直接传入另一个对象（ “another” ）作为参数。这种情况下，“another” 的属性名称和属性值将被视为多个键值对，从中提取的 “name” 和 “value” 都会被复制到目标对象的缓存中。<br><code>$(selector).data(object)</code><br>参数说明<br><code>object</code>：必需。规定包含名称/值对的对象。</p>
+<p>示例:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'body'</span>).data(<span class="string">'name'</span>, <span class="string">'haha'</span>)</span><br><span class="line">$(<span class="string">'body'</span>).data(<span class="string">'hobby'</span>, &#123; <span class="attr">fav</span>: <span class="string">'music'</span>, <span class="attr">love</span>: <span class="string">'chicken'</span> &#125;)</span><br><span class="line">$(<span class="string">'body'</span>).data(&#123; <span class="attr">arr</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] &#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">'body'</span>).data(<span class="string">'name'</span>))<span class="comment">//haha</span></span><br><span class="line"><span class="built_in">console</span>.log($(<span class="string">'body'</span>).data())</span><br><span class="line"><span class="comment">//&#123; name: "haha",hooby: &#123; fav: "music", love: "chicken" &#125;,arr: [1,2,3,4,5] &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>打印结果:<br><img src="http://upload-images.jianshu.io/upload_images/7280908-094b986ec11caad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="题目6：写出以下功能对应的-jQuery-方法："><a href="#题目6：写出以下功能对应的-jQuery-方法：" class="headerlink" title="题目6：写出以下功能对应的 jQuery 方法："></a>题目6：写出以下功能对应的 jQuery 方法：</h1><ul>
+<li><p>给元素 $node 添加 class active，给元素 $noed 删除 class active</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$node.addClass(<span class="string">'active'</span>)</span><br><span class="line">$node.removeClass(<span class="string">'active'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>展示元素$node, 隐藏元素$node</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1:</span></span><br><span class="line">$node.show()</span><br><span class="line">$node.hide()</span><br><span class="line"><span class="comment">//方法2:</span></span><br><span class="line">$node.css(<span class="string">'display'</span>,<span class="string">'block'</span>)</span><br><span class="line">$node.css(<span class="string">'display'</span>,<span class="string">'none'</span>)</span><br><span class="line"><span class="comment">//方法3:</span></span><br><span class="line"><span class="comment">//给node设置css属性&#123;display: none;&#125;,默认隐藏; 增加active属性 node.active&#123;display: block;&#125;显示</span></span><br><span class="line">$node.addClass(<span class="string">'active'</span>); <span class="comment">//显示</span></span><br><span class="line">$node.removeClass(<span class="string">'active'</span>); <span class="comment">//隐藏</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取元素$node 的 属性: id、src、title， 修改以上属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取属性</span></span><br><span class="line">$node.attr(<span class="string">'id'</span>)</span><br><span class="line">$node.attr(<span class="string">'src'</span>)</span><br><span class="line">$node.attr(<span class="string">'title'</span>)</span><br><span class="line"><span class="comment">//修改属性</span></span><br><span class="line">$node.attr(<span class="string">'id'</span>,<span class="string">'newId'</span>)</span><br><span class="line">$node.attr(<span class="string">'src'</span>,<span class="string">'newSrc'</span>)</span><br><span class="line">$node.attr(<span class="string">'title'</span>,<span class="string">'newTitle'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给$node 添加自定义属性data-src</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$node.prop(<span class="string">'data-src'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在$ct 内部最开头添加元素$node</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ct.prepend($node)</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">$node.prependTo($ct)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在$ct 内部最末尾添加元素$node</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ct.append($node)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">$node.appenTo($ct)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除$node</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$node.remove()</span><br><span class="line">$ct.detach($node)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把$ct里内容清空</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ct.empty()</span><br><span class="line">$ct.text(<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在$ct 里设置 html<code>&lt;div class=&quot;btn&quot;&gt;&lt;/div&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ct.html(<span class="string">'&lt;div class="btn"&gt;&lt;/div&gt;'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取、设置$node 的宽度、高度(分别不包括内边距、包括内边距、包括边框、包括外边距)</p>
+</li>
+</ul>
+<p>获取宽高:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不包括内边距</span></span><br><span class="line">$node.width()</span><br><span class="line">$node.height()</span><br><span class="line">$node.css(<span class="string">'width'</span>)</span><br><span class="line">$node.css(<span class="string">'height'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//包括内边距</span></span><br><span class="line">$node.innerWight()</span><br><span class="line">$node.innerHeight()</span><br><span class="line"></span><br><span class="line"><span class="comment">//包括内边距,包括边框</span></span><br><span class="line">$node.outerWidth() <span class="comment">//不传参数或参数为false</span></span><br><span class="line">$node.outerHeight() <span class="comment">//不传参数或参数为false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//包括内边距,边框,外边距</span></span><br><span class="line">$node.outerWidth(<span class="literal">true</span>)</span><br><span class="line">$node.outerHeight(<span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
+<p>设置宽高:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不包括内边距</span></span><br><span class="line">$node.width(<span class="number">100</span>) <span class="comment">//如果没有规定长度单位，则使用默认的 px 单位</span></span><br><span class="line">$node.height(<span class="number">100</span>)</span><br><span class="line">$node.css(&#123;<span class="attr">width</span>:<span class="string">'200px'</span>,<span class="attr">height</span>:<span class="string">'300px'</span>&#125;)<span class="comment">//设置元素的宽度和高度，也可以不要引号和单位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//包括内边距</span></span><br><span class="line">$node.innerWidth(<span class="number">30</span>)</span><br><span class="line">$node.innerHeight(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//包括内边距，包括边框</span></span><br><span class="line">$node.outerWidth(<span class="number">60</span>)</span><br><span class="line">$node.outerHeight(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//包括内边距，包括边框，包括外边距</span></span><br><span class="line">$node.outerWidth(<span class="number">70</span>,<span class="literal">true</span>)</span><br><span class="line">$node.outerHeight(<span class="number">70</span>,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>获取窗口滚动条垂直滚动距离</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).scrollTop()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取$node 到根节点水平、垂直偏移距离</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$node.offset().left</span><br><span class="line">$node.offset().top</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改$node 的样式，字体颜色设置红色，字体大小设置14px</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$node.css(&#123;</span><br><span class="line">  <span class="string">'color'</span>: <span class="string">'red'</span>,</span><br><span class="line">  <span class="string">'font-size'</span>: <span class="string">'14px'</span> </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历节点，把每个节点里面的文本内容重复一遍</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$node.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  $(<span class="keyword">this</span>).text($(<span class="keyword">this</span>).text() + $(<span class="keyword">this</span>).text())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从$ct 里查找 class 为 .item的子元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ct.find(<span class="string">'.item'</span>)</span><br><span class="line">$ct.children(<span class="string">'.item'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取$ct 里面的所有孩子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ct.children()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于$node，向上找到 class 为’.ct’的父亲，再从该父亲找到’.panel’的孩子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$node.parents(<span class="string">'.ct'</span>).find(<span class="string">'.panel'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取选择元素的数量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$node.length</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前元素在兄弟中的排行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node.index()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="题目7："><a href="#题目7：" class="headerlink" title="题目7："></a>题目7：</h1><ul>
+<li>用jQuery实现以下操作<ul>
+<li>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span>&gt;按钮&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script&gt;</span></span><br><span class="line"><span class="regexp">    var $btn = $('.btn')</span></span><br><span class="line"><span class="regexp">    $btn.on('click',function()&#123;</span></span><br><span class="line"><span class="regexp">            $btn.css(&#123;</span></span><br><span class="line"><span class="regexp">              'background': 'red'</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">            setTimeout(function()&#123;</span></span><br><span class="line"><span class="regexp">              $btn.css(&#123;'background': 'blue'&#125;)</span></span><br><span class="line"><span class="regexp">            &#125;,500)</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">  &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>效果预览:<a href="http://js.jirengu.com/maqihelosa/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/maqihelosa/1/edit</a></p>
+<ul>
+<li>当窗口滚动时，获取垂直滚动距离<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="string">'.content'</span>).on(<span class="string">'scroll'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> num = $(<span class="string">'.content'</span>).scrollTop()</span><br><span class="line">      $(<span class="string">'span'</span>).text(num)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果预览:<a href="http://js.jirengu.com/bajivefije/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/bajivefije/1/edit</a></p>
+<ul>
+<li>当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> $box = $(<span class="string">'.box'</span>)</span><br><span class="line">    $box.on(<span class="string">'mouseenter'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="keyword">this</span>).css(<span class="string">'background'</span>,<span class="string">'red'</span>)</span><br><span class="line">    &#125;).on(<span class="string">'mouseleave'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="keyword">this</span>).css(<span class="string">'background'</span>,<span class="string">'white'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果预览:<a href="http://js.jirengu.com/tayoxeyeye/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/tayoxeyeye/1/edit</a></p>
+<ul>
+<li>当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> $input = $(<span class="string">'.ipt'</span>)</span><br><span class="line">    $input.focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="keyword">this</span>).css(<span class="string">'border-color'</span>,<span class="string">'blue'</span>)</span><br><span class="line">      .on(<span class="string">'keyup'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="keyword">this</span>).val($(<span class="keyword">this</span>).val().toUpperCase())</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    $input.blur(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="keyword">this</span>).css(<span class="string">'border-color'</span>,<span class="string">'black'</span>)</span><br><span class="line">      <span class="built_in">console</span>.log($(<span class="keyword">this</span>).val())</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果预览:<a href="http://js.jirengu.com/likesomeca/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/likesomeca/1/edit</a></p>
+<ul>
+<li>当选择 select 后，获取用户选择的内容<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;select&gt;</span><br><span class="line">    &lt;option value=<span class="string">"1"</span>&gt;item <span class="number">1</span>&lt;<span class="regexp">/option&gt;</span></span><br><span class="line"><span class="regexp">    &lt;option value="2"&gt;item 2&lt;/</span>option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"3"</span>&gt;item <span class="number">3</span>&lt;<span class="regexp">/option&gt;</span></span><br><span class="line"><span class="regexp">    &lt;option value="4"&gt;item 4&lt;/</span>option&gt;</span><br><span class="line">    &lt;option value=<span class="string">"5"</span>&gt;item <span class="number">5</span>&lt;<span class="regexp">/option&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>select&gt;</span><br><span class="line">&lt;p&gt;用户选取的内容是：&lt;span&gt;item&lt;<span class="regexp">/span&gt;&lt;/</span>p&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">$(<span class="string">'select'</span>).on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'span'</span>).text($(<span class="string">'select&gt;option:selected'</span>).text())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果预览:<a href="http://js.jirengu.com/budugazave/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/budugazave/1/edit</a></p>
+<h1 id="题目8：-用-jQuery-ajax-实现如下效果。当点击加载更多会加载数据展示到页面效果预览"><a href="#题目8：-用-jQuery-ajax-实现如下效果。当点击加载更多会加载数据展示到页面效果预览" class="headerlink" title="题目8： 用 jQuery ajax 实现如下效果。当点击加载更多会加载数据展示到页面效果预览"></a>题目8： 用 jQuery ajax 实现如下效果。当点击加载更多会加载数据展示到页面<a href="https://link.jianshu.com/?t=http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS9-jqueryajax/1.html" target="_blank" rel="noopener">效果预览</a></h1><h2 id="github代码"><a href="#github代码" class="headerlink" title="github代码"></a><a href="https://github.com/FLYSASA/task/tree/master/advance-task15/jQuery-ajax" target="_blank" rel="noopener">github代码</a></h2><p><img src="http://upload-images.jianshu.io/upload_images/7280908-b84e9ac64532f0eb.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地mock成功.gif"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/26/13 jQuery/" rel="next" title="13 jQuery">
+                <i class="fa fa-chevron-left"></i> 13 jQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/搭建成功/" rel="prev" title="Fair to be late, but never absent">
+                Fair to be late, but never absent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目1：-jQuery-中，-document-ready-是什么意思？"><span class="nav-number">1.</span> <span class="nav-text">题目1： jQuery 中， $(document).ready()是什么意思？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义和用法"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">定义和用法:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#jQuery中-document-ready与Javascript中window-onload区别"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">jQuery中$(document).ready与Javascript中window.onload区别:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-window-load"><span class="nav-number">1.0.1.</span> <span class="nav-text">关于$(window).load:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用原生JS实现jQuery的ready方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">用原生JS实现jQuery的ready方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目2：-node-html-和-node-text-的区别"><span class="nav-number">2.</span> <span class="nav-text">题目2： $node.html()和$node.text()的区别?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目3：-extend-的作用和用法"><span class="nav-number">3.</span> <span class="nav-text">题目3： $.extend 的作用和用法?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目4：-jQuery-的链式调用是什么？"><span class="nav-number">4.</span> <span class="nav-text">题目4： jQuery 的链式调用是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目5：-jQuery-中-data-函数的作用"><span class="nav-number">5.</span> <span class="nav-text">题目5： jQuery 中 data 函数的作用?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目6：写出以下功能对应的-jQuery-方法："><span class="nav-number">6.</span> <span class="nav-text">题目6：写出以下功能对应的 jQuery 方法：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目7："><span class="nav-number">7.</span> <span class="nav-text">题目7：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目8：-用-jQuery-ajax-实现如下效果。当点击加载更多会加载数据展示到页面效果预览"><span class="nav-number">8.</span> <span class="nav-text">题目8： 用 jQuery ajax 实现如下效果。当点击加载更多会加载数据展示到页面效果预览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#github代码"><span class="nav-number">8.1.</span> <span class="nav-text">github代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
