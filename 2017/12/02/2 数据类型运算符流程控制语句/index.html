@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么? JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。1.数值（number）： 整数和小数（如1和1.34）2.字符串（string）： 字符组成的文本（如“hello world”）3.布尔值（boolean）：true（真）和fals">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2 数据类型运算符流程控制语句">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/2 数据类型运算符流程控制语句/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么? JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。1.数值（number）： 整数和小数（如1和1.34）2.字符串（string）： 字符组成的文本（如“hello world”）3.布尔值（boolean）：true（真）和fals">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-23T08:34:09.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 数据类型运算符流程控制语句">
+<meta name="twitter:description" content="1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么? JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。1.数值（number）： 整数和小数（如1和1.34）2.字符串（string）： 字符组成的文本（如“hello world”）3.布尔值（boolean）：true（真）和fals">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/02/2 数据类型运算符流程控制语句/"/>
+
+
+
+
+
+  <title>2 数据类型运算符流程控制语句 | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/02/2 数据类型运算符流程控制语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2 数据类型运算符流程控制语句</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-02T19:54:25+08:00">
+                2017-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么"><a href="#1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么" class="headerlink" title="1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?"></a>1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?</h1><ul>
+<li><p>JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。<br>1.数值（number）： 整数和小数（如1和1.34）<br>2.字符串（string）： 字符组成的文本（如“hello world”）<br>3.布尔值（boolean）：true（真）和false（假）两个特定值<br>4.undefined: 表示“未定义”或不存在，即此处目前没有任何值<br>5.null: 表示空缺，此处应有一个值，但目前为空<br>6.对象（object）：各中值组成的集合</p>
+</li>
+<li><p>属于原始类型（primitive type）的有： 数值，字符串，布尔值</p>
+</li>
+<li>属于复杂类型（complex type）的有： 对象</li>
+<li>特殊值：undefined和null</li>
+<li>原始类型与复杂类型的区别：<br>原始类型是最基本的数据类型，不能再细分了。<br>复杂类型的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。</li>
+</ul>
+<h1 id="2-typeof和instanceof的作用和区别"><a href="#2-typeof和instanceof的作用和区别" class="headerlink" title="2.typeof和instanceof的作用和区别?"></a>2.typeof和instanceof的作用和区别?</h1><p>JavaScript有三种方法，可以确定一个值到底是什么类型。</p>
+<ul>
+<li>typeof运算符</li>
+<li>instanceof运算符</li>
+<li>Object.prototype.toString方法</li>
+</ul>
+<p>对于<code>typeof</code>:<br>1.数值、字符串、布尔值分别返回 number、string、boolean。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 // &quot;number&quot;</span><br><span class="line">typeof &apos;123&apos; // &quot;string&quot;</span><br><span class="line">typeof false // &quot;boolean&quot;</span><br></pre></td></tr></table></figure></p>
+<p>2.函数返回function。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;&#125;</span><br><span class="line">typeof f</span><br><span class="line">// &quot;function&quot;</span><br></pre></td></tr></table></figure></p>
+<p>3.undefined返回undefined。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof undefined</span><br><span class="line">// &quot;undefined&quot;</span><br></pre></td></tr></table></figure></p>
+<p>利用这一点，typeof可以用来检查一个没有声明的变量，而不报错。应用在实际编程中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 错误的写法</span><br><span class="line">if (v) &#123; &#125;  // ReferenceError: v is not defined</span><br><span class="line"></span><br><span class="line">// 正确的写法</span><br><span class="line">if (typeof v === &quot;undefined&quot;) &#123; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.除此以外，其他情况都返回object。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof window // &quot;object&quot;</span><br><span class="line">typeof &#123;&#125; // &quot;object&quot;</span><br><span class="line">typeof [] // &quot;object&quot;</span><br><span class="line">typeof null // &quot;object&quot;</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>instanceof</code><br>区分数组和对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;;</span><br><span class="line">var a = [];</span><br><span class="line">o instanceof Array // false</span><br><span class="line">a instanceof Array // true</span><br></pre></td></tr></table></figure></p>
+<p>两者区别：<br><code>typeof</code>运算符:运算符可以返回一个字符串，用以说明原数据的类型。<br><code>instanceof</code>运算符:运算符可以判断一个变量是否是某个对象（类）的实例，返回值是布尔类型的。</p>
+<h1 id="3-如何判断一个变量是否是数字、字符串、布尔、函数"><a href="#3-如何判断一个变量是否是数字、字符串、布尔、函数" class="headerlink" title="3.如何判断一个变量是否是数字、字符串、布尔、函数"></a>3.如何判断一个变量是否是数字、字符串、布尔、函数</h1><p>见上例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 === &apos;number&apos; 判断是否是数字</span><br><span class="line">typeof &apos;123&apos; === &apos;string&apos; 判断是否为字符串</span><br><span class="line">typeof true ===&apos;boolean&apos; 判断是否为布尔</span><br><span class="line">function f() &#123;&#125;</span><br><span class="line">typeof f ===&apos;function&apos; 判断是否为函数</span><br></pre></td></tr></table></figure></p>
+<h1 id="4-NaN是什么-有什么特别之处"><a href="#4-NaN是什么-有什么特别之处" class="headerlink" title="4.NaN是什么? 有什么特别之处?"></a>4.NaN是什么? 有什么特别之处?</h1><p>NaN含义是Not a Number，表示非数字，NaN和任何值都不相等，包括自己。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NaN == NaN; //false</span><br><span class="line">parseInt(&apos;abc&apos;); //NaN</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>特别之处：<br>1.任何NaN的值进行操作都会返回一个NaN,<br>2.NaN与任何值都不相等包括其本身,即NaN === NaN也是false.</p>
+</blockquote>
+<h1 id="5-如何把非数值转化为数值"><a href="#5-如何把非数值转化为数值" class="headerlink" title="5.如何把非数值转化为数值?"></a>5.如何把非数值转化为数值?</h1><h6 id="有三个函数可以把非数值转换为数值"><a href="#有三个函数可以把非数值转换为数值" class="headerlink" title="有三个函数可以把非数值转换为数值"></a>有三个函数可以把非数值转换为数值</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Number()</span><br><span class="line">2. parseInt()</span><br><span class="line">3. parseFloat()</span><br></pre></td></tr></table></figure>
+<p>第一个函数，即转型函数<code>Number()</code>可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值。这3个函数对于同样的输入会有返回不同的结果。</p>
+<h5 id="Number-函数的转换规则如下："><a href="#Number-函数的转换规则如下：" class="headerlink" title="Number()函数的转换规则如下："></a>Number()函数的转换规则如下：</h5><ul>
+<li>如果是Boolean值，true和false将分别被转换为1和0；</li>
+<li>如果是数字值，只是简单的传入和返回；</li>
+<li>如果是null值，返回0；</li>
+<li>如果是undefinde，返回NaN；</li>
+<li>如果是字符串，遵循下列规则：<br>1.如果字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即“1”会变成1，“123”会变成123，而“011”会变成11（注意：前导的零被忽略了）；<br>2.如果字符串中包含有效的浮点格式，如“1.1”,则将其转换为对应的浮点数值（同样，也会忽略前导零）；<br>3.如果字符串中包含有效的十六进制格式，例如“0xf”，则将其转换为相同大小的十进制整数值；<br>4.如果字符串是空的（不包含任何字符），则将其转换为0；<br>5.如果字符串中包含除上述格式之外的字符，则将其转换为NaN.<br>如果是对象，则调用对象的valueOf()方法，然后依照前面的规则转换返回的值。如果转换的结果是NaN，则调用对象的toString()方法，然后再次依照前面的规则转换返回的字符串值。<h5 id="parseInt-函数的转换规则如下："><a href="#parseInt-函数的转换规则如下：" class="headerlink" title="parseInt()函数的转换规则如下："></a>parseInt()函数的转换规则如下：</h5></li>
+<li>忽略字符串前面的空白字符，找到第一个非空白字符</li>
+<li>如果第一个字符不是-或者数字返回NaN</li>
+<li>如果第一个字符是数字字符，会继续解析第二个字符，直到解析完所-有后续字符或者遇到了一个非数字字符。例如“1234blue”会被转换为1234，因为“blue”会被完全忽略。</li>
+<li>0开头会当做八进制，0x开头会当做十六进制，但是可以指定第二个参数指定基数<h5 id="parseFloat-与parseInt-函数类似，有两点区别"><a href="#parseFloat-与parseInt-函数类似，有两点区别" class="headerlink" title="parseFloat() 与parseInt()函数类似，有两点区别"></a>parseFloat() 与parseInt()函数类似，有两点区别</h5></li>
+<li>parseInt()在解析”22.34.5”时会将其转换为22，因为小数点并不是有效的数字字符；而parseFloat()可以将转换为22.34，因为parseFloat()在解析时遇到一个无效的浮点数字字符为止，而上述字符砖中第一小数点是有效的；</li>
+<li>parseInt()与parseFloat()的第二个区别在于它始终都会忽略前导的零。</li>
+</ul>
+<p>例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;blue&apos;); //NaN 非空字符串转换为NaN</span><br><span class="line">parseInt(&apos;-23ABS&apos;); // -23</span><br><span class="line">parseInt(&apos;0xf1&apos;); // 241</span><br><span class="line">parseInt(&apos;101&apos;, 2); // 5，后面的2代表101是二进制数</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>==与===有什么区别<br>===是严格意义上的相等，只需注意NaN和NaN不等就行了。而使用==的时候，javascript会帮我们做类型转换，造成一些匪夷所思的结果，那么使用==的时候在一下情况下会做相应的类型转换<br>如果两个值类型相同，则执行严格相等的运算<br>如果两个值的类型不同<br>1.如果一个是null，一个是undefined，那么相等<br>2.如果一个是数字，一个是字符串，先将字符串转为数字，然后比较<br>3.如果一个值是true/false则将其转为1/0比较<br>4.如果一个值是对象，一个是数字或字符串，则尝试使用valueOf和toString转换后比较<br>5.其它就不相等了</li>
+</ol>
+<h1 id="6-与-有什么区别"><a href="#6-与-有什么区别" class="headerlink" title="6.==与===有什么区别"></a>6.==与===有什么区别</h1><p>我们可以使用==或===判断两个值的相等性，其中区别在于：===是严格意义的相等，只需注意NaN和NaN不等就行了。而使用==的时候，javascript会帮我们做类型转换，如：</p>
+<ul>
+<li>如果两个值类型相同，则执行严格相等的运算</li>
+<li>如果两个值的类型不同<br>1.如果一个是null，一个是undefined，那么相等<br>2.如果一个是数字，一个是字符串，先将字符串转为数字，然后比较<br>3.如果一个值是true/false则将其转为1/0比较<br>4.如果一个值是对象，一个是数字或字符串，则尝试使用valueOf和toString转换后比较<br>5.其它就不相等了</li>
+</ul>
+<h1 id="7-break与continue有什么区别"><a href="#7-break与continue有什么区别" class="headerlink" title="7.break与continue有什么区别"></a>7.break与continue有什么区别</h1><p>这两个关键字多用在循环语句中<br><code>break</code> 用于强制退出循环体，执行循环后面的语句<br><code>continue</code> 用于退出本次循环，执行下次循环</p>
+<h1 id="8-void-0-和-undefined在使用场景上有什么区别"><a href="#8-void-0-和-undefined在使用场景上有什么区别" class="headerlink" title="8.void 0 和 undefined在使用场景上有什么区别"></a>8.void 0 和 undefined在使用场景上有什么区别</h1><p>void运算符的作用是执行一个表达式，然后返回undefined。但是某些情境下undefined是可以被赋值的，比如在函数中，这样的话就不能用undefined来进行判断了。所以用void 0返回undefined来进行判断。既减少了在原形链上查找 window.undefined 的时间，也避免了误用被修改过的 undefined。</p>
+<h1 id="9-以下代码的输出结果是-为什么"><a href="#9-以下代码的输出结果是-为什么" class="headerlink" title="9.以下代码的输出结果是?为什么?"></a>9.以下代码的输出结果是?为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(1+1);    // 输出结果为2，在两个操作数都是数字的时候，会做加法运算</span><br><span class="line">console.log(&quot;2&quot;+&quot;4&quot;);  // 输出结果为&quot;24&quot;，两个参数都是字符串，所以字符串做字符串拼接</span><br><span class="line">console.log(2+&quot;4&quot;); // 输出结果为&quot;24&quot;,对于两个参数，其中有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 </span><br><span class="line">console.log(+&quot;4&quot;);// 输出结果为&quot;4&quot;，在只有一个字符串参数的时候会尝试将其转换为数字</span><br></pre></td></tr></table></figure>
+<h1 id="10-以下代码的输出结果是"><a href="#10-以下代码的输出结果是" class="headerlink" title="10.以下代码的输出结果是?"></a>10.以下代码的输出结果是?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;  </span><br><span class="line">a+++a;  //输出结果为3，由于++运算符比+运算符优先级更高，所以计算顺序为a++ +a, a++结果为1，此时a的值加1等于2，所以原式=1+2=3。</span><br><span class="line">typeof a+2; // 输出结果为&quot;number2&quot;,由于typeof运算符高于+运算符，所以计算顺序为typeofa +2,typeofa输出字符串number,字符串与数字相加，数字转换为字符串做字符串拼接，得到结果&quot;number2&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="11-以下代码的输出结果是-为什么"><a href="#11-以下代码的输出结果是-为什么" class="headerlink" title="11.以下代码的输出结果是? 为什么?"></a>11.以下代码的输出结果是? 为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 3;</span><br><span class="line">console.log( a+++b );//输出结果为4，因为++运算符优先级高于+,所以a+++b=(a++)+b=1+3=4。</span><br></pre></td></tr></table></figure>
+<h1 id="12-遍历数组，把数组里的打印数组每一项的平方"><a href="#12-遍历数组，把数组里的打印数组每一项的平方" class="headerlink" title="12.遍历数组，把数组里的打印数组每一项的平方"></a>12.遍历数组，把数组里的打印数组每一项的平方</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,4,5]</span><br><span class="line">for(i=0,i&lt;arr.length;i++)&#123;</span><br><span class="line">console.log(arr[i]*arr[i])</span><br><span class="line">&#125;//输出结果为9,16,25</span><br></pre></td></tr></table></figure>
+<h1 id="13-遍历-JSON-打印里面的值"><a href="#13-遍历-JSON-打印里面的值" class="headerlink" title="13.遍历 JSON, 打印里面的值"></a>13.遍历 JSON, 打印里面的值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line"> name: &apos;hunger&apos;, </span><br><span class="line"> sex: &apos;male&apos;, </span><br><span class="line"> age: 28 </span><br><span class="line">&#125;</span><br><span class="line">for(var key in obj)&#123;</span><br><span class="line">console.log(obj[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="14-以下代码输出结果是-为什么"><a href="#14-以下代码输出结果是-为什么" class="headerlink" title="14.以下代码输出结果是? 为什么 ?"></a>14.以下代码输出结果是? 为什么 ?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var a = 1, b = 2, c = 3;</span><br><span class="line">var val = typeof a + b || c &gt;0</span><br><span class="line">console.log(val) //输出结果为&quot;number2&quot;,因为typeof运算符优先级高于其他运算符，所以优先运算typeof a，得到结果&quot;number&quot;,然后运算+b,</span><br><span class="line">所以||运算符左边结果为&quot;number2&quot;，对于运算符逻辑||或，当第一个为true时，发生短路，直接略过第二个运算，并返回第一个运算结果。</span><br><span class="line">所以输出&quot;number2&quot;。</span><br><span class="line"></span><br><span class="line">var d = 5;</span><br><span class="line">var data = d ==5 &amp;&amp; console.log(&apos;bb&apos;)</span><br><span class="line">console.log(data)//运算结果为undefined，因为==运算符优先级大于其他运算符，所以d==5优先运算得出结果为true,继续运算且&amp;&amp;运算符</span><br><span class="line">右边的console.logo(&apos;bb&apos;)，结果为undefined（bb没有声明）,式子变为var data =true &amp;&amp; undefined,故最终输出结果为undefined。</span><br><span class="line"></span><br><span class="line">var data2 = d = 0 || console.log(&apos;haha&apos;)</span><br><span class="line">console.log(data2)//输出结果为undefined,由于=运算符的优先级低于其他运算符，所以优先运算0||console.logo(&apos;haha&apos;),</span><br><span class="line">由于0返回布尔值为false,所以需继续运算||或运算符后面的console.log(&apos;haha&apos;),运算结果为undefined(由于没有声明&apos;haha&apos;),</span><br><span class="line">最终式子变为var data2=d=undefined,所以输出结果为undefined。</span><br><span class="line"> </span><br><span class="line">var x = !!&quot;Hello&quot; + (!&quot;world&quot;, !!&quot;from here!!&quot;);</span><br><span class="line">console.log(x)//输出结果为2，因为非空字符串的结果为true,所以可得</span><br><span class="line">!!&quot;Hello&quot;结果为true,</span><br><span class="line">!&quot;world&quot;结果为false,</span><br><span class="line">!!&quot;from here!!&quot;结果为true,</span><br><span class="line">括号里面的优先计算，逗号会忽略第一个操作数，返回第二个操作数，所以括号里的结果为true。</span><br><span class="line">式子变为var x=true+true=1+1=2,所以最终输出结果为2。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/01/1 JS 相关概念/" rel="next" title="1 JS 相关概念">
+                <i class="fa fa-chevron-left"></i> 1 JS 相关概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/04/3 函数与作用域/" rel="prev" title="3 函数与作用域">
+                3 函数与作用域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么"><span class="nav-number">1.</span> <span class="nav-text">1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-typeof和instanceof的作用和区别"><span class="nav-number">2.</span> <span class="nav-text">2.typeof和instanceof的作用和区别?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-如何判断一个变量是否是数字、字符串、布尔、函数"><span class="nav-number">3.</span> <span class="nav-text">3.如何判断一个变量是否是数字、字符串、布尔、函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-NaN是什么-有什么特别之处"><span class="nav-number">4.</span> <span class="nav-text">4.NaN是什么? 有什么特别之处?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-如何把非数值转化为数值"><span class="nav-number">5.</span> <span class="nav-text">5.如何把非数值转化为数值?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#有三个函数可以把非数值转换为数值"><span class="nav-number">5.0.0.0.0.1.</span> <span class="nav-text">有三个函数可以把非数值转换为数值</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Number-函数的转换规则如下："><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">Number()函数的转换规则如下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#parseInt-函数的转换规则如下："><span class="nav-number">5.0.0.0.2.</span> <span class="nav-text">parseInt()函数的转换规则如下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#parseFloat-与parseInt-函数类似，有两点区别"><span class="nav-number">5.0.0.0.3.</span> <span class="nav-text">parseFloat() 与parseInt()函数类似，有两点区别</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-与-有什么区别"><span class="nav-number">6.</span> <span class="nav-text">6.==与===有什么区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-break与continue有什么区别"><span class="nav-number">7.</span> <span class="nav-text">7.break与continue有什么区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-void-0-和-undefined在使用场景上有什么区别"><span class="nav-number">8.</span> <span class="nav-text">8.void 0 和 undefined在使用场景上有什么区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-以下代码的输出结果是-为什么"><span class="nav-number">9.</span> <span class="nav-text">9.以下代码的输出结果是?为什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-以下代码的输出结果是"><span class="nav-number">10.</span> <span class="nav-text">10.以下代码的输出结果是?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-以下代码的输出结果是-为什么"><span class="nav-number">11.</span> <span class="nav-text">11.以下代码的输出结果是? 为什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-遍历数组，把数组里的打印数组每一项的平方"><span class="nav-number">12.</span> <span class="nav-text">12.遍历数组，把数组里的打印数组每一项的平方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-遍历-JSON-打印里面的值"><span class="nav-number">13.</span> <span class="nav-text">13.遍历 JSON, 打印里面的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-以下代码输出结果是-为什么"><span class="nav-number">14.</span> <span class="nav-text">14.以下代码输出结果是? 为什么 ?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

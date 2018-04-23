@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.函数声明和函数表达式有什么区别？1.函数声明：function functionName (){}  函数声明（Function Declaration） 可以定义命名的函数变量，而无需给变量赋值。Function Declaration 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 Variable Declaration（变量声明）。就像 Variable Declaratio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3 函数与作用域">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/3 函数与作用域/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="1.函数声明和函数表达式有什么区别？1.函数声明：function functionName (){}  函数声明（Function Declaration） 可以定义命名的函数变量，而无需给变量赋值。Function Declaration 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 Variable Declaration（变量声明）。就像 Variable Declaratio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-23T08:35:36.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3 函数与作用域">
+<meta name="twitter:description" content="1.函数声明和函数表达式有什么区别？1.函数声明：function functionName (){}  函数声明（Function Declaration） 可以定义命名的函数变量，而无需给变量赋值。Function Declaration 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 Variable Declaration（变量声明）。就像 Variable Declaratio">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/04/3 函数与作用域/"/>
+
+
+
+
+
+  <title>3 函数与作用域 | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/3 函数与作用域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3 函数与作用域</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T12:18:25+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-函数声明和函数表达式有什么区别？"><a href="#1-函数声明和函数表达式有什么区别？" class="headerlink" title="1.函数声明和函数表达式有什么区别？"></a>1.函数声明和函数表达式有什么区别？</h1><p>1.函数声明：<code>function functionName (){}</code></p>
+<blockquote>
+<p>函数声明（Function Declaration） 可以定义命名的函数变量，而无需给变量赋值。Function Declaration 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 Variable Declaration（变量声明）。就像 Variable Declaration 必须以“var”开头一样，Function Declaration 必须以“function”开头。</p>
+</blockquote>
+<p>2.函数表达式： <code>var fn = function (){}</code></p>
+<blockquote>
+<p>函数表达式（Function Expression）将函数定义为表达式语句（通常是变量赋值）的一部分。通过 函数表达式定义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头</p>
+</blockquote>
+<p>区别：用函数声明定义的函数,函数可以在函数声明之前调用,声明不必放在调用的前面。而用函数表达式定义的函数只能在声明之后调用。【根本原因在于解析器对这两种定义方式读取的顺序不同:解析器会事先读取函数声明，即函数声明放在任意位置都可以被调用；对于函数表达式，解析器只有在读到函数表达式所在那行的时候才解析声明并执行】</p>
+<h1 id="2-什么是变量的声明前置？什么是函数的声明前置？"><a href="#2-什么是变量的声明前置？什么是函数的声明前置？" class="headerlink" title="2.什么是变量的声明前置？什么是函数的声明前置？"></a>2.什么是变量的声明前置？什么是函数的声明前置？</h1><ul>
+<li>变量声明前置：只是提升声明部分（未赋值状态），赋值部分保持原位置不变。<br>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function say()&#123;</span><br><span class="line">    console.log(name);</span><br><span class="line">    var name=&apos;tom&apos;;</span><br><span class="line">    console.log(name);</span><br><span class="line">&#125;</span><br><span class="line">say();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面式子可视为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function say()&#123;</span><br><span class="line">    var name;//变量name声明前置，由于name未赋值，故为undefined</span><br><span class="line">    console.log(name);//存在局部name，则无视全局name</span><br><span class="line">    name=&apos;tom&apos;;//变量赋值保持原位,变量name被赋值为&apos;tom&apos;</span><br><span class="line">    console.log(name);//输出&apos;tom&apos;</span><br><span class="line">&#125;</span><br><span class="line">say();//输出结果为 undefined tom</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>函数声明前置：会将函数的声明和定义全都提升至作用域顶部。<br>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var say = function()&#123;</span><br><span class="line">  console.log(&apos;1&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function say()&#123;</span><br><span class="line">  console.log(&apos;2&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">say();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面式子可视为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var say; //变量声明前置</span><br><span class="line"></span><br><span class="line">function say()&#123;</span><br><span class="line">  console.log(&apos;2&apos;);</span><br><span class="line">&#125;       //函数声明前置</span><br><span class="line"></span><br><span class="line">say = function()&#123; //变量赋值保持原位执行，say函数被覆盖</span><br><span class="line">  console.log(&apos;1&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">say(); //输出&apos;1&apos;</span><br></pre></td></tr></table></figure></p>
+<p>注意：函数的声明优先级高于变量的声明。</p>
+<h1 id="3-arguments是什么？"><a href="#3-arguments是什么？" class="headerlink" title="3.arguments是什么？"></a>3.arguments是什么？</h1><p>arguments 是一个类数组对象。代表传给一个function的参数列表。</p>
+<ul>
+<li>arguments length属性<br>arguments 是个类数组对象，其包含一个 length 属性，可以用 arguments.length 来获得传入函数的参数个数。</li>
+</ul>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function func() &#123;</span><br><span class="line">    console.log( arguments.length);</span><br><span class="line">&#125;</span><br><span class="line">func();// 0</span><br><span class="line">func(1, 2);// 2</span><br><span class="line">func(1, 2, 3);// 3</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>arguments 转数组</li>
+</ul>
+<p>通常使用下面的方法来将 arguments 转换成数组：<br><code>Array.prototype.slice.call(arguments);</code><br>还有一个更简短的写法：<br><code>[].slice.call(arguments);</code></p>
+<p><a href="https://segmentfault.com/a/1190000007091243" target="_blank" rel="noopener">参考文章</a></p>
+<h1 id="4-函数的”重载”怎样实现？"><a href="#4-函数的”重载”怎样实现？" class="headerlink" title="4.函数的”重载”怎样实现？"></a>4.函数的”重载”怎样实现？</h1><p>首先申明，在 JS 中没有重载! 同名函数会覆盖。 但可以在函数体针对不同的参数调用执行相应的逻辑。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function printPeopleInfo(name, age, sex)&#123;</span><br><span class="line">    if(name)&#123;</span><br><span class="line">      console.log(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(age)&#123;</span><br><span class="line">      console.log(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(sex)&#123;</span><br><span class="line">      console.log(sex);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  printPeopleInfo(&apos;Byron&apos;, 26);//输出结果byron 26</span><br><span class="line">  printPeopleInfo(&apos;Byron&apos;, 26, &apos;male&apos;);//输出结果byron 26 male</span><br></pre></td></tr></table></figure></p>
+<h1 id="5-立即执行函数表达式是什么？有什么作用？"><a href="#5-立即执行函数表达式是什么？有什么作用？" class="headerlink" title="5.立即执行函数表达式是什么？有什么作用？"></a>5.立即执行函数表达式是什么？有什么作用？</h1><ul>
+<li><p>立即执行函数表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i = function()&#123; return 10; &#125;();</span><br><span class="line">true &amp;&amp; function()&#123; /* code */ &#125;();</span><br><span class="line">0, function()&#123; /* code */ &#125;();</span><br><span class="line">(function()&#123; /* code */ &#125;());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>立即执行函数表达式的作用：<br>1.不必为函数命名，避免了污染全局变量；<br>2.立即执行函数表达式内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量，隔离作用域。</p>
+</li>
+</ul>
+<h1 id="6-求n-，用递归来实现"><a href="#6-求n-，用递归来实现" class="headerlink" title="6.求n!，用递归来实现"></a>6.求n!，用递归来实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function factor(n)&#123;</span><br><span class="line">       if (n &lt; 0 ) &#123;</span><br><span class="line">            return &quot;wrong&quot;;</span><br><span class="line">        &#125; </span><br><span class="line">      else if (n === 1 || n === 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; </span><br><span class="line">      else &#123;</span><br><span class="line">            return n * factor(n-1);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">factor(5) //120</span><br></pre></td></tr></table></figure>
+<h1 id="7-以下代码输出什么？"><a href="#7-以下代码输出什么？" class="headerlink" title="7.以下代码输出什么？"></a>7.以下代码输出什么？</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function getInfo(name, age, sex)&#123;</span><br><span class="line">		console.log(&apos;name:&apos;,name);</span><br><span class="line">		console.log(&apos;age:&apos;, age);</span><br><span class="line">		console.log(&apos;sex:&apos;, sex);</span><br><span class="line">		console.log(arguments);</span><br><span class="line">		arguments[0] = &apos;valley&apos;;//将vally赋给第一个参数name</span><br><span class="line">		console.log(&apos;name&apos;, name);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">getInfo(&apos;饥人谷&apos;, 2, &apos;男&apos;);</span><br><span class="line">getInfo(&apos;小谷&apos;, 3);</span><br><span class="line">getInfo(&apos;男&apos;);</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 饥人谷</span><br><span class="line">age: 2</span><br><span class="line">sex: 男</span><br><span class="line">[&quot;饥人谷&quot;, 2, &quot;男&quot;]</span><br><span class="line">name valley</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 小谷</span><br><span class="line">age: 3</span><br><span class="line">sex: undefined</span><br><span class="line">[&quot;小谷&quot;,3]</span><br><span class="line">name valley</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 男</span><br><span class="line">age: undefined</span><br><span class="line">sex: undefined</span><br><span class="line">[&quot;男&quot;]</span><br><span class="line">name valley</span><br></pre></td></tr></table></figure>
+<h1 id="8-写一个函数，返回参数的平方和"><a href="#8-写一个函数，返回参数的平方和" class="headerlink" title="8.写一个函数，返回参数的平方和"></a>8.写一个函数，返回参数的平方和</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function sumOfSquares()&#123;</span><br><span class="line"> &#125;</span><br><span class="line"> var result = sumOfSquares(2,3,4)</span><br><span class="line"> var result2 = sumOfSquares(1,3)</span><br><span class="line"> console.log(result)  //29</span><br><span class="line"> console.log(result2)  //10</span><br></pre></td></tr></table></figure>
+<p>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function sumOfSquares()&#123;</span><br><span class="line">	var i =arguments.length</span><br><span class="line">	var sum=0</span><br><span class="line">	for(var n=0;n&lt;i;n++)&#123;</span><br><span class="line">		sum=sum+arguments[n]*arguments[n]</span><br><span class="line">	&#125;</span><br><span class="line">	return sum</span><br><span class="line"> &#125;</span><br><span class="line"> var result = sumOfSquares(2,3,4)</span><br><span class="line"> var result2 = sumOfSquares(1,3)</span><br><span class="line"> console.log(result)</span><br><span class="line"> console.log(result2)</span><br></pre></td></tr></table></figure></p>
+<h1 id="9-如下代码的输出？为什么"><a href="#9-如下代码的输出？为什么" class="headerlink" title="9.如下代码的输出？为什么"></a>9.如下代码的输出？为什么</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   console.log(a);</span><br><span class="line">var a = 1;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
+<p>声明前置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a ;//变量声明前置</span><br><span class="line">console.log(a);//输出undefined</span><br><span class="line">a=1;</span><br><span class="line">console.log(b);//b没有声明，报错 Uncaught ReferenceError: b is not defined</span><br></pre></td></tr></table></figure></p>
+<h1 id="10-如下代码的输出？为什么"><a href="#10-如下代码的输出？为什么" class="headerlink" title="10.如下代码的输出？为什么"></a>10.如下代码的输出？为什么</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   sayName(&apos;world&apos;);</span><br><span class="line">sayAge(10);</span><br><span class="line">function sayName(name)&#123;</span><br><span class="line">	console.log(&apos;hello &apos;, name);</span><br><span class="line">&#125;</span><br><span class="line">var sayAge = function(age)&#123;</span><br><span class="line">	console.log(age);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   function sayName(name)&#123;</span><br><span class="line">       console.log(&apos;hello &apos;, name);</span><br><span class="line">     &#125;//函数声明前置</span><br><span class="line">   sayName(&apos;world&apos;);//输出结果为hello world</span><br><span class="line">   sayAge(10);//报错  sayAge is not a function</span><br><span class="line">   var sayAge = function(age)&#123;</span><br><span class="line">	console.log(age);</span><br><span class="line">&#125;;//函数表达式须放在调用前面，因为函数表达式只有执行到这一行才会去声明</span><br></pre></td></tr></table></figure>
+<h1 id="11-如下代码输出什么-写出作用域链查找过程伪代码"><a href="#11-如下代码输出什么-写出作用域链查找过程伪代码" class="headerlink" title="11.如下代码输出什么? 写出作用域链查找过程伪代码"></a>11.如下代码输出什么? 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">var x = 10</span><br><span class="line">bar() </span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(x)</span><br><span class="line">&#125;</span><br><span class="line">function bar()&#123;</span><br><span class="line">  var x = 30</span><br><span class="line">  foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*    1.</span><br><span class="line">    globalContext = &#123;</span><br><span class="line">        AO:&#123;</span><br><span class="line">            x:10</span><br><span class="line">            foo:function</span><br><span class="line">            bar:function</span><br><span class="line">        &#125;,</span><br><span class="line">    Scope:null</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    foo.[[scope]] = globalContext.AO</span><br><span class="line">    bar.[[scope]] = globalContext.AO</span><br><span class="line"></span><br><span class="line">    2.调用bar()</span><br><span class="line">    barContext = &#123;</span><br><span class="line">        AO:&#123;</span><br><span class="line">            x:30</span><br><span class="line">        &#125;,</span><br><span class="line">        Scope:bar.[[scope]] = globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line">    x变成30</span><br><span class="line"></span><br><span class="line">    3.调用foo()</span><br><span class="line">    fooContext = &#123;</span><br><span class="line">        AO:&#123;&#125;,</span><br><span class="line">        Scope:foo.[[scope]] = globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line">    输出10</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h1 id="12-如下代码输出什么-写出作用域链查找过程伪代码"><a href="#12-如下代码输出什么-写出作用域链查找过程伪代码" class="headerlink" title="12.如下代码输出什么? 写出作用域链查找过程伪代码"></a>12.如下代码输出什么? 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;</span><br><span class="line">bar() </span><br><span class="line">function bar()&#123;</span><br><span class="line">  var x = 30;</span><br><span class="line">  function foo()&#123;</span><br><span class="line">    console.log(x) </span><br><span class="line">  &#125;</span><br><span class="line">  foo();</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> 1.</span><br><span class="line"> globalContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">        x:10</span><br><span class="line">        bar:function</span><br><span class="line">       &#125;</span><br><span class="line">    scope: null</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> bar.[[scope]]=globalContext.AO</span><br><span class="line"></span><br><span class="line"> 2.调用函数bar()</span><br><span class="line"> barContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">      x:30</span><br><span class="line">      foo:function</span><br><span class="line">        &#125;</span><br><span class="line">    scope: bar.[[scope]]=globalContext.AO</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">    foo.[[scope]]=barContext.AO</span><br><span class="line"></span><br><span class="line">3.调用函数foo()</span><br><span class="line"> fooContext=&#123;</span><br><span class="line">    AO:&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">   scope: foo.[[scope]]=barContext.AO</span><br><span class="line"></span><br><span class="line">   输出30</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h1 id="13-如下代码输出什么-写出作用域链查找过程伪代码"><a href="#13-如下代码输出什么-写出作用域链查找过程伪代码" class="headerlink" title="13.如下代码输出什么? 写出作用域链查找过程伪代码"></a>13.如下代码输出什么? 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;</span><br><span class="line">bar() </span><br><span class="line">function bar()&#123;</span><br><span class="line">  var x = 30;</span><br><span class="line">  (function ()&#123;</span><br><span class="line">    console.log(x)</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">1.</span><br><span class="line">globalContext=&#123;</span><br><span class="line">   AO:&#123;</span><br><span class="line">      X:10</span><br><span class="line">      bar:function</span><br><span class="line"> &#125;</span><br><span class="line">   scope: null</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> bar.[[scope]]=globalContext.AO</span><br><span class="line"></span><br><span class="line">2.调用bar()</span><br><span class="line">barContext=&#123;</span><br><span class="line">   AO:&#123;</span><br><span class="line">     X:30</span><br><span class="line">     function</span><br><span class="line">        &#125;</span><br><span class="line">   scope: bar.[[scope]]=globalContext.AO</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   function.[[scope]]=barContext.AO</span><br><span class="line"></span><br><span class="line">3.调用立即执行函数</span><br><span class="line">fonctionContext=&#123;</span><br><span class="line">   AO:&#123;&#125;</span><br><span class="line">   scope:function.[[scope]]=barContext.AO</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出30</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+<h1 id="14-1以下代码输出什么？-写出作用域链查找过程伪代码"><a href="#14-1以下代码输出什么？-写出作用域链查找过程伪代码" class="headerlink" title="14.1以下代码输出什么？ 写出作用域链查找过程伪代码"></a>14.1以下代码输出什么？ 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line">  console.log(a)</span><br><span class="line">  var a = 5</span><br><span class="line">  console.log(a)</span><br><span class="line">  a++</span><br><span class="line">  var a</span><br><span class="line">  fn3()</span><br><span class="line">  fn2()</span><br><span class="line">  console.log(a)</span><br><span class="line"></span><br><span class="line">  function fn2()&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">    a = 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn3()&#123;</span><br><span class="line">  console.log(a)</span><br><span class="line">  a = 200</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn()</span><br><span class="line">console.log(a)</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">1.</span><br><span class="line">globalContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">      a:1/200</span><br><span class="line">      fn:function</span><br><span class="line">      fn3:function</span><br><span class="line">    &#125;</span><br><span class="line">    scope:none</span><br><span class="line"></span><br><span class="line"> fn.[[scope]]=globalContext.AO</span><br><span class="line"> fn3.[[scope]]=globalContext.AO</span><br><span class="line">&#125;</span><br><span class="line">2.调用函数fn()</span><br><span class="line">fnContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">      a:undefined/5/6/20</span><br><span class="line">      fn2:function</span><br><span class="line">    &#125;</span><br><span class="line">    scope: fn.[[scope]]=globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> fn2.[[scope]]=fnContext.AO</span><br><span class="line"></span><br><span class="line">3.调用函数fn3()</span><br><span class="line">fn3Context=&#123;</span><br><span class="line">    AO:&#123;&#125;</span><br><span class="line">    scope:fn3.[[scope]]=globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">4.调用函数fn2()</span><br><span class="line">fn2Context=&#123;</span><br><span class="line">    AO:&#123;&#125;</span><br><span class="line">    scope:fn2.[[scope]]=fnContext.AO</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">开始执行:</span><br><span class="line">console.log(a)//fn()变量初始值为undefined,所以输出undefined</span><br><span class="line">var a=5//fncontext.AO中的a赋值为5</span><br><span class="line">console.log(a)//输出5</span><br><span class="line">a++//fnContext.AO中的a赋值为加1为6</span><br><span class="line">var a//声明a赋值不变</span><br><span class="line">fn3()//调用fn3()</span><br><span class="line">执行fn3():</span><br><span class="line">console.log(a)//fn3.[[scope]]=globalContext.AO，因为fn3Context.AO中没有a值，所以</span><br><span class="line">去globalContext.AO找，a值为1，所以输出1</span><br><span class="line">a = 200// globalContext.AO中a赋值为200</span><br><span class="line">执行完fn3,跳出fn3,继续执行fn中的fn2()</span><br><span class="line">fn2()//调用执行fn2</span><br><span class="line">console.log(a)//此时fnContext.AO中的a赋值为6，所以输出6</span><br><span class="line">a=20// fnContext.AO中的a赋值为20</span><br><span class="line">跳出fn2,继续执行fn</span><br><span class="line">console.log(a)//此时fnContext.AO中的a赋值为20，输出20</span><br><span class="line">此时fn执行结束，继续执行</span><br><span class="line">console.log(a)//此时globalContext.AO中a赋值为200</span><br><span class="line"></span><br><span class="line">综上输出结果：undefined 5 1 6 20 200</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/02/2 数据类型运算符流程控制语句/" rel="next" title="2 数据类型运算符流程控制语句">
+                <i class="fa fa-chevron-left"></i> 2 数据类型运算符流程控制语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/搭建成功/" rel="prev" title="Fair to be late, but never absent">
+                Fair to be late, but never absent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-函数声明和函数表达式有什么区别？"><span class="nav-number">1.</span> <span class="nav-text">1.函数声明和函数表达式有什么区别？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-什么是变量的声明前置？什么是函数的声明前置？"><span class="nav-number">2.</span> <span class="nav-text">2.什么是变量的声明前置？什么是函数的声明前置？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-arguments是什么？"><span class="nav-number">3.</span> <span class="nav-text">3.arguments是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-函数的”重载”怎样实现？"><span class="nav-number">4.</span> <span class="nav-text">4.函数的”重载”怎样实现？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-立即执行函数表达式是什么？有什么作用？"><span class="nav-number">5.</span> <span class="nav-text">5.立即执行函数表达式是什么？有什么作用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-求n-，用递归来实现"><span class="nav-number">6.</span> <span class="nav-text">6.求n!，用递归来实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-以下代码输出什么？"><span class="nav-number">7.</span> <span class="nav-text">7.以下代码输出什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-写一个函数，返回参数的平方和"><span class="nav-number">8.</span> <span class="nav-text">8.写一个函数，返回参数的平方和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-如下代码的输出？为什么"><span class="nav-number">9.</span> <span class="nav-text">9.如下代码的输出？为什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-如下代码的输出？为什么"><span class="nav-number">10.</span> <span class="nav-text">10.如下代码的输出？为什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-如下代码输出什么-写出作用域链查找过程伪代码"><span class="nav-number">11.</span> <span class="nav-text">11.如下代码输出什么? 写出作用域链查找过程伪代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-如下代码输出什么-写出作用域链查找过程伪代码"><span class="nav-number">12.</span> <span class="nav-text">12.如下代码输出什么? 写出作用域链查找过程伪代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-如下代码输出什么-写出作用域链查找过程伪代码"><span class="nav-number">13.</span> <span class="nav-text">13.如下代码输出什么? 写出作用域链查找过程伪代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-1以下代码输出什么？-写出作用域链查找过程伪代码"><span class="nav-number">14.</span> <span class="nav-text">14.1以下代码输出什么？ 写出作用域链查找过程伪代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

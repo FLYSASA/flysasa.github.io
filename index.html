@@ -397,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/JS 相关概念/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/3 函数与作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nie">
@@ -416,7 +416,400 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/01/JS 相关概念/" itemprop="url">JS 相关概念</a></h1>
+                <a class="post-title-link" href="/2017/12/04/3 函数与作用域/" itemprop="url">3 函数与作用域</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T12:18:25+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-函数声明和函数表达式有什么区别？"><a href="#1-函数声明和函数表达式有什么区别？" class="headerlink" title="1.函数声明和函数表达式有什么区别？"></a>1.函数声明和函数表达式有什么区别？</h1><p>1.函数声明：<code>function functionName (){}</code></p>
+<blockquote>
+<p>函数声明（Function Declaration） 可以定义命名的函数变量，而无需给变量赋值。Function Declaration 是一种独立的结构，不能嵌套在非功能模块中。可以将它类比为 Variable Declaration（变量声明）。就像 Variable Declaration 必须以“var”开头一样，Function Declaration 必须以“function”开头。</p>
+</blockquote>
+<p>2.函数表达式： <code>var fn = function (){}</code></p>
+<blockquote>
+<p>函数表达式（Function Expression）将函数定义为表达式语句（通常是变量赋值）的一部分。通过 函数表达式定义的函数可以是命名的，也可以是匿名的。函数表达式不能以“function”开头</p>
+</blockquote>
+<p>区别：用函数声明定义的函数,函数可以在函数声明之前调用,声明不必放在调用的前面。而用函数表达式定义的函数只能在声明之后调用。【根本原因在于解析器对这两种定义方式读取的顺序不同:解析器会事先读取函数声明，即函数声明放在任意位置都可以被调用；对于函数表达式，解析器只有在读到函数表达式所在那行的时候才解析声明并执行】</p>
+<h1 id="2-什么是变量的声明前置？什么是函数的声明前置？"><a href="#2-什么是变量的声明前置？什么是函数的声明前置？" class="headerlink" title="2.什么是变量的声明前置？什么是函数的声明前置？"></a>2.什么是变量的声明前置？什么是函数的声明前置？</h1><ul>
+<li>变量声明前置：只是提升声明部分（未赋值状态），赋值部分保持原位置不变。<br>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function say()&#123;</span><br><span class="line">    console.log(name);</span><br><span class="line">    var name=&apos;tom&apos;;</span><br><span class="line">    console.log(name);</span><br><span class="line">&#125;</span><br><span class="line">say();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面式子可视为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function say()&#123;</span><br><span class="line">    var name;//变量name声明前置，由于name未赋值，故为undefined</span><br><span class="line">    console.log(name);//存在局部name，则无视全局name</span><br><span class="line">    name=&apos;tom&apos;;//变量赋值保持原位,变量name被赋值为&apos;tom&apos;</span><br><span class="line">    console.log(name);//输出&apos;tom&apos;</span><br><span class="line">&#125;</span><br><span class="line">say();//输出结果为 undefined tom</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>函数声明前置：会将函数的声明和定义全都提升至作用域顶部。<br>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var say = function()&#123;</span><br><span class="line">  console.log(&apos;1&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function say()&#123;</span><br><span class="line">  console.log(&apos;2&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">say();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面式子可视为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var say; //变量声明前置</span><br><span class="line"></span><br><span class="line">function say()&#123;</span><br><span class="line">  console.log(&apos;2&apos;);</span><br><span class="line">&#125;       //函数声明前置</span><br><span class="line"></span><br><span class="line">say = function()&#123; //变量赋值保持原位执行，say函数被覆盖</span><br><span class="line">  console.log(&apos;1&apos;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">say(); //输出&apos;1&apos;</span><br></pre></td></tr></table></figure></p>
+<p>注意：函数的声明优先级高于变量的声明。</p>
+<h1 id="3-arguments是什么？"><a href="#3-arguments是什么？" class="headerlink" title="3.arguments是什么？"></a>3.arguments是什么？</h1><p>arguments 是一个类数组对象。代表传给一个function的参数列表。</p>
+<ul>
+<li>arguments length属性<br>arguments 是个类数组对象，其包含一个 length 属性，可以用 arguments.length 来获得传入函数的参数个数。</li>
+</ul>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function func() &#123;</span><br><span class="line">    console.log( arguments.length);</span><br><span class="line">&#125;</span><br><span class="line">func();// 0</span><br><span class="line">func(1, 2);// 2</span><br><span class="line">func(1, 2, 3);// 3</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>arguments 转数组</li>
+</ul>
+<p>通常使用下面的方法来将 arguments 转换成数组：<br><code>Array.prototype.slice.call(arguments);</code><br>还有一个更简短的写法：<br><code>[].slice.call(arguments);</code></p>
+<p><a href="https://segmentfault.com/a/1190000007091243" target="_blank" rel="noopener">参考文章</a></p>
+<h1 id="4-函数的”重载”怎样实现？"><a href="#4-函数的”重载”怎样实现？" class="headerlink" title="4.函数的”重载”怎样实现？"></a>4.函数的”重载”怎样实现？</h1><p>首先申明，在 JS 中没有重载! 同名函数会覆盖。 但可以在函数体针对不同的参数调用执行相应的逻辑。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function printPeopleInfo(name, age, sex)&#123;</span><br><span class="line">    if(name)&#123;</span><br><span class="line">      console.log(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(age)&#123;</span><br><span class="line">      console.log(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(sex)&#123;</span><br><span class="line">      console.log(sex);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  printPeopleInfo(&apos;Byron&apos;, 26);//输出结果byron 26</span><br><span class="line">  printPeopleInfo(&apos;Byron&apos;, 26, &apos;male&apos;);//输出结果byron 26 male</span><br></pre></td></tr></table></figure></p>
+<h1 id="5-立即执行函数表达式是什么？有什么作用？"><a href="#5-立即执行函数表达式是什么？有什么作用？" class="headerlink" title="5.立即执行函数表达式是什么？有什么作用？"></a>5.立即执行函数表达式是什么？有什么作用？</h1><ul>
+<li><p>立即执行函数表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i = function()&#123; return 10; &#125;();</span><br><span class="line">true &amp;&amp; function()&#123; /* code */ &#125;();</span><br><span class="line">0, function()&#123; /* code */ &#125;();</span><br><span class="line">(function()&#123; /* code */ &#125;());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>立即执行函数表达式的作用：<br>1.不必为函数命名，避免了污染全局变量；<br>2.立即执行函数表达式内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量，隔离作用域。</p>
+</li>
+</ul>
+<h1 id="6-求n-，用递归来实现"><a href="#6-求n-，用递归来实现" class="headerlink" title="6.求n!，用递归来实现"></a>6.求n!，用递归来实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function factor(n)&#123;</span><br><span class="line">       if (n &lt; 0 ) &#123;</span><br><span class="line">            return &quot;wrong&quot;;</span><br><span class="line">        &#125; </span><br><span class="line">      else if (n === 1 || n === 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; </span><br><span class="line">      else &#123;</span><br><span class="line">            return n * factor(n-1);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">factor(5) //120</span><br></pre></td></tr></table></figure>
+<h1 id="7-以下代码输出什么？"><a href="#7-以下代码输出什么？" class="headerlink" title="7.以下代码输出什么？"></a>7.以下代码输出什么？</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function getInfo(name, age, sex)&#123;</span><br><span class="line">		console.log(&apos;name:&apos;,name);</span><br><span class="line">		console.log(&apos;age:&apos;, age);</span><br><span class="line">		console.log(&apos;sex:&apos;, sex);</span><br><span class="line">		console.log(arguments);</span><br><span class="line">		arguments[0] = &apos;valley&apos;;//将vally赋给第一个参数name</span><br><span class="line">		console.log(&apos;name&apos;, name);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">getInfo(&apos;饥人谷&apos;, 2, &apos;男&apos;);</span><br><span class="line">getInfo(&apos;小谷&apos;, 3);</span><br><span class="line">getInfo(&apos;男&apos;);</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 饥人谷</span><br><span class="line">age: 2</span><br><span class="line">sex: 男</span><br><span class="line">[&quot;饥人谷&quot;, 2, &quot;男&quot;]</span><br><span class="line">name valley</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 小谷</span><br><span class="line">age: 3</span><br><span class="line">sex: undefined</span><br><span class="line">[&quot;小谷&quot;,3]</span><br><span class="line">name valley</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: 男</span><br><span class="line">age: undefined</span><br><span class="line">sex: undefined</span><br><span class="line">[&quot;男&quot;]</span><br><span class="line">name valley</span><br></pre></td></tr></table></figure>
+<h1 id="8-写一个函数，返回参数的平方和"><a href="#8-写一个函数，返回参数的平方和" class="headerlink" title="8.写一个函数，返回参数的平方和"></a>8.写一个函数，返回参数的平方和</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function sumOfSquares()&#123;</span><br><span class="line"> &#125;</span><br><span class="line"> var result = sumOfSquares(2,3,4)</span><br><span class="line"> var result2 = sumOfSquares(1,3)</span><br><span class="line"> console.log(result)  //29</span><br><span class="line"> console.log(result2)  //10</span><br></pre></td></tr></table></figure>
+<p>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function sumOfSquares()&#123;</span><br><span class="line">	var i =arguments.length</span><br><span class="line">	var sum=0</span><br><span class="line">	for(var n=0;n&lt;i;n++)&#123;</span><br><span class="line">		sum=sum+arguments[n]*arguments[n]</span><br><span class="line">	&#125;</span><br><span class="line">	return sum</span><br><span class="line"> &#125;</span><br><span class="line"> var result = sumOfSquares(2,3,4)</span><br><span class="line"> var result2 = sumOfSquares(1,3)</span><br><span class="line"> console.log(result)</span><br><span class="line"> console.log(result2)</span><br></pre></td></tr></table></figure></p>
+<h1 id="9-如下代码的输出？为什么"><a href="#9-如下代码的输出？为什么" class="headerlink" title="9.如下代码的输出？为什么"></a>9.如下代码的输出？为什么</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   console.log(a);</span><br><span class="line">var a = 1;</span><br><span class="line">console.log(b);</span><br></pre></td></tr></table></figure>
+<p>声明前置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a ;//变量声明前置</span><br><span class="line">console.log(a);//输出undefined</span><br><span class="line">a=1;</span><br><span class="line">console.log(b);//b没有声明，报错 Uncaught ReferenceError: b is not defined</span><br></pre></td></tr></table></figure></p>
+<h1 id="10-如下代码的输出？为什么"><a href="#10-如下代码的输出？为什么" class="headerlink" title="10.如下代码的输出？为什么"></a>10.如下代码的输出？为什么</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   sayName(&apos;world&apos;);</span><br><span class="line">sayAge(10);</span><br><span class="line">function sayName(name)&#123;</span><br><span class="line">	console.log(&apos;hello &apos;, name);</span><br><span class="line">&#125;</span><br><span class="line">var sayAge = function(age)&#123;</span><br><span class="line">	console.log(age);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   function sayName(name)&#123;</span><br><span class="line">       console.log(&apos;hello &apos;, name);</span><br><span class="line">     &#125;//函数声明前置</span><br><span class="line">   sayName(&apos;world&apos;);//输出结果为hello world</span><br><span class="line">   sayAge(10);//报错  sayAge is not a function</span><br><span class="line">   var sayAge = function(age)&#123;</span><br><span class="line">	console.log(age);</span><br><span class="line">&#125;;//函数表达式须放在调用前面，因为函数表达式只有执行到这一行才会去声明</span><br></pre></td></tr></table></figure>
+<h1 id="11-如下代码输出什么-写出作用域链查找过程伪代码"><a href="#11-如下代码输出什么-写出作用域链查找过程伪代码" class="headerlink" title="11.如下代码输出什么? 写出作用域链查找过程伪代码"></a>11.如下代码输出什么? 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">var x = 10</span><br><span class="line">bar() </span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(x)</span><br><span class="line">&#125;</span><br><span class="line">function bar()&#123;</span><br><span class="line">  var x = 30</span><br><span class="line">  foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*    1.</span><br><span class="line">    globalContext = &#123;</span><br><span class="line">        AO:&#123;</span><br><span class="line">            x:10</span><br><span class="line">            foo:function</span><br><span class="line">            bar:function</span><br><span class="line">        &#125;,</span><br><span class="line">    Scope:null</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    foo.[[scope]] = globalContext.AO</span><br><span class="line">    bar.[[scope]] = globalContext.AO</span><br><span class="line"></span><br><span class="line">    2.调用bar()</span><br><span class="line">    barContext = &#123;</span><br><span class="line">        AO:&#123;</span><br><span class="line">            x:30</span><br><span class="line">        &#125;,</span><br><span class="line">        Scope:bar.[[scope]] = globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line">    x变成30</span><br><span class="line"></span><br><span class="line">    3.调用foo()</span><br><span class="line">    fooContext = &#123;</span><br><span class="line">        AO:&#123;&#125;,</span><br><span class="line">        Scope:foo.[[scope]] = globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line">    输出10</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h1 id="12-如下代码输出什么-写出作用域链查找过程伪代码"><a href="#12-如下代码输出什么-写出作用域链查找过程伪代码" class="headerlink" title="12.如下代码输出什么? 写出作用域链查找过程伪代码"></a>12.如下代码输出什么? 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;</span><br><span class="line">bar() </span><br><span class="line">function bar()&#123;</span><br><span class="line">  var x = 30;</span><br><span class="line">  function foo()&#123;</span><br><span class="line">    console.log(x) </span><br><span class="line">  &#125;</span><br><span class="line">  foo();</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> 1.</span><br><span class="line"> globalContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">        x:10</span><br><span class="line">        bar:function</span><br><span class="line">       &#125;</span><br><span class="line">    scope: null</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> bar.[[scope]]=globalContext.AO</span><br><span class="line"></span><br><span class="line"> 2.调用函数bar()</span><br><span class="line"> barContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">      x:30</span><br><span class="line">      foo:function</span><br><span class="line">        &#125;</span><br><span class="line">    scope: bar.[[scope]]=globalContext.AO</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">    foo.[[scope]]=barContext.AO</span><br><span class="line"></span><br><span class="line">3.调用函数foo()</span><br><span class="line"> fooContext=&#123;</span><br><span class="line">    AO:&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">   scope: foo.[[scope]]=barContext.AO</span><br><span class="line"></span><br><span class="line">   输出30</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h1 id="13-如下代码输出什么-写出作用域链查找过程伪代码"><a href="#13-如下代码输出什么-写出作用域链查找过程伪代码" class="headerlink" title="13.如下代码输出什么? 写出作用域链查找过程伪代码"></a>13.如下代码输出什么? 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;</span><br><span class="line">bar() </span><br><span class="line">function bar()&#123;</span><br><span class="line">  var x = 30;</span><br><span class="line">  (function ()&#123;</span><br><span class="line">    console.log(x)</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">1.</span><br><span class="line">globalContext=&#123;</span><br><span class="line">   AO:&#123;</span><br><span class="line">      X:10</span><br><span class="line">      bar:function</span><br><span class="line"> &#125;</span><br><span class="line">   scope: null</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> bar.[[scope]]=globalContext.AO</span><br><span class="line"></span><br><span class="line">2.调用bar()</span><br><span class="line">barContext=&#123;</span><br><span class="line">   AO:&#123;</span><br><span class="line">     X:30</span><br><span class="line">     function</span><br><span class="line">        &#125;</span><br><span class="line">   scope: bar.[[scope]]=globalContext.AO</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   function.[[scope]]=barContext.AO</span><br><span class="line"></span><br><span class="line">3.调用立即执行函数</span><br><span class="line">fonctionContext=&#123;</span><br><span class="line">   AO:&#123;&#125;</span><br><span class="line">   scope:function.[[scope]]=barContext.AO</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出30</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+<h1 id="14-1以下代码输出什么？-写出作用域链查找过程伪代码"><a href="#14-1以下代码输出什么？-写出作用域链查找过程伪代码" class="headerlink" title="14.1以下代码输出什么？ 写出作用域链查找过程伪代码"></a>14.1以下代码输出什么？ 写出作用域链查找过程伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line">  console.log(a)</span><br><span class="line">  var a = 5</span><br><span class="line">  console.log(a)</span><br><span class="line">  a++</span><br><span class="line">  var a</span><br><span class="line">  fn3()</span><br><span class="line">  fn2()</span><br><span class="line">  console.log(a)</span><br><span class="line"></span><br><span class="line">  function fn2()&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">    a = 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn3()&#123;</span><br><span class="line">  console.log(a)</span><br><span class="line">  a = 200</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn()</span><br><span class="line">console.log(a)</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">1.</span><br><span class="line">globalContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">      a:1/200</span><br><span class="line">      fn:function</span><br><span class="line">      fn3:function</span><br><span class="line">    &#125;</span><br><span class="line">    scope:none</span><br><span class="line"></span><br><span class="line"> fn.[[scope]]=globalContext.AO</span><br><span class="line"> fn3.[[scope]]=globalContext.AO</span><br><span class="line">&#125;</span><br><span class="line">2.调用函数fn()</span><br><span class="line">fnContext=&#123;</span><br><span class="line">    AO:&#123;</span><br><span class="line">      a:undefined/5/6/20</span><br><span class="line">      fn2:function</span><br><span class="line">    &#125;</span><br><span class="line">    scope: fn.[[scope]]=globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> fn2.[[scope]]=fnContext.AO</span><br><span class="line"></span><br><span class="line">3.调用函数fn3()</span><br><span class="line">fn3Context=&#123;</span><br><span class="line">    AO:&#123;&#125;</span><br><span class="line">    scope:fn3.[[scope]]=globalContext.AO</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">4.调用函数fn2()</span><br><span class="line">fn2Context=&#123;</span><br><span class="line">    AO:&#123;&#125;</span><br><span class="line">    scope:fn2.[[scope]]=fnContext.AO</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">开始执行:</span><br><span class="line">console.log(a)//fn()变量初始值为undefined,所以输出undefined</span><br><span class="line">var a=5//fncontext.AO中的a赋值为5</span><br><span class="line">console.log(a)//输出5</span><br><span class="line">a++//fnContext.AO中的a赋值为加1为6</span><br><span class="line">var a//声明a赋值不变</span><br><span class="line">fn3()//调用fn3()</span><br><span class="line">执行fn3():</span><br><span class="line">console.log(a)//fn3.[[scope]]=globalContext.AO，因为fn3Context.AO中没有a值，所以</span><br><span class="line">去globalContext.AO找，a值为1，所以输出1</span><br><span class="line">a = 200// globalContext.AO中a赋值为200</span><br><span class="line">执行完fn3,跳出fn3,继续执行fn中的fn2()</span><br><span class="line">fn2()//调用执行fn2</span><br><span class="line">console.log(a)//此时fnContext.AO中的a赋值为6，所以输出6</span><br><span class="line">a=20// fnContext.AO中的a赋值为20</span><br><span class="line">跳出fn2,继续执行fn</span><br><span class="line">console.log(a)//此时fnContext.AO中的a赋值为20，输出20</span><br><span class="line">此时fn执行结束，继续执行</span><br><span class="line">console.log(a)//此时globalContext.AO中a赋值为200</span><br><span class="line"></span><br><span class="line">综上输出结果：undefined 5 1 6 20 200</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/02/2 数据类型运算符流程控制语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/02/2 数据类型运算符流程控制语句/" itemprop="url">2 数据类型运算符流程控制语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-02T19:54:25+08:00">
+                2017-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么"><a href="#1-JavaScript-定义了几种数据类型-哪些是原始类型-哪些是复杂类型-原始类型和复杂类型的区别是什么" class="headerlink" title="1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?"></a>1.JavaScript 定义了几种数据类型? 哪些是原始类型?哪些是复杂类型?原始类型和复杂类型的区别是什么?</h1><ul>
+<li><p>JavaScript语言的每一个值，都属于某一种数据类型。JavaScript的数据类型，共有六种。<br>1.数值（number）： 整数和小数（如1和1.34）<br>2.字符串（string）： 字符组成的文本（如“hello world”）<br>3.布尔值（boolean）：true（真）和false（假）两个特定值<br>4.undefined: 表示“未定义”或不存在，即此处目前没有任何值<br>5.null: 表示空缺，此处应有一个值，但目前为空<br>6.对象（object）：各中值组成的集合</p>
+</li>
+<li><p>属于原始类型（primitive type）的有： 数值，字符串，布尔值</p>
+</li>
+<li>属于复杂类型（complex type）的有： 对象</li>
+<li>特殊值：undefined和null</li>
+<li>原始类型与复杂类型的区别：<br>原始类型是最基本的数据类型，不能再细分了。<br>复杂类型的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。</li>
+</ul>
+<h1 id="2-typeof和instanceof的作用和区别"><a href="#2-typeof和instanceof的作用和区别" class="headerlink" title="2.typeof和instanceof的作用和区别?"></a>2.typeof和instanceof的作用和区别?</h1><p>JavaScript有三种方法，可以确定一个值到底是什么类型。</p>
+<ul>
+<li>typeof运算符</li>
+<li>instanceof运算符</li>
+<li>Object.prototype.toString方法</li>
+</ul>
+<p>对于<code>typeof</code>:<br>1.数值、字符串、布尔值分别返回 number、string、boolean。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 // &quot;number&quot;</span><br><span class="line">typeof &apos;123&apos; // &quot;string&quot;</span><br><span class="line">typeof false // &quot;boolean&quot;</span><br></pre></td></tr></table></figure></p>
+<p>2.函数返回function。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;&#125;</span><br><span class="line">typeof f</span><br><span class="line">// &quot;function&quot;</span><br></pre></td></tr></table></figure></p>
+<p>3.undefined返回undefined。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof undefined</span><br><span class="line">// &quot;undefined&quot;</span><br></pre></td></tr></table></figure></p>
+<p>利用这一点，typeof可以用来检查一个没有声明的变量，而不报错。应用在实际编程中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 错误的写法</span><br><span class="line">if (v) &#123; &#125;  // ReferenceError: v is not defined</span><br><span class="line"></span><br><span class="line">// 正确的写法</span><br><span class="line">if (typeof v === &quot;undefined&quot;) &#123; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.除此以外，其他情况都返回object。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof window // &quot;object&quot;</span><br><span class="line">typeof &#123;&#125; // &quot;object&quot;</span><br><span class="line">typeof [] // &quot;object&quot;</span><br><span class="line">typeof null // &quot;object&quot;</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>instanceof</code><br>区分数组和对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;;</span><br><span class="line">var a = [];</span><br><span class="line">o instanceof Array // false</span><br><span class="line">a instanceof Array // true</span><br></pre></td></tr></table></figure></p>
+<p>两者区别：<br><code>typeof</code>运算符:运算符可以返回一个字符串，用以说明原数据的类型。<br><code>instanceof</code>运算符:运算符可以判断一个变量是否是某个对象（类）的实例，返回值是布尔类型的。</p>
+<h1 id="3-如何判断一个变量是否是数字、字符串、布尔、函数"><a href="#3-如何判断一个变量是否是数字、字符串、布尔、函数" class="headerlink" title="3.如何判断一个变量是否是数字、字符串、布尔、函数"></a>3.如何判断一个变量是否是数字、字符串、布尔、函数</h1><p>见上例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 === &apos;number&apos; 判断是否是数字</span><br><span class="line">typeof &apos;123&apos; === &apos;string&apos; 判断是否为字符串</span><br><span class="line">typeof true ===&apos;boolean&apos; 判断是否为布尔</span><br><span class="line">function f() &#123;&#125;</span><br><span class="line">typeof f ===&apos;function&apos; 判断是否为函数</span><br></pre></td></tr></table></figure></p>
+<h1 id="4-NaN是什么-有什么特别之处"><a href="#4-NaN是什么-有什么特别之处" class="headerlink" title="4.NaN是什么? 有什么特别之处?"></a>4.NaN是什么? 有什么特别之处?</h1><p>NaN含义是Not a Number，表示非数字，NaN和任何值都不相等，包括自己。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NaN == NaN; //false</span><br><span class="line">parseInt(&apos;abc&apos;); //NaN</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>特别之处：<br>1.任何NaN的值进行操作都会返回一个NaN,<br>2.NaN与任何值都不相等包括其本身,即NaN === NaN也是false.</p>
+</blockquote>
+<h1 id="5-如何把非数值转化为数值"><a href="#5-如何把非数值转化为数值" class="headerlink" title="5.如何把非数值转化为数值?"></a>5.如何把非数值转化为数值?</h1><h6 id="有三个函数可以把非数值转换为数值"><a href="#有三个函数可以把非数值转换为数值" class="headerlink" title="有三个函数可以把非数值转换为数值"></a>有三个函数可以把非数值转换为数值</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Number()</span><br><span class="line">2. parseInt()</span><br><span class="line">3. parseFloat()</span><br></pre></td></tr></table></figure>
+<p>第一个函数，即转型函数<code>Number()</code>可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值。这3个函数对于同样的输入会有返回不同的结果。</p>
+<h5 id="Number-函数的转换规则如下："><a href="#Number-函数的转换规则如下：" class="headerlink" title="Number()函数的转换规则如下："></a>Number()函数的转换规则如下：</h5><ul>
+<li>如果是Boolean值，true和false将分别被转换为1和0；</li>
+<li>如果是数字值，只是简单的传入和返回；</li>
+<li>如果是null值，返回0；</li>
+<li>如果是undefinde，返回NaN；</li>
+<li>如果是字符串，遵循下列规则：<br>1.如果字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即“1”会变成1，“123”会变成123，而“011”会变成11（注意：前导的零被忽略了）；<br>2.如果字符串中包含有效的浮点格式，如“1.1”,则将其转换为对应的浮点数值（同样，也会忽略前导零）；<br>3.如果字符串中包含有效的十六进制格式，例如“0xf”，则将其转换为相同大小的十进制整数值；<br>4.如果字符串是空的（不包含任何字符），则将其转换为0；<br>5.如果字符串中包含除上述格式之外的字符，则将其转换为NaN.<br>如果是对象，则调用对象的valueOf()方法，然后依照前面的规则转换返回的值。如果转换的结果是NaN，则调用对象的toString()方法，然后再次依照前面的规则转换返回的字符串值。<h5 id="parseInt-函数的转换规则如下："><a href="#parseInt-函数的转换规则如下：" class="headerlink" title="parseInt()函数的转换规则如下："></a>parseInt()函数的转换规则如下：</h5></li>
+<li>忽略字符串前面的空白字符，找到第一个非空白字符</li>
+<li>如果第一个字符不是-或者数字返回NaN</li>
+<li>如果第一个字符是数字字符，会继续解析第二个字符，直到解析完所-有后续字符或者遇到了一个非数字字符。例如“1234blue”会被转换为1234，因为“blue”会被完全忽略。</li>
+<li>0开头会当做八进制，0x开头会当做十六进制，但是可以指定第二个参数指定基数<h5 id="parseFloat-与parseInt-函数类似，有两点区别"><a href="#parseFloat-与parseInt-函数类似，有两点区别" class="headerlink" title="parseFloat() 与parseInt()函数类似，有两点区别"></a>parseFloat() 与parseInt()函数类似，有两点区别</h5></li>
+<li>parseInt()在解析”22.34.5”时会将其转换为22，因为小数点并不是有效的数字字符；而parseFloat()可以将转换为22.34，因为parseFloat()在解析时遇到一个无效的浮点数字字符为止，而上述字符砖中第一小数点是有效的；</li>
+<li>parseInt()与parseFloat()的第二个区别在于它始终都会忽略前导的零。</li>
+</ul>
+<p>例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;blue&apos;); //NaN 非空字符串转换为NaN</span><br><span class="line">parseInt(&apos;-23ABS&apos;); // -23</span><br><span class="line">parseInt(&apos;0xf1&apos;); // 241</span><br><span class="line">parseInt(&apos;101&apos;, 2); // 5，后面的2代表101是二进制数</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>==与===有什么区别<br>===是严格意义上的相等，只需注意NaN和NaN不等就行了。而使用==的时候，javascript会帮我们做类型转换，造成一些匪夷所思的结果，那么使用==的时候在一下情况下会做相应的类型转换<br>如果两个值类型相同，则执行严格相等的运算<br>如果两个值的类型不同<br>1.如果一个是null，一个是undefined，那么相等<br>2.如果一个是数字，一个是字符串，先将字符串转为数字，然后比较<br>3.如果一个值是true/false则将其转为1/0比较<br>4.如果一个值是对象，一个是数字或字符串，则尝试使用valueOf和toString转换后比较<br>5.其它就不相等了</li>
+</ol>
+<h1 id="6-与-有什么区别"><a href="#6-与-有什么区别" class="headerlink" title="6.==与===有什么区别"></a>6.==与===有什么区别</h1><p>我们可以使用==或===判断两个值的相等性，其中区别在于：===是严格意义的相等，只需注意NaN和NaN不等就行了。而使用==的时候，javascript会帮我们做类型转换，如：</p>
+<ul>
+<li>如果两个值类型相同，则执行严格相等的运算</li>
+<li>如果两个值的类型不同<br>1.如果一个是null，一个是undefined，那么相等<br>2.如果一个是数字，一个是字符串，先将字符串转为数字，然后比较<br>3.如果一个值是true/false则将其转为1/0比较<br>4.如果一个值是对象，一个是数字或字符串，则尝试使用valueOf和toString转换后比较<br>5.其它就不相等了</li>
+</ul>
+<h1 id="7-break与continue有什么区别"><a href="#7-break与continue有什么区别" class="headerlink" title="7.break与continue有什么区别"></a>7.break与continue有什么区别</h1><p>这两个关键字多用在循环语句中<br><code>break</code> 用于强制退出循环体，执行循环后面的语句<br><code>continue</code> 用于退出本次循环，执行下次循环</p>
+<h1 id="8-void-0-和-undefined在使用场景上有什么区别"><a href="#8-void-0-和-undefined在使用场景上有什么区别" class="headerlink" title="8.void 0 和 undefined在使用场景上有什么区别"></a>8.void 0 和 undefined在使用场景上有什么区别</h1><p>void运算符的作用是执行一个表达式，然后返回undefined。但是某些情境下undefined是可以被赋值的，比如在函数中，这样的话就不能用undefined来进行判断了。所以用void 0返回undefined来进行判断。既减少了在原形链上查找 window.undefined 的时间，也避免了误用被修改过的 undefined。</p>
+<h1 id="9-以下代码的输出结果是-为什么"><a href="#9-以下代码的输出结果是-为什么" class="headerlink" title="9.以下代码的输出结果是?为什么?"></a>9.以下代码的输出结果是?为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(1+1);    // 输出结果为2，在两个操作数都是数字的时候，会做加法运算</span><br><span class="line">console.log(&quot;2&quot;+&quot;4&quot;);  // 输出结果为&quot;24&quot;，两个参数都是字符串，所以字符串做字符串拼接</span><br><span class="line">console.log(2+&quot;4&quot;); // 输出结果为&quot;24&quot;,对于两个参数，其中有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 </span><br><span class="line">console.log(+&quot;4&quot;);// 输出结果为&quot;4&quot;，在只有一个字符串参数的时候会尝试将其转换为数字</span><br></pre></td></tr></table></figure>
+<h1 id="10-以下代码的输出结果是"><a href="#10-以下代码的输出结果是" class="headerlink" title="10.以下代码的输出结果是?"></a>10.以下代码的输出结果是?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;  </span><br><span class="line">a+++a;  //输出结果为3，由于++运算符比+运算符优先级更高，所以计算顺序为a++ +a, a++结果为1，此时a的值加1等于2，所以原式=1+2=3。</span><br><span class="line">typeof a+2; // 输出结果为&quot;number2&quot;,由于typeof运算符高于+运算符，所以计算顺序为typeofa +2,typeofa输出字符串number,字符串与数字相加，数字转换为字符串做字符串拼接，得到结果&quot;number2&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="11-以下代码的输出结果是-为什么"><a href="#11-以下代码的输出结果是-为什么" class="headerlink" title="11.以下代码的输出结果是? 为什么?"></a>11.以下代码的输出结果是? 为什么?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 3;</span><br><span class="line">console.log( a+++b );//输出结果为4，因为++运算符优先级高于+,所以a+++b=(a++)+b=1+3=4。</span><br></pre></td></tr></table></figure>
+<h1 id="12-遍历数组，把数组里的打印数组每一项的平方"><a href="#12-遍历数组，把数组里的打印数组每一项的平方" class="headerlink" title="12.遍历数组，把数组里的打印数组每一项的平方"></a>12.遍历数组，把数组里的打印数组每一项的平方</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,4,5]</span><br><span class="line">for(i=0,i&lt;arr.length;i++)&#123;</span><br><span class="line">console.log(arr[i]*arr[i])</span><br><span class="line">&#125;//输出结果为9,16,25</span><br></pre></td></tr></table></figure>
+<h1 id="13-遍历-JSON-打印里面的值"><a href="#13-遍历-JSON-打印里面的值" class="headerlink" title="13.遍历 JSON, 打印里面的值"></a>13.遍历 JSON, 打印里面的值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line"> name: &apos;hunger&apos;, </span><br><span class="line"> sex: &apos;male&apos;, </span><br><span class="line"> age: 28 </span><br><span class="line">&#125;</span><br><span class="line">for(var key in obj)&#123;</span><br><span class="line">console.log(obj[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="14-以下代码输出结果是-为什么"><a href="#14-以下代码输出结果是-为什么" class="headerlink" title="14.以下代码输出结果是? 为什么 ?"></a>14.以下代码输出结果是? 为什么 ?</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var a = 1, b = 2, c = 3;</span><br><span class="line">var val = typeof a + b || c &gt;0</span><br><span class="line">console.log(val) //输出结果为&quot;number2&quot;,因为typeof运算符优先级高于其他运算符，所以优先运算typeof a，得到结果&quot;number&quot;,然后运算+b,</span><br><span class="line">所以||运算符左边结果为&quot;number2&quot;，对于运算符逻辑||或，当第一个为true时，发生短路，直接略过第二个运算，并返回第一个运算结果。</span><br><span class="line">所以输出&quot;number2&quot;。</span><br><span class="line"></span><br><span class="line">var d = 5;</span><br><span class="line">var data = d ==5 &amp;&amp; console.log(&apos;bb&apos;)</span><br><span class="line">console.log(data)//运算结果为undefined，因为==运算符优先级大于其他运算符，所以d==5优先运算得出结果为true,继续运算且&amp;&amp;运算符</span><br><span class="line">右边的console.logo(&apos;bb&apos;)，结果为undefined（bb没有声明）,式子变为var data =true &amp;&amp; undefined,故最终输出结果为undefined。</span><br><span class="line"></span><br><span class="line">var data2 = d = 0 || console.log(&apos;haha&apos;)</span><br><span class="line">console.log(data2)//输出结果为undefined,由于=运算符的优先级低于其他运算符，所以优先运算0||console.logo(&apos;haha&apos;),</span><br><span class="line">由于0返回布尔值为false,所以需继续运算||或运算符后面的console.log(&apos;haha&apos;),运算结果为undefined(由于没有声明&apos;haha&apos;),</span><br><span class="line">最终式子变为var data2=d=undefined,所以输出结果为undefined。</span><br><span class="line"> </span><br><span class="line">var x = !!&quot;Hello&quot; + (!&quot;world&quot;, !!&quot;from here!!&quot;);</span><br><span class="line">console.log(x)//输出结果为2，因为非空字符串的结果为true,所以可得</span><br><span class="line">!!&quot;Hello&quot;结果为true,</span><br><span class="line">!&quot;world&quot;结果为false,</span><br><span class="line">!!&quot;from here!!&quot;结果为true,</span><br><span class="line">括号里面的优先计算，逗号会忽略第一个操作数，返回第二个操作数，所以括号里的结果为true。</span><br><span class="line">式子变为var x=true+true=1+1=2,所以最终输出结果为2。</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/1 JS 相关概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/01/1 JS 相关概念/" itemprop="url">1 JS 相关概念</a></h1>
         
 
         <div class="post-meta">
@@ -2295,369 +2688,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/26/CSS 基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/26/CSS 基础/" itemprop="url">CSS基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T14:27:22+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-CSS的全称是什么？"><a href="#1-CSS的全称是什么？" class="headerlink" title="1.CSS的全称是什么？"></a>1.CSS的全称是什么？</h1><p>CSS全称是 Cascading Style Sheets, 层叠样式表。<br>CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。<br>CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力。</p>
-<h1 id="2-CSS有几种引入方式？link和-import有什么区别？"><a href="#2-CSS有几种引入方式？link和-import有什么区别？" class="headerlink" title="2.CSS有几种引入方式？link和@import有什么区别？"></a>2.CSS有几种引入方式？link和@import有什么区别？</h1><p>#####css的引入方式有三种。</p>
-<p>######1.内联样式<br>当特殊的样式需要应用到个别元素时，就可以使用内联样式。 使用内联样式的方法是直接在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。简单直接，但后续修改以及添加样式会很繁琐。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style=&quot;color: red; font-size: 20px;&quot;&gt;&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
-<h6 id="2-内部样式"><a href="#2-内部样式" class="headerlink" title="2.内部样式"></a>2.内部样式</h6><p>当单个文件需要特别样式时，就可以使用内部样式表。你可以在 head 部分通过 <code>&lt;style&gt;</code> 标签定义内部样式表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">body &#123;background-color: red&#125;</span><br><span class="line">p &#123;margin-left: 20px&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
-<h6 id="3-外部样式"><a href="#3-外部样式" class="headerlink" title="3.外部样式"></a>3.外部样式</h6><p>当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观。实现了内容与样式分离。<br>rel:告诉浏览器引用的是一个样式表文件<br>type:文件类型（可省略）<br>href:文件地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import url(&quot;hello.css&quot;);</span><br><span class="line">  @import &quot;world.css&quot;;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="link和-import的区别："><a href="#link和-import的区别：" class="headerlink" title="link和@import的区别："></a>link和@import的区别：</h5><p>本质上，这两种方式都是为了加载<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>文件，但还是存在着细微的差别。</p>
-<ul>
-<li>差别1：link属于<a href="https://www.baidu.com/s?wd=XHTML&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">XHTML</a>标签，而@import完全是<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>提供的一种方式。link标签除了可以加载<a href="https://www.baidu.com/s?wd=CSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">CSS</a>外，还可以做很多其它的事情，比如定义<a href="https://www.baidu.com/s?wd=RSS&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1d9nj6znWnduHbkmvFBPW0d0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EnHRYPj6LPjnz" target="_blank" rel="noopener">RSS</a>，定义rel连接属性等，@import就只能加载CSS了。</li>
-<li>差别2：加载顺序的差别。当一个页面被加载的时候（就是被浏览者浏览的时候），link引用的CSS会同时被加载，而@import引用的CSS 会等到页面全部被下载完再被加载。所以有时候浏览@import加载CSS的页面时开始会没有样式（就是闪烁），网速慢的时候还挺明显。</li>
-<li>差别3：兼容性的差别。由于@import是CSS2.1提出的所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。</li>
-<li>差别4：使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。<h1 id="3-以下这几种文件路径分别用在什么地方，代表什么意思"><a href="#3-以下这几种文件路径分别用在什么地方，代表什么意思" class="headerlink" title="3.以下这几种文件路径分别用在什么地方，代表什么意思?"></a>3.以下这几种文件路径分别用在什么地方，代表什么意思?</h1>文件路径 | 代表<br>—| :—:<br>css/a.css   |   在与本文件同级的css文件夹下的a.css文件<br>./css/a.css |   ./代表当前，当前与本文件同级的css文件夹下的a.css文件<br>b.css | 同级的b.css文件<br>../imgs/a.png | 上一级的目录的imgs文件夹下的a.png文件，../代表返回上一级<br>/Users/hunger/project/css/a.css |本地文件的绝对路径<br>/static/css/a.css | 网站路径的绝对路径<br><a href="http://cdn.jirengu.com/kejian1/8-1.png|" target="_blank" rel="noopener">http://cdn.jirengu.com/kejian1/8-1.png|</a> 图片上传后生成的线上地址<h1 id="4-如果我想在js-jirengu-com上展示一个图片，需要怎么操作"><a href="#4-如果我想在js-jirengu-com上展示一个图片，需要怎么操作" class="headerlink" title="4.如果我想在js.jirengu.com上展示一个图片，需要怎么操作?"></a>4.如果我想在js.jirengu.com上展示一个图片，需要怎么操作?</h1>第1种：先把图片上传至服务器，然后引用相对路径<br>第2种：上传图片，生成图片链接，然后引用图片</li>
-</ul>
-<h1 id="5-列出5条以上html和css的书写规范"><a href="#5-列出5条以上html和css的书写规范" class="headerlink" title="5.列出5条以上html和css的书写规范"></a>5.列出5条以上html和css的书写规范</h1><h6 id="基本准则"><a href="#基本准则" class="headerlink" title="基本准则"></a>基本准则</h6><p>符合web标准, 语义化html, 结构表现行为分离, 兼容性优良. 页面性能方面, 代码要求简洁明了有序, 尽可能的减小服务器负载, 保证最快的解析速度.</p>
-<h6 id="html规范："><a href="#html规范：" class="headerlink" title="html规范："></a>html规范：</h6><ol>
-<li>文档类型声明及编码: 统一为html5声明类型&lt;!DOCTYPE html&gt;; 编码统一为<meta charset="”gbk”">, 书写时利用IDE实现层次分明的缩进;</li>
-<li>非特殊情况下样式文件必须外链至<head>…</head>之间;非特殊情况下JavaScript文件必须外链至页面底部;</li>
-<li>引入样式文件或JavaScript文件时, 须略去默认类型声明, 写法如下:<code>&lt;link rel=”stylesheet” href=”…” /&gt;&lt;style&gt;…&lt;/style&gt;&lt;script src=”…”&gt;&lt;/script&gt;</code></li>
-<li>引入JS库文件, 文件名须包含库名称及版本号及是否为压缩版, 比如jquery-1.4.1.min.js; 引入插件, 文件名格式为库名称+插件名称, 比如jQuery.cookie.js;</li>
-<li>所有编码均遵循xhtml标准, 标签 &amp; 属性 &amp; 属性命名 必须由小写字母及下划线数字组成, 且所有标签必须闭合, 包括 br (<br>), hr(<hr>)等; 属性值必须用双引号包括;</li>
-<li>充分利用无兼容性问题的html自身标签, 比如span, em, strong, optgroup, label,等等; 需要为html元素添加自定义属性的时候, 首先要考虑下有没有默认的已有的合适标签去设置, 如果没有, 可以使用须以”data-”为前缀来添加自定义属性，避免使用”data:”等其他命名方式;</li>
-<li>语义化html, 如 标题根据重要性用h*(同一页面只能有一个h1), 段落标记用p, 列表用ul, 内联元素中不可嵌套块级元素;</li>
-<li>尽可能减少div嵌套, 如<div><div class="”welcome”">欢迎访问XXX, 您的用户名是<div class="”name”">用户名</div></div></div>完全可以用以下代码替代: <div><p>欢迎访问XXX, 您的用户名是<span>用户名</span></p></div>;</li>
-<li>书写链接地址时, 必须避免重定向，例如：href=“<a href="https://link.zhihu.com/?target=http%3A//itaolun.com/" target="_blank" rel="noopener">http://itaolun.com/**</a>”, 即须在URL地址后面加上“/”；</li>
-<li>在页面中尽量避免使用style属性,即style=“…”;</li>
-<li>必须为含有描述性表单元素(input, textarea)添加label, 如<p>姓名: <input type="”text”" id="”name”" name="”name”"></p>须写成:<p><label for="”name”">姓名: </label><input type="”text”" id="”name”"></p></li>
-<li>能以背景形式呈现的图片, 尽量写入css样式中;</li>
-<li>重要图片必须加上alt属性; 给重要的元素和截断的元素加上title;</li>
-<li>给区块代码及重要功能(比如循环)加上注释, 方便后台添加功能;</li>
-<li>特殊符号使用: 尽可能使用代码替代: 比如 &lt;(&lt;) &amp; &gt;(&gt;) &amp; 空格( ) &amp; »(») 等等;</li>
-<li>书写页面过程中, 请考虑向后扩展性;</li>
-<li><p>class &amp; id 参见 css书写规范.</p>
-<h6 id="css书写规范："><a href="#css书写规范：" class="headerlink" title="css书写规范："></a>css书写规范：</h6></li>
-<li><p>编码统一为utf-8;</p>
-</li>
-<li>协作开发及分工: i会根据各个模块, 同时根据页面相似程序, 事先写好大体框架文件,<br>分配给前端人员实现内部结构&amp;表现&amp;行为; 共用css文件base.css由i书写, 协作开发过程中, 每个页面请务必都要引入,<br>此文件包含reset及头部底部样式, 此文件不可随意修改;</li>
-<li>class与id的使用: id是唯一的并是父级的, class是可以重复的并是子级的, 所以id仅使用在大的模块上, class可用在重复使用率高及子级中; id原则上都是由分发框架文件时命名的（如#header #footer #content #nav 等）, 为JavaScript预留钩子的除外;</li>
-<li>为JavaScript预留钩子的命名, 请以 js_ 起始, 比如: js_hide, js_show(淘宝是用的J_开头);</li>
-<li>class与id命名:<br>大的框架命名比如header/footer/wrapper/left/right之类的在2中由i统一命名.其他样式名称由 小写英文 &amp;<br>数字 &amp; _ 来组合命名, 如i_comment, fontred, width200; 避免使用中文拼音, 尽量使用简易的单词组合;<br>总之, 命名要语义化, 简明化.</li>
-<li>规避class与id命名:<br>a） 通过从属写法规避, 示例见d;<br>b）取父级元素id/class命名部分命名, 示例见d;<br>c）重复使用率高的命名, 请以自己代号加下划线起始, 比如i_clear;<br>d）a,b两条, 适用于在2中已建好框架的页面, 如, 要在2中已建好框架的页面代码<div id="”mainnav”"></div>中加入新的div元素,<br>按a命名法则: <div id="”mainnav”"><div>…</div></div>,<br>样式写法: #mainnav .firstnav{…….}<br>按b命名法则: <div id="”mainnav”"><div>…</div></div>,<br>样式写法: .main_firstnav{…….}<h1 id="6-介绍chrome-开发者工具的功能区"><a href="#6-介绍chrome-开发者工具的功能区" class="headerlink" title="6.介绍chrome 开发者工具的功能区"></a>6.介绍chrome 开发者工具的功能区</h1></li>
-</ol>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-e7ccaedf885e0b2c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/16/HTML表单的用法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/my-avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="FLYSASA">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/16/HTML表单的用法/" itemprop="url">HTML表单的用法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-16T21:27:55+08:00">
-                2017-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://baike.baidu.com/item/HTML" target="_blank" rel="noopener">HTML</a> 表单用于搜集不同类型的用户输入。用户提交表单时向服务器传输数据，从而实现用户与Web服务器的交互。<br>HTML 表单包含表单元素。<br>表单元素指的是不同类型的 input 元素、复选框、单选按钮、提交按钮等等。<br>下面介绍表单常见元素的简单用法。</p>
-<h1 id="1-form元素"><a href="#1-form元素" class="headerlink" title="1.form元素"></a>1.form元素</h1><p>HTML 表单用于收集用户输入。<br><code>&lt;form&gt;</code> 元素定义 HTML 表单，是表单的外壳</p>
-<h4 id="常用属性："><a href="#常用属性：" class="headerlink" title="常用属性："></a>常用属性：</h4><p><strong>action</strong>:表单提交的地址<br><strong>method</strong>:提交表单的方法，一般有get和post两种方式</p>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别:"></a>区别:</h3><blockquote>
-<p>1.表象不同，get把提交的数据url可以看到，post看不到<br>2.原理不同，get 是拼接 url， post 是放入http 请求体中<br>3.提交数据量不同，get最多提交1k数据，浏览器的限制。post理论上无限制，受服务器限制<br>4.get提交的数据在浏览器历史记录中，安全性不好<br>5.场景不同，get 重在 “要”, post 重在”给”</p>
-</blockquote>
-<p><strong>target</strong>:在何处打开action<br><strong>enctype</strong>:</p>
-<ul>
-<li><strong>application/x-www-form-urlencoded</strong>：在发送前编码所有字符（默认）</li>
-<li><strong>text/plain</strong>：空格转换为”+”加号，但不对特殊字符编码</li>
-<li><strong>multipart/form-data</strong>：使用包含文件上传控件的表单时，必须使用该值<h1 id="2-input元素"><a href="#2-input元素" class="headerlink" title="2.input元素"></a>2.input元素</h1>input 元素通过 type 属性来设置不同的input 类型。<code>&lt;input&gt;</code>元素是最重要的表单元素。<h4 id="2-1文本输入"><a href="#2-1文本输入" class="headerlink" title="2.1文本输入"></a>2.1文本输入</h4><code>&lt;input type=&quot;text&quot;&gt;</code> 定义用于文本输入的单行输入字段：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;username&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;username&quot;&gt;姓名&lt;/label&gt;</span><br><span class="line">    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-d1729ffcfb67af4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>placeholder的参数可以作为输入的提示（提示用户输入内容和格式），与value不同，placeholder并不是input中真的内容，在输入时placeholder会消失而不是代替。</p>
-<h4 id="2-2-密码域"><a href="#2-2-密码域" class="headerlink" title="2.2 密码域"></a>2.2 密码域</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;password&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;password&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">    &lt;input id=&quot;password&quot; type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;请输入密码&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-06fbdc93ecdf7dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>密码域的输入框会对输入信息做掩码处理。</p>
-<h4 id="2-3-复选框"><a href="#2-3-复选框" class="headerlink" title="2.3 复选框"></a>2.3 复选框</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;hobby&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;hobby&quot;&gt;爱好&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;dota&quot;&gt;dota</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;travel&quot;&gt;旅游</span><br><span class="line">    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;pet&quot;&gt;宠物</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-d224b24a09464f30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>name 属性为相同的复选框元素会被分到同一个分组。复选框的 value 值是必须有的，否则后台接收到数据无法识别究竟勾选了什么值。可以对 input 标签增加 checked 属性实现预选。</p>
-<h4 id="2-4-单选按钮"><a href="#2-4-单选按钮" class="headerlink" title="2.4 单选按钮"></a>2.4 单选按钮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;sex&quot;&gt;</span><br><span class="line">    &lt;label&gt;性别&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot;&gt;男</span><br><span class="line">    &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot;&gt;女</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-3fb43a4eef408648.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>单选按钮和复选框一样，通过相同的name 属性值来识别同一组按钮，value 属性是必需的。可以对 input 标签增加 checked 属性实现预选。value 属性为 input 元素设定值。</p>
-<blockquote>
-<p>对于不同的输入类型，value 属性的用法也不同：<br>type=”button”, “reset”, “submit” - 定义按钮上的显示的文本<br>type=”text”, “password”, “hidden” - 定义输入字段的初始值<br>type=”checkbox”, “radio”, “image” - 定义与输入相关联的值<br>注释：<code>&lt;input type=&quot;checkbox&quot;&gt;</code> 和 <code>&lt;input type=&quot;radio&quot;&gt;</code> 中必须设置 value 属性。<br>注释：value 属性无法与 <code>&lt;input type=&quot;file&quot;&gt;</code> 一同使用。</p>
-</blockquote>
-<h4 id="2-5-下拉列表"><a href="#2-5-下拉列表" class="headerlink" title="2.5 下拉列表"></a>2.5 下拉列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;section&quot;&gt;</span><br><span class="line">   &lt;lable for=&quot;mycar&quot;&gt;我的car：&lt;/lable&gt;</span><br><span class="line">            &lt;select id=&quot;mycar&quot; name=&quot;mycar&quot;&gt;</span><br><span class="line">                &lt;option value=&quot;audi&quot;&gt;奥迪&lt;/option&gt;</span><br><span class="line">                &lt;option value=&quot;benz&quot;&gt;奔驰&lt;/option&gt;</span><br><span class="line">                &lt;option value=&quot;saab&quot; selected&gt;萨博&lt;/option&gt;</span><br><span class="line">            &lt;/select&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-a9f400e8dd407737.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>option 的 value 属性是必需的，可以对 option 设置 selected 属性实现预选择。</p>
-<h4 id="2-6-提交按钮"><a href="#2-6-提交按钮" class="headerlink" title="2.6 提交按钮"></a>2.6 提交按钮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-32401cfd80373ac4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h4 id="2-8-重置按钮"><a href="#2-8-重置按钮" class="headerlink" title="2.8 重置按钮"></a>2.8 重置按钮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;reset&quot; /&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-92075c5ed9f068d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>重置按钮会清空表单中填写的内容</p>
-<h4 id="2-9-打开文件"><a href="#2-9-打开文件" class="headerlink" title="2.9 打开文件"></a>2.9 打开文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;file&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;file&quot; name=&quot;myfile&quot; accept=&quot;image/png&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/7280908-100a4b2eb5c3906c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>accept=”image/png”，只接受png格式文件，可设置选择的文件格式</p>
-<h1 id="3-label-元素"><a href="#3-label-元素" class="headerlink" title="3.label 元素"></a>3.label 元素</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;username&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;username&quot;&gt;姓名&lt;/label&gt;</span><br><span class="line">    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>label 元素为 input 元素定义标注，当鼠标选择该标签时，关联的元素控件会获得焦点，for 属性与关联元素的 id 属性要相同。</p>
-<h1 id="4-textarea-元素"><a href="#4-textarea-元素" class="headerlink" title="4. textarea 元素"></a>4. textarea 元素</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;textarea&quot;&gt;</span><br><span class="line">        &lt;textarea name=&quot;article&quot;&gt;</span><br><span class="line">          ddd</span><br><span class="line">        &lt;/textarea&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c87c9b894f5b15d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>展示输入框，可以拉选大小</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2712,7 +2742,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
