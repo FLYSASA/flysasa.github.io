@@ -252,6 +252,224 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/16/浅析form表单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/16/浅析form表单/" itemprop="url">浅析form表单</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-16T21:27:22+08:00">
+                2017-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-form表单有什么作用？有哪些常用的input-标签，分别有什么作用？"><a href="#1-form表单有什么作用？有哪些常用的input-标签，分别有什么作用？" class="headerlink" title="1.form表单有什么作用？有哪些常用的input 标签，分别有什么作用？"></a>1.form表单有什么作用？有哪些常用的input 标签，分别有什么作用？</h1><blockquote>
+<p>表单在网页中主要负责数据采集功能。一个表单有三个基本组成部分： 表单标签：这里面包含了处理表单数据所用CGI程序的URL以及数据提交到服务器的方法。 <a href="https://baike.baidu.com/item/%E8%A1%A8%E5%8D%95%E5%9F%9F" target="_blank" rel="noopener">表单域</a>：包含了<a href="https://baike.baidu.com/item/%E6%96%87%E6%9C%AC%E6%A1%86" target="_blank" rel="noopener">文本框</a>、密码框、<a href="https://baike.baidu.com/item/%E9%9A%90%E8%97%8F%E5%9F%9F" target="_blank" rel="noopener">隐藏域</a>、<a href="https://baike.baidu.com/item/%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86" target="_blank" rel="noopener">多行文本框</a>、<a href="https://baike.baidu.com/item/%E5%A4%8D%E9%80%89%E6%A1%86" target="_blank" rel="noopener">复选框</a>、<a href="https://baike.baidu.com/item/%E5%8D%95%E9%80%89%E6%A1%86" target="_blank" rel="noopener">单选框</a>、下拉选择框和文件上传框等。 表单按钮：包括提交按钮、复位按钮和一般按钮；用于将<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81" target="_blank" rel="noopener">数据传送</a>到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作。</p>
+</blockquote>
+<p>功能：</p>
+<blockquote>
+<p>用于申明表单，定义采集数据的范围，也就是<form>和</form>里面包含的数据将被提交到服务器或者电子邮件里。</p>
+</blockquote>
+<h3 id="常用的input标签"><a href="#常用的input标签" class="headerlink" title="常用的input标签"></a>常用的input标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>button</td>
+<td>定义可点击按钮（多数情况下，用于通过 JavaScript 启动脚本）。  </td>
+</tr>
+<tr>
+<td>checkbox</td>
+<td>定义复选框。</td>
+</tr>
+<tr>
+<td>file</td>
+<td>定义输入字段和 “浏览”按钮，供文件上传。  </td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>定义隐藏的输入字段。</td>
+</tr>
+<tr>
+<td>image</td>
+<td>定义图像形式的提交按钮。</td>
+</tr>
+<tr>
+<td>password</td>
+<td>定义密码字段。该字段中的字符被掩码。圆点表示。</td>
+</tr>
+<tr>
+<td>radio</td>
+<td>定义单选按钮。</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>定义重置按钮。重置按钮会清除表单中的所有数据。</td>
+</tr>
+<tr>
+<td>submit</td>
+<td>定义提交按钮。提交按钮会把表单数据发送到服务器。</td>
+</tr>
+<tr>
+<td>text</td>
+<td>定义单行的输入字段，用户可在其中输入文本。默认宽度为 20 个字符。</td>
+</tr>
+</tbody>
+</table>
+<p>[参考]（<a href="http://www.w3school.com.cn/tags/att_input_type.asp）" target="_blank" rel="noopener">http://www.w3school.com.cn/tags/att_input_type.asp）</a></p>
+<h1 id="2、post-和-get-方式的区别？"><a href="#2、post-和-get-方式的区别？" class="headerlink" title="2、post 和 get 方式的区别？"></a>2、post 和 get 方式的区别？</h1><p>区别：</p>
+<blockquote>
+<p> 1.get是从服务器上获取数据，post是向服务器传送数据。但是不绝对，get也可以传送数据。<br> 2.get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。<strong>(get将表单中数据的按照variable=value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&amp;”连接)</strong>；<br>post是将表单中的数据放在form的数据体中，按照变量和值相对应的方式，传递到action所指向URL.<br>3.对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。<br>4.get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB。<br>5.get安全性非常低，post安全性较高。<br>6.HTTP 定义了与服务器交互的不同方法，最基本的方法是 GET 和 POST。事实上 GET 适用于多数请求，而保留 POST 仅用于更新站点。根据 HTTP 规范，GET 用于信息获取，而且应该是 安全的和幂等的。所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。幂等的意味着对同一 URL 的多个请求应该返回同样的结果。完整的定义并不像看起来那样严格。从根本上讲，其目标是当用户打开一个链接时，她可以确信从自身的角度来看没有改变资源。 比如，新闻站点的头版不断更新。虽然第二次请求会返回不同的一批新闻，该操作仍然被认为是安全的和幂等的，因为它总是返回当前的新闻。反之亦然。POST 请求就不那么轻松了。POST 表示可能改变服务器上的资源的请求。仍然以新闻站点为例，读者对文章的注解应该通过 POST 请求实现，因为在注解提交之后站点已经不同了<br>7.在FORM提交的时候，如果不指定Method，则默认为GET请求，Form中提交的数据将会附加在url之后，以?分开与url分开。字母数字字符原 样发送，但空格转换为“+“号，其它符号转换为%XX,其中XX为该符号以16进制表示的ASCII（或ISO Latin-1）值。GET请求请提交的数据放置在HTTP请求协议头中，而POST提交的数据则放在实体数据中；GET方式提交的数据最多只能有1024字节，而POST则没有此限制。</p>
+</blockquote>
+<h1 id="3-在input里，name-有什么作用？"><a href="#3-在input里，name-有什么作用？" class="headerlink" title="3.在input里，name 有什么作用？"></a>3.在input里，name 有什么作用？</h1><blockquote>
+<p>name属性规定了<strong>input</strong>元素的名称，用于后续提交表单数据，等于某类数据的索引.例如,上传表单时,如果姓名这一栏input没有”name”,那么即使填好姓名,上传后,后台程序无法理解这个内容是属于数据,而”name”定义了这个数据的索引.</p>
+</blockquote>
+<h1 id="4-radio-如何-分组"><a href="#4-radio-如何-分组" class="headerlink" title="4.radio 如何 分组?"></a>4.radio 如何 分组?</h1><blockquote>
+<p>每一个的name属性都取同一个名字，即为同一组，同一组的radio，只能单选。</p>
+</blockquote>
+<h1 id="5-placeholder-属性有什么作用"><a href="#5-placeholder-属性有什么作用" class="headerlink" title="5.placeholder 属性有什么作用?"></a>5.placeholder 属性有什么作用?</h1><blockquote>
+<p>placeholder的参数可以作为输入的提示（提示用户输入内容和格式），与value不同，placeholder并不是input中真的内容，在输入时placeholder会消失而不是代替。</p>
+</blockquote>
+<h1 id="6-type-hidden隐藏域有什么作用-举例说明"><a href="#6-type-hidden隐藏域有什么作用-举例说明" class="headerlink" title="6.type=hidden隐藏域有什么作用? 举例说明"></a>6.type=hidden隐藏域有什么作用? 举例说明</h1><blockquote>
+<p>隐藏不想让用户看到的信息，但是这些信息对于Web应用又是非常必要的。<br>暂存信息：后端在构造web页面的过程中，通过hidden隐藏域在页面中添加了相关数据信息(用户对网页进行操作时可能会用到这些数据信息)<br>信息安全：后端在构造web页面的过程中，可以通过hidden隐藏域在页面中添加相关的验证信息，当form表单被提交后，服务器会收到该验证信息，通过一定的算法校验该验证信息，可以有效防止非法请求对数据库的增删改查，提高了web应用的安全性。</p>
+</blockquote>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><blockquote>
+<p>1.可以用来存储记录用户身份的信息，当表单提交时以确定用户身份。这种方式相较于cookie而言更简单，而且不会有浏览器不支持和用户禁用cookie的烦恼。<br>2.有些时候一个form里有多个提交按钮，怎样使程序能够分清楚到底用户是按那一个按钮提交上来的呢？我们就可以写一个隐藏域，然后在每一个按钮处加上<code>onclick=&quot;document.form.command.value=&quot;xx&quot;</code>然后我们接到数据后先检查command的值就会知道用户是按的那个按钮提交上来的。<br>3.有时候一个网页中有多个form，我们知道多个form是不能同时提交的，但有时这些form确实相互作用，我们就可以在form中添加隐藏域来使它们联系起来。<br>4.javascript不支持全局变量，但有时我们必须用全局变量，我们就可以把值先存在隐藏域里，它的值就不会丢失了。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/01/HTML知识点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -577,7 +795,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
