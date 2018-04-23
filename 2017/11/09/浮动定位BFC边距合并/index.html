@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？浮动模型也是一种可视化格式模型，浮动的框可以左右移动（根据float属性值而定），直到它的外边缘碰到包含框或者另一个浮动元素的框的边缘。浮动元素不在文档的普通流中，文档的普通流中的元素表现的就像浮动元素不存在一样.  对父容器的影响：当父容器的子元素都是浮动元素时，那么父容器将会高度坍塌。如下例：   对其他浮动元素影响">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浮动定位BFC边距合并">
+<meta property="og:url" content="http://yoursite.com/2017/11/09/浮动定位BFC边距合并/index.html">
+<meta property="og:site_name" content="FLYSASA">
+<meta property="og:description" content="1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？浮动模型也是一种可视化格式模型，浮动的框可以左右移动（根据float属性值而定），直到它的外边缘碰到包含框或者另一个浮动元素的框的边缘。浮动元素不在文档的普通流中，文档的普通流中的元素表现的就像浮动元素不存在一样.  对父容器的影响：当父容器的子元素都是浮动元素时，那么父容器将会高度坍塌。如下例：   对其他浮动元素影响">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-c899923e8c0fb083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-ee18bffec31f5136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-23410e8869c08e28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-e339cd96c2bb061f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-1ece5ebf927c73d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-c7c9743c22a693fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-8e708860a5b43a7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-bcc1429094c2659b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-9049d87a4bd1b6ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7280908-4cef8375c552c107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-23T08:25:59.407Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浮动定位BFC边距合并">
+<meta name="twitter:description" content="1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？浮动模型也是一种可视化格式模型，浮动的框可以左右移动（根据float属性值而定），直到它的外边缘碰到包含框或者另一个浮动元素的框的边缘。浮动元素不在文档的普通流中，文档的普通流中的元素表现的就像浮动元素不存在一样.  对父容器的影响：当父容器的子元素都是浮动元素时，那么父容器将会高度坍塌。如下例：   对其他浮动元素影响">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7280908-c899923e8c0fb083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/09/浮动定位BFC边距合并/"/>
+
+
+
+
+
+  <title>浮动定位BFC边距合并 | FLYSASA</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FLYSASA</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fair to be late, but never absent</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/浮动定位BFC边距合并/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/my-avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FLYSASA">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浮动定位BFC边距合并</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T09:42:33+08:00">
+                2017-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"><a href="#1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？" class="headerlink" title="1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"></a>1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？</h1><p>浮动模型也是一种可视化格式模型，浮动的框可以左右移动（根据float属性值而定），直到它的外边缘碰到包含框或者另一个浮动元素的框的边缘。浮动元素不在文档的普通流中，文档的普通流中的元素表现的就像浮动元素不存在一样.</p>
+<ul>
+<li><strong>对父容器的影响</strong>：当父容器的子元素都是浮动元素时，那么父容器将会高度坍塌。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c899923e8c0fb083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<ul>
+<li><strong>对其他浮动元素影响</strong>： 如果包含块儿太窄无法容纳水平排列的三个浮动元素,那么其它浮动块儿向下移动,直到有足够的空间,如果浮动元素的高度不同,那么向下移动的时候可能被卡住。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-ee18bffec31f5136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<ul>
+<li><p><strong>对普通元素影响</strong>：浮动元素脱离普通流，如果浮动元素后面有个文档流中的普通元素，那么这个普通元素的框会表现的浮动元素不存在。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-23410e8869c08e28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>对文字影响</strong>： 浮动元素后面的文档流中的元素，这个元素的框会表现的像浮动元素不存在，但是框的文本内容会受到浮动元素影响，会移动以留出空间。<br>浮动元素旁边的行框被缩短,从而给浮动元素流出空间,因而行框围绕浮动框。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-e339cd96c2bb061f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<h1 id="2-清除浮动指什么？如何清除浮动？两种以上方法"><a href="#2-清除浮动指什么？如何清除浮动？两种以上方法" class="headerlink" title="2.清除浮动指什么？如何清除浮动？两种以上方法"></a>2.清除浮动指什么？如何清除浮动？两种以上方法</h1><p>清理浮动：解决父容器高度坍塌问题</p>
+<p>###方法1</p>
+<p>如果我们想让父元素在视觉上包围浮动元素可以在父元素最后添加一个空div，<br><code>&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</code>对它清理。缺点是增加了一个无意义的标签，如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-1ece5ebf927c73d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>使父容器生成BFC,因为BFC可以包含浮动，从而达到“清除浮动”效果，如何形成浮动：</p>
+<ul>
+<li>float为 left|right</li>
+<li>overflow为 hidden|auto|scroll</li>
+<li>display为 table-cell|table-caption|inline-block</li>
+<li>position为 absolute|fixed<br>但是注意用BFC特性清理浮动都有副作用：比如float： left;让父容器变成浮动元素<br>副作用较小的是： overflow： auto;或者overflow: hidden;</li>
+</ul>
+<h3 id="通用的清理浮动法案"><a href="#通用的清理浮动法案" class="headerlink" title="通用的清理浮动法案"></a>通用的清理浮动法案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/*方法1*/</span><br><span class="line"> .clearfix&#123;</span><br><span class="line">     *zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line"> .clearfix:after&#123;</span><br><span class="line">     content: &quot;&quot;;</span><br><span class="line">     display: block;</span><br><span class="line">     clear: both;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /*方法2*/</span><br><span class="line"> .clearfix&#123;</span><br><span class="line">   *zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line"> .clearfix:after&#123;</span><br><span class="line">   content:&quot;&quot;;</span><br><span class="line">     display:table;</span><br><span class="line">     clear:both;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"><a href="#3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？" class="headerlink" title="3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"></a>3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？</h1><p>css定位方式有四种：默认定位（static）、相对定位（relative）、绝对定位（absolute）和固定定位（fixed）</p>
+<ul>
+<li><p><strong>static</strong>:默认值。没有定位，元素在正常的流中,top,right,bottom,left和z-index属性无效。<br>参考点：无</p>
+</li>
+<li><p><strong>relative</strong>:生成相对定位的元素，通过top,bottom,left,right的位置相对于其原来位置进行定位。left:20px 会向元素的 left 位置添加20px</p>
+<blockquote>
+<p>其中的相对指的是相对于元素在默认流中的位置。元素偏移之后，他本来在默认文档流中占据的位置仍然存在，其紧挨其后的元素的定位依据它本来的位置定位<br>参考点：元素本身位置<br>使用场景：元素相对偏移<br>案例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-c7c9743c22a693fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</blockquote>
+</li>
+<li><p><strong>absolute</strong>：生成绝对定位的元素，相对于static定位外的第一个父元素进行定位。元素的位置通过 left, top, right 以及 bottom 属性进行规定。</p>
+<blockquote>
+<p>绝对定位的元素已经脱离了文档流，普通流中其他元素的布局就像绝对元素不存在一样；绝对定位的元素的位置是相对于最近的已定位的祖先元素，如果元素没有已定位的祖先元素，它的位置就相对于body根元素；绝对定位的框可以覆盖页面的其他元素。<br>参考点：距离最近的非static元素，否则为body<br>使用场景：垂直水平居中<br>案例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-8e708860a5b43a7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>top: 20px; left:20px 相对的值是看其父容器是否存在 position：relative;absolute;fixed;这三个值，如果有就是相对父容器的内边框。<br>当父容器里有 绝对定位 的子元素时，子元素设置width:100%实际上指的是相对于父容器的padding+content的宽度。当子元素是非绝对定位的元素时width:100%才是指子元素的 content 等于父元素的 content宽度查看范例<a href="http://js.jirengu.com/jatog/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/jatog/1/edit</a></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><strong>fixed</strong>: 本质上是一种绝对定位，不为元素预留空间。通过指定相对于屏幕视窗的位置来指定元素的空间，且元素的位置在屏幕滚动时不会发生变化。应用于很多网站顶端的固定导航、右下角的固定广告等等。<br>参考点：浏览器窗口<br>使用场景：登录框覆盖层</li>
+</ul>
+<p>注意只有position: relative; absolute; fixed;才能设置top left 等的值；</p>
+<h1 id="4-z-index有什么作用？如何使用？"><a href="#4-z-index有什么作用？如何使用？" class="headerlink" title="4.z-index有什么作用？如何使用？"></a>4.z-index有什么作用？如何使用？</h1><p>z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。如果为正数，则离用户更近，为负数则表示离用户更远。Z-index 仅能在定位元素上奏效。</p>
+<h1 id="5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别"><a href="#5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别" class="headerlink" title="5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?"></a>5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?</h1><p>position:relative和负margin都可以使元素位置发生偏移,二者区别：</p>
+<ul>
+<li>position:relative相对定位后元素位置发生偏移，只是视觉上显示的位置变化，但是它仍会占据原来的空间，不会影响其他文档流元素。</li>
+<li>负margin会使元素在文档流中位置发生偏移，会影响周边的元素位置变化<h1 id="6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明"><a href="#6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明" class="headerlink" title="6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明"></a>6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明</h1></li>
+<li>BFC:全称是 [Block Format Content] ,块级格式化上下文(<a href="http://www.w3.org/TR/CSS21/visuren.html#block-formatting)，" target="_blank" rel="noopener">http://www.w3.org/TR/CSS21/visuren.html#block-formatting)，</a><blockquote>
+<p>BFC特性：<br>1.BFC会阻止垂直外边距（margin-top、margin-bottom）折叠<br> 按照BFC的定义，只有同属于一个BFC时，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。<br>因此要解决margin重叠问题，只要让它们不在同一个BFC就行了，但是对于两个相邻元素来说，意义不大，没有必要给它们加个外壳，但是对于嵌套元素来说就很有必要了，只要把父元素设为BFC就可以了。这样子元素的margin就不会和父元素的margin发生重叠<br>2.BFC不会重叠浮动元素<br>3.BFC可以包含浮动</p>
+</blockquote>
+</li>
+<li>生成BFC:<blockquote>
+<ul>
+<li>float为 left|right</li>
+<li>overflow为 hidden|auto|scroll</li>
+<li>display为 table-cell|table-caption|inline-block</li>
+<li>position为 absolute|fixed</li>
+</ul>
+</blockquote>
+</li>
+<li>BFC作用：<br>1.会阻止垂直外边距（margin-top、margin-bottom）折叠<br>2.清除浮动<h1 id="7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"><a href="#7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例" class="headerlink" title="7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"></a>7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例</h1>当块处于同一个文档流同一个BFC中，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。对于父子元素，容器没有padding和border内部的margin会导致外边距合并。<br>相邻元素box1和box2的垂直外边距合并，如下例，<br><img src="http://upload-images.jianshu.io/upload_images/7280908-bcc1429094c2659b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><blockquote>
+<p>合并规则：<br>1.两个margin都是正值的时候，取两者的最大值；<br> 2.当 margin 都是负值的时候，取的是其中绝对值较大的，然后，从0位置，负向位移；<br> 3.当有正有负的时候，先取出负 margin 中绝对值中最大的，然后和正 margin 值中最大的 margin 相加。</p>
+</blockquote>
+</li>
+</ul>
+<p>如何不让相邻元素外边距合并：<br>1.被非空内容、padding、border 或 clear 分隔开。<br>2.不在一个普通流中或一个BFC中。<br>3.浮动元素、inline-block 元素、绝对定位元素的 margin 不会和垂直方向上其他元素的 margin 折叠（注意这里指的是上下相邻的元素）。</p>
+<p>父子外边距合并见下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-9049d87a4bd1b6ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解决外边距合并，让父容器设为BFC就可以了。给父容器加入overflow: auto;包裹h1，使得h1的margin内部生效，从而不会margin合并。这样子元素的margin就不会和父元素的margin发生重叠。如下例：<br><img src="http://upload-images.jianshu.io/upload_images/7280908-4cef8375c552c107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>参考<a href="http://blog.csdn.net/github_37037281/article/details/55505825" target="_blank" rel="noopener">http://blog.csdn.net/github_37037281/article/details/55505825</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/浏览器兼容/" rel="next" title="浏览器兼容">
+                <i class="fa fa-chevron-left"></i> 浏览器兼容
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/搭建成功/" rel="prev" title="Fair to be late, but never absent">
+                Fair to be late, but never absent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/my-avatar.gif"
+                alt="Nie" />
+            
+              <p class="site-author-name" itemprop="name">Nie</p>
+              <p class="site-description motion-element" itemprop="description">Fair to be late, but never absent</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FLYSASA/project" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？"><span class="nav-number">1.</span> <span class="nav-text">1.浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-清除浮动指什么？如何清除浮动？两种以上方法"><span class="nav-number">2.</span> <span class="nav-text">2.清除浮动指什么？如何清除浮动？两种以上方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法2"><span class="nav-number">2.0.1.</span> <span class="nav-text">方法2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用的清理浮动法案"><span class="nav-number">2.0.2.</span> <span class="nav-text">通用的清理浮动法案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？"><span class="nav-number">3.</span> <span class="nav-text">3.有几种定位方式，分别是如何实现定位的，参考点是什么，使用场景是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-z-index有什么作用？如何使用？"><span class="nav-number">4.</span> <span class="nav-text">4.z-index有什么作用？如何使用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-position-relative和负margin都可以使元素位置发生偏移-二者有什么区别"><span class="nav-number">5.</span> <span class="nav-text">5.position:relative和负margin都可以使元素位置发生偏移?二者有什么区别?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-BFC-是什么？如何生成-BFC？BFC-有什么作用？举例说明"><span class="nav-number">6.</span> <span class="nav-text">6.BFC 是什么？如何生成 BFC？BFC 有什么作用？举例说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例"><span class="nav-number">7.</span> <span class="nav-text">7.在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？给个父子外边距合并的范例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">博客</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
